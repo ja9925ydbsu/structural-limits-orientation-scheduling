@@ -1,0 +1,296 @@
+% MDPI Cryptography supplementary-file format, prepared 2 September 2026.
+\documentclass[cryptography,supfile,submit,oneauthor]{Definitions/mdpi}
+
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+
+\usepackage{longtable}
+\usepackage{xurl}
+\setlength{\emergencystretch}{3em}
+\newcommand{\GF}{\mathrm{GF}}
+
+\Title{Supplementary Technical Material for ``Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers''}
+\newcommand{\orcidauthorA}{0000-0003-3734-5478}
+\Author{Porter E. Coggins, III $^{1,*}$\orcidA{}}
+\AuthorNames{Porter E. Coggins, III}
+\address{$^{1}$ \quad Department of Professional Education, Bemidji State University, Bemidji, MN 56601, USA; porter.coggins@bemidjistate.edu}
+\corres{Correspondence: porter.coggins@bemidjistate.edu}
+\abstract{This supplementary file provides the complete experimental harness specification, structural checks, transfer-analysis details, matched empirical diagnostics, cross-byte boundary results, reference test vector, and reproducibility manifest for the associated article.}
+\keyword{orientation scheduling; diffusion layers; reproducibility; supplementary material}
+
+\begin{document}
+
+\section{Purpose and package organization}
+This supplement preserves implementation, verification, and secondary diagnostic material that would distract from the main structural argument. The archive contains the MDPI manuscript, this supplement, the experimental-design figure source, byte-local matched-control code, the 256-context transition and transfer analysis, independently executable identity and routing checks, detailed empirical diagnostics, and the complete cross-byte boundary-study candidate and audit tables moved out of the main article. The public project repository is \url{https://github.com/ja9925ydbsu/structural-limits-orientation-scheduling}. The historical HESPN name is retained only where required by a deterministic key label, test vector, or historical compatibility filename.
+
+\section{Complete experimental harness specification}
+The main article deliberately compresses the harness because the structural result, not the cipher-like implementation detail, is the contribution. Orientation scheduling was nevertheless a reasonable experimental intervention: it changes admissible coefficient placement and the sequence of intra-byte differences presented to later S-boxes while preserving invertibility, the imposed branch-number floor, byte locality, and the surrounding SPN. The central support theorem in the main article is algebraically immediate from byte locality; its significance is causal because it identifies active-byte support as the structural variable that orientation cannot change. This section preserves the normative implementation conventions needed for independent reproduction of the residual coefficient and phase effects measured after that support constraint is held fixed.
+
+\subsection{State, bit ordering, and round sequence}
+The state is a 16-byte string in big-endian, MSB-first order. A byte $x$ is represented by bit vector $v(x)[i]=(x\gg(7-i))\mathbin{\&}1$. Each $8\times8$ binary matrix row is stored as a byte in the same bit order, and matrix-vector multiplication computes row/input parity. The whole-state operation \path{rotl128} interprets the 16-byte state as one 128-bit big-endian integer, rotates it left, and repacks the result.
+
+For round $r$, encryption performs the following operations in order:
+\begin{enumerate}
+\item rotate the 128-bit state left by \path{K_VALUES[r]};
+\item XOR the 16-byte round key $\mathrm{rk}_r$;
+\item at byte position $j$, apply the scheduled $8\times8$ binary matrix $M_{r,j}$;
+\item apply the AES S-box independently to each byte;
+\item route source byte $j$ to destination $\pi_r(j)$.
+\end{enumerate}
+The normative assignment is \path{routed[routing_pi(r,j)] = subbed[j]}. Decryption applies the inverse operations in reverse order. Each routing mode is an involution; inverse AES and inverse scheduled matrices are then applied, followed by round-key XOR and the inverse whole-state rotation.
+
+\subsection{Rotation, routing, and orientation schedules}
+The 16-round whole-state rotation schedule is
+\[
+[7,3,1,5,\;3,1,5,7,\;1,3,5,7,\;7,3,1,5].
+\]
+Each consecutive four-round block sums to 16 bits and the complete schedule to 64 bits. Routing mode $r\bmod4$ is identity for mode 0 and swaps byte-index bit pairs $0\leftrightarrow1$, $0\leftrightarrow2$, and $0\leftrightarrow3$ for modes 1, 2, and 3.
+
+For accepted seed $S_j$, the four matched orientation schedules are
+\[
+\begin{array}{ll}
+\text{static:} & R^0(S_j),\\
+\text{position-only:} & R^{j\bmod4}(S_j),\\
+\text{round-only:} & R^{r\bmod4}(S_j),\\
+\text{rotor:} & R^{(r+j)\bmod4}(S_j).
+\end{array}
+\]
+All four arms reuse the same accepted seeds, round keys, state-motion schedules, S-box, and input panels.
+
+\subsection{Key and matrix context generation}
+The harness assumes a 256-bit master key. Round keys are
+\[
+\mathrm{SHA256}(K\parallel\texttt{ROUNDKEY}\parallel r)[:16],
+\]
+with $r$ encoded as a two-byte big-endian integer. Candidate seed matrices are generated deterministically per byte position and accepted only if invertible with $B(S_j)\ge4$ and $B(S_j^T)\ge4$. The rejection step is a verification procedure rather than a constructive formula. It affects setup cost but is common to all schedule arms. The 256-context analysis panel uses the deterministic key rule stated below; password-based key derivation is ancillary and appears only in the historical reference-vector path.
+
+\section{Model boundary for the weight-one calculation}
+The transition computation is exact within the standard Markov-cipher model used for DDT trail multiplication, following the model introduced by Lai, Massey, and Murphy (EUROCRYPT 1991). Round-key XOR is difference-transparent, so a round difference is affected by the scheduled matrix and S-box but not by the XOR value itself. A DDT probability averages the S-box transition over a uniformly distributed input value, equivalently over an independent uniform subkey immediately before the S-box. In the implemented harness, round keys and accepted seed matrices are deterministic functions of the same master key. They are therefore not independent random variables. The calculation removes Monte Carlo transition-sampling error, but it does not remove modelling error for a fixed keyed permutation.
+
+For a fixed weight-one input difference, the $r$-round iterative class is the set of trails whose difference has Hamming weight one at every round boundary through round $r$. The reported class probability sums the DDT-model probabilities of all such trails. Trails that leave this class can later return to weight one, so the class is a lower bound on the broader modelled event that the round-$r$ output difference has weight one.
+
+The class has a cryptanalytic interpretation rather than merely a computational one. A round-boundary weight-one difference activates exactly one byte and one S-box. Repeated survival therefore represents the minimum-support propagation regime: local bit spreading has occurred, but the construction has not forced additional byte support. This is why the main article treats the class as a direct test of the structural support-growth limitation rather than as another randomness statistic.
+
+The deterministic context panel is
+\[
+K_i=\mathrm{SHA256}(\texttt{HESPN-MATCHED-CONTROL-KEY}\parallel\mathrm{uint32be}(i)),\qquad i=0,\ldots,255.
+\]
+It is a public reproducible panel used to summarize variation among accepted matrix contexts. It is not a random-key experiment and does not create a distribution-free proof over all admissible matrices.
+
+\section{Differential mean-probability null and averaging convention}
+For a bijective 8-bit S-box, every nonzero output-difference column of the DDT sums to 256. There are eight weight-one output differences, hence
+\[
+\sum_{\alpha\ne0}\sum_{\mathrm{wt}(\beta)=1}\mathrm{DDT}(\alpha,\beta)=8\cdot256=2048.
+\]
+A uniform nonzero S-box input difference therefore has mean weight-one retention probability
+\[
+p_{\rm MF}=\frac{2048}{255\cdot256}=\frac{8}{255},\qquad
+-\log_2 p_{\rm MF}=4.9943534369\ \text{bits/round}.
+\]
+All manuscript rates use $-\log_2$ of a mean probability. They do not use the mean of $-\log_2$ probability. The checker \path{ddt_lat_null_checks.py} confirms
+\[
+-\log_2 E[p_\alpha]=4.9943534369,
+\]
+whereas, after excluding the single nonzero AES input difference with zero weight-one output mass,
+\[
+E[-\log_2 p_\alpha]=5.0947742554.
+\]
+The $0.10042$-bit difference between these conventions is much larger than the schedule separation resolved by the periodic transfer analysis, which is why the convention is stated explicitly.
+
+\section{Linear squared-correlation analogue}
+For normalized correlation
+\[
+C(\alpha,\beta)=2^{-8}\sum_x(-1)^{\langle\alpha,x\rangle\oplus\langle\beta,S(x)\rangle},
+\]
+Parseval's identity gives, for each nonzero output mask $\beta$ of a bijective S-box,
+\[
+\sum_{\alpha\ne0} C(\alpha,\beta)^2=1.
+\]
+Summing over the eight weight-one output masks gives total squared-correlation mass 8. Hence the mean weight-one squared-correlation retention over 255 nonzero input masks is again $8/255$, with rate $4.9943534369$ bits. The checker reports minimum and maximum Parseval column sums of exactly 1.0 for the AES S-box. This is a one-step structural null for linear potential, not a complete multi-round linear-hull calculation.
+
+\section{Routing composition and rotation alignment}
+Routing mode 0 is the identity, while modes 1, 2, and 3 swap byte-index bits $0\leftrightarrow1$, $0\leftrightarrow2$, and $0\leftrightarrow3$. The executable checker \path{routing_geometry_check.py} verifies that the isolated four-round composition maps
+\[
+b_3b_2b_1b_0\longmapsto b_2b_1b_0b_3,
+\]
+with cycle structure
+\[
+\{0\}\;\{15\}\;\{5,10\}\;\{1,2,4,8\}\;\{3,6,12,9\}\;\{7,14,13,11\}.
+\]
+Its order is four, so the isolated routing sequence composes to the identity after 16 rounds. The rotation schedule
+\[
+[7,3,1,5,3,1,5,7,1,3,5,7,7,3,1,5]
+\]
+sums to 16 bits in each consecutive four-round block and to 64 bits over 16 rounds. Thus within-byte bit offsets realign at every four-round boundary. Routing and rotation are interleaved, so the combined state-motion map is not asserted to be a pure rotation and routing is not claimed to make zero contribution to intermediate transport. The retained Revision 8 structural-audit script additionally composes only whole-state rotation and routing over the 128 bit positions, omitting the matrix and S-box. That state-motion-only permutation has order $504$ over the first four rounds and $60{,}060$ over all 16 rounds under either rotation-direction convention. The isolated routing order of four is therefore not the period of the combined state motion. The audit also records fixed positions as raw diagnostics but the manuscript assigns them no cryptanalytic interpretation.
+
+\section{256-context transition and transfer results}
+The script \path{weight1_transfer_256.py} builds the round-specific 128-state transition system from the AES DDT and accepted scheduled matrices. It reports finite-round class probabilities, best single trails, one-step retention, and the spectral decay of the 16-round periodic product.
+
+\begin{table}[h]
+\centering\small
+\caption{Summary of the 256-context model-exact transition analysis. $\Delta_{\rm phase}$ is one-step minus periodic.}
+\begin{tabular}{lrrrrr}
+\toprule
+Schedule & $\log_2 P_{16}$ & finite & periodic & one-step & $\Delta_{\rm phase}$\\
+\midrule
+static & $-78.211$ & $4.9659$ & $4.9740$ & $4.9830$ & $+0.00909$\\
+position-only & $-78.242$ & $4.9665$ & $4.9755$ & $4.9833$ & $+0.00785$\\
+rotor & $-78.515$ & $4.9769$ & $4.9828$ & $4.9827$ & $-0.00010$\\
+round-only & $-78.531$ & $4.9782$ & $4.9834$ & $4.9827$ & $-0.00077$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For a fixed byte position, rotor and round-only schedules use the same 16-round orientation multiset, with each orientation appearing exactly four times. This identity explains their identical one-step mean. The one-step ordering then flips under the periodic operator: static is slightly faster than rotor at one step but slower over the period. Static and position-only, both constant in round index at a fixed byte position, lose $0.00909$ and $0.00785$ bits/round relative to their phase-averaged one-step rates. Rotor and round-only remain essentially at the one-step rate. This supports the phase-locking interpretation in the main article: temporal constancy permits repeated alignment with favourable periodic transition structure, whereas round dependence disrupts that alignment.
+
+At $r=16$, across-context standard deviations are $0.678$ and $0.749$ bits for static and position-only, compared with $0.410$ and $0.417$ for rotor and round-only. Averaging within the two schedule families gives a $42.1\%$ reduction under round dependence. Paired periodic differences are positive for rotor minus static in 154 of 256 contexts and for round-only minus static in 156 of 256. A separate Perron-accessibility check verifies that the maximizing 16-round start state has positive coordinate in the converged dominant survival mode for all 1024 schedule-context combinations.
+
+Using the exact random-permutation benchmark of $2^{-121}$, the static mean class at round 16 is $42.789$ bits above the benchmark and would require about $8.603$ additional rounds if continued at its asymptotic periodic rate. Rotor is $42.485$ bits above and requires about $8.526$ additional rounds. The schedule difference therefore corresponds to approximately $0.076$ of a round under this extrapolation.
+
+The per-context class-minus-best-single-trail gap is computed first and then averaged over the panel. At 16 rounds its mean is approximately $28.3$ bits. Thus best-single-trail analysis understates the retained recurrent class by a factor near $2^{28.3}$ in this model.
+
+\section{Matched empirical corrections and uncertainty}
+The standard four-context matched experiment was rerun from the bundled implementation. The following values support the revised manuscript wording.
+
+\subsection{Plaintext avalanche}
+At rounds 4, 5, and 8, pooling $4\times2000=8000$ paired rotor-minus-static observations gives means $+0.171$, $-0.079$, and $+0.187$ bits. Reconstructed normal 95\% intervals from the per-context paired summaries are $[-0.021,0.363]$, $[-0.417,0.259]$, and $[-0.131,0.506]$. At round 8, therefore, the upper 95\% confidence limit on a positive rotor advantage is about $0.51$ bits. The $0.32$-bit half-width is a resolution measure, not an exclusion bound.
+
+\subsection{Sampled differential screen}
+At four rounds, the 24 tests per schedule give collision means and standard deviations:
+\begin{center}\small
+\begin{tabular}{lrr}
+\toprule
+Schedule & collision mean & SD\\
+\midrule
+static & 28.79 & 25.72\\
+round-only & 28.08 & 26.51\\
+position-only & 27.00 & 25.51\\
+rotor & 23.38 & 21.38\\
+\bottomrule
+\end{tabular}
+\end{center}
+The corresponding normal intervals overlap broadly. The lower rotor mean is in the rotor schedule's favor, so the decision not to interpret it as a schedule advantage is conservative. Output-difference weight gives no corresponding ordering.
+
+\subsection{Counter-distance screen}
+At twelve rounds, averaging the four contexts across six strides gives static 63.776, position-only 63.777, round-only 63.751, and rotor 63.743 bits. Normal 95\% intervals across the 24 context-by-stride means are $[63.733,63.820]$, $[63.735,63.820]$, $[63.705,63.797]$, and $[63.702,63.785]$. The intervals overlap substantially.
+
+\subsection{SP 800-22 aggregate check}
+For 34 failures among 2700 nominal tests with failure probability 0.01, the exact two-sided binomial value is $p=0.174819$ and the upper-tail value is $p=0.107071$ under the simplifying independence approximation. The manuscript now states the test and sidedness explicitly. The statistical battery remains a screen rather than security evidence.
+
+
+\subsection{Additional harness diagnostics moved from the main article}
+The following broader tests are retained only for reproducibility. They are not evidence for resistance to differential or linear cryptanalysis and do not enter the main structural conclusion.
+
+\begin{table}[h]
+\centering\small
+\caption{Secondary diagnostic summary. Values describe the experimental harness only at the stated resolution.}
+\begin{tabular}{p{0.29\textwidth}p{0.61\textwidth}}
+\toprule
+Diagnostic & Observation and interpretation\\
+\midrule
+Local branch floor & All 256 scheduled byte-local applications satisfy $B=4$; this verifies matrix acceptance but supplies no cross-byte active-S-box bound.\\
+Plaintext avalanche & Mean distance is $63.45$ bits at 12 rounds and $64.03$ at 16 rounds; the 12-round deficit is a reduced-round diagnostic, not a trail bound.\\
+Sampled differentials & No repeated output differences from round 8 onward in the 50,000-pair screen; resolution is only about $2\times10^{-5}$.\\
+Random-mask screen & At 16 rounds, mean absolute bias is $0.00177$ and maximum $0.00752$ over the tested random masks; this is not systematic linear cryptanalysis.\\
+Restricted ANF degree & With 12 active input variables, the observed lower bound reaches the experiment's ceiling of 12 by round 8.\\
+Structured-input SP 800-22 & Strong reduced-round failures appear for counter inputs; the 16-round aggregate check is compatible with the nominal failure rate under the simplifying binomial model.\\
+Returned-difference calibration & Broad significance persists through round 12 but disappears at rounds 14 and 16; the instrument cannot resolve probabilities near the weight-one class.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The three reported 12-round Hamming-weight style values use different input distributions and therefore need not coincide. Plaintext avalanche conditions on single-bit perturbations, the sampled-differential panel uses several fixed XOR differences, and the counter-distance instrument uses arithmetic strides. Their agreement is qualitative: all indicate residual reduced-round related-input structure that largely disappears by 14 to 16 rounds, without identifying a larger orientation-schedule advantage.
+
+\section{Cross-byte boundary study: full pruned-search documentation}
+The separate boundary study replaces the byte-local binary layer with an asymmetric $4\times4$ Cauchy MDS matrix over $\GF(2^8)$ and its four element rotations. It changes spatial width, field, and matrix family simultaneously and therefore does not identify width as a causal variable. The standard profile compares static, rotor, round-only, position-only, and a deterministic period-eight diffusion-surrogate schedule while holding the S-box, ShiftRows operation, base MDS matrix, round-key derivation, and analysis settings fixed.
+
+An activity-based MILP gives minimum active-S-box counts of $5$, $25$, $30$, and $50$ over $2$, $4$, $6$, and $8$ rounds. With the AES S-box maxima, the corresponding differential-trail activity bounds are $2^{-30}$, $2^{-150}$, $2^{-180}$, and $2^{-300}$, while the linear-correlation activity bounds are $2^{-15}$, $2^{-75}$, $2^{-90}$, and $2^{-150}$. These bounds are schedule-independent because all orientations preserve the MDS branch number.
+
+At four rounds, the retained beam-search differential candidates use 35 or 36 active S-boxes, so they remain 10 or 11 active boxes from the certified floor of 25. Their exponents, $-210$ to $-216$, are 60 to 66 bits below the activity bound $-150$. Linear candidates are likewise 10 or 11 active boxes and 30 to 33 exponent bits from the $-75$ activity bound. The six-bit and three-bit spreads among retained schedules therefore cannot be interpreted as converged schedule effects.
+
+\begin{table}[h]
+\centering\small
+\caption{Validated standard-profile four-round coefficient-sensitive retained candidates and captured low-active differential mass. These are pruned-search outputs, not certified global optima.}
+\begin{tabular}{lrrrrr}
+\toprule
+Schedule & Diff. $\log_2 p$ & Diff. act. & Lin. $\log_2|C|$ & Lin. act. & Mass $\log_2$\\
+\midrule
+static & $-216$ & 36 & $-105$ & 35 & $-207.355$\\
+rotor & $-210$ & 35 & $-108$ & 36 & $-206.996$\\
+round-only & $-210$ & 35 & $-105$ & 35 & $-209.034$\\
+position-only & $-210$ & 35 & $-105$ & 35 & $-206.978$\\
+optimized & $-210$ & 35 & $-105$ & 35 & $-206.334$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The aggregate captured-mass search gives a different ordering from the best differential and best linear candidates. Because both local transitions and global states are beam-pruned, the captured values are only lower bounds on the mass retained by the search, not complete differential hulls. The disagreement among the three heuristic metrics is another reason not to infer a schedule ranking.
+
+The structural audit gives orientation-row periods of $1$, $4$, $4$, $1$, and $8$ for static, rotor, round-only, position-only, and optimized schedules, with $120$, $24$, $24$, $120$, and $8$ repeated structural round pairs. No variant has a repeated full keyed-round fingerprint, an equal reflected round key, or a complete inverse- or transpose-related reflected alignment. These tests exclude only the exact structures audited and are not proofs against slide, reflection, or related-key attacks.
+
+The boundary conclusion is intentionally limited. Once a linear map connects multiple byte positions, coefficient placement can affect the support geometry experienced by later rounds, so different schedules can lead a fixed pruned search to different retained states. The present experiment cannot determine whether spatial width, field choice, or matrix family is responsible, and it does not establish that any schedule is superior. A same-field two-byte binary map is the cleaner next control.
+
+The wider-beam sensitivity runner is included so the search can be extended without modifying the validated standard profile. No incomplete wider-beam output is reported as evidence.
+
+\section{Reference implementation test vector}
+The historical known-answer compatibility values are intentionally omitted from
+the public repository because they are reserved for related work. This omission
+does not affect the structural results, the 256-context transfer computation, or
+the reported empirical diagnostics. All analyses supporting the present article
+can be reproduced from the scripts and machine-readable outputs listed below.
+
+\section{Reproducibility manifest}
+\begin{longtable}{p{0.21\textwidth}p{0.35\textwidth}p{0.33\textwidth}}
+\toprule
+\textbf{Item} & \textbf{Script or source} & \textbf{Output}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Item} & \textbf{Script or source} & \textbf{Output}\\
+\midrule
+\endhead
+Experimental design figure & \path{manuscript/Fig1_source.tex} & \path{manuscript/Fig1.pdf}\\
+Differential and linear null identities & \path{ddt_lat_null_checks.py} & \path{structural_checks/null_identity_checks.json}\\
+Routing composition & \path{routing_geometry_check.py} & \path{structural_checks/routing_geometry.json}\\
+Historical Revision 8 phase, transport, and Perron audit & \path{revision8_structural_audit.py} & \path{structural_checks/revision8_additional_checks.json}\\
+256-context transition analysis & \path{weight1_transfer_256.py} & \path{weight1_256/model_weight1_256_by_context.csv}; summary, transfer, and paired-rate CSV files\\
+Paired rate differences & \path{weight1_transfer_256.py} plus summary helper & \path{weight1_256/paired_rate_differences.csv}\\
+Matched four-arm diagnostics & \path{matched_orientation_schedule_experiment.py}; \path{empirical_summary.py} & \path{matched_standard/} and \path{structural_checks/statistical_corrections_recomputed.json}\\
+Historical runner name & \path{matched_static_vs_rotor_experiment.py} & compatibility copy retained only so older commands continue to run\\
+Cross-byte boundary study & \path{run_mds_rotor_study.py} and modules & \path{mds_standard_profile_reported.csv}\\
+Beam-width follow-up & \path{mds_beam_sensitivity.py} & script included; no convergence claim\\
+\bottomrule
+\end{longtable}
+
+\section{Deterministic rerun commands}
+From \path{supplementary/code/byte_local}:
+\begin{verbatim}
+python ddt_lat_null_checks.py \
+  --out ../../results/structural_checks/null_identity_checks.json
+python routing_geometry_check.py \
+  --out ../../results/structural_checks/routing_geometry.json
+python revision8_structural_audit.py --results-root ../../results \
+  --out ../../results/structural_checks/revision8_additional_checks.json
+python weight1_transfer_256.py --keys 256 --transfer-keys 256 \
+  --out ../../results/weight1_256
+python matched_orientation_schedule_experiment.py --profile standard \
+  --out ../../results/matched_standard
+\end{verbatim}
+The cross-byte code uses NumPy and SciPy in addition to the standard library. A standard profile can be rerun with:
+\begin{verbatim}
+python run_mds_rotor_study.py --profile standard --out standard_results
+\end{verbatim}
+The wider-beam runner remains separate so that follow-up search widths can be changed without altering the validated standard-profile code.
+
+\end{document}

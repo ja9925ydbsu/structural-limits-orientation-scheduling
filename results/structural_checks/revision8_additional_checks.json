@@ -1,0 +1,329 @@
+{
+  "one_step_minus_periodic_bits_per_round": {
+    "position_only": 0.007851999999999748,
+    "rotor": -9.899999999962716e-05,
+    "round_only": -0.0007729999999996906,
+    "static": 0.009087000000000067
+  },
+  "paired_periodic_sign_consistency": {
+    "rotor_minus_static": {
+      "positive": 154,
+      "negative": 102,
+      "zero": 0,
+      "n": 256,
+      "mean_bits_per_round": 0.008805801917203097,
+      "median_bits_per_round": 0.00965840403250029
+    },
+    "round_only_minus_static": {
+      "positive": 156,
+      "negative": 100,
+      "zero": 0,
+      "n": 256,
+      "mean_bits_per_round": 0.009480026193675755,
+      "median_bits_per_round": 0.008705818844999769
+    },
+    "rotor_minus_position_only": {
+      "positive": 142,
+      "negative": 114,
+      "zero": 0,
+      "n": 256,
+      "mean_bits_per_round": 0.007298906145558615,
+      "median_bits_per_round": 0.005757783546500583
+    },
+    "round_only_minus_position_only": {
+      "positive": 149,
+      "negative": 107,
+      "zero": 0,
+      "n": 256,
+      "mean_bits_per_round": 0.007973130422031273,
+      "median_bits_per_round": 0.005928269496999761
+    }
+  },
+  "r16_log2_class_variance": {
+    "position_only": {
+      "mean_log2": -78.24222003899133,
+      "sd_log2": 0.7493414505779784
+    },
+    "rotor": {
+      "mean_log2": -78.51484016589127,
+      "sd_log2": 0.4097385033225135
+    },
+    "round_only": {
+      "mean_log2": -78.53098091604879,
+      "sd_log2": 0.41720360693985614
+    },
+    "static": {
+      "mean_log2": -78.21132158985954,
+      "sd_log2": 0.6782778780400014
+    }
+  },
+  "mean_sd_temporally_constant": 0.71380966430899,
+  "mean_sd_round_dependent": 0.4134710551311848,
+  "round_dependent_sd_reduction_fraction": 0.4207544730688827,
+  "round_equivalent_random_baseline_gap": {
+    "static": {
+      "gap_bits_at_r16": 42.78867841014046,
+      "periodic_rate_bits_per_round": 4.973952,
+      "additional_rounds_to_121": 8.602551534502236
+    },
+    "position_only": {
+      "gap_bits_at_r16": 42.757779961008666,
+      "periodic_rate_bits_per_round": 4.975459,
+      "additional_rounds_to_121": 8.59373576608885
+    },
+    "rotor": {
+      "gap_bits_at_r16": 42.48515983410873,
+      "periodic_rate_bits_per_round": 4.982758,
+      "additional_rounds_to_121": 8.526434523633043
+    },
+    "round_only": {
+      "gap_bits_at_r16": 42.46901908395121,
+      "periodic_rate_bits_per_round": 4.983432,
+      "additional_rounds_to_121": 8.52204245667468
+    },
+    "rotor_minus_static_round_saving": 0.07611701086919354,
+    "round_only_minus_static_round_saving": 0.08050907782755701
+  },
+  "combined_rotation_routing_transport_only": {
+    "4": {
+      "left": {
+        "order": 504,
+        "fixed_points_count": 7,
+        "fixed_points": [
+          32,
+          33,
+          91,
+          92,
+          93,
+          94,
+          95
+        ],
+        "cycle_lengths_sorted": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          9,
+          9,
+          14
+        ]
+      },
+      "right": {
+        "order": 504,
+        "fixed_points_count": 7,
+        "fixed_points": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          94,
+          95
+        ],
+        "cycle_lengths_sorted": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          9,
+          9,
+          14
+        ]
+      }
+    },
+    "16": {
+      "left": {
+        "order": 60060,
+        "fixed_points_count": 19,
+        "fixed_points": [
+          27,
+          32,
+          48,
+          75,
+          76,
+          77,
+          78,
+          79,
+          83,
+          91,
+          92,
+          93,
+          94,
+          95,
+          100,
+          101,
+          102,
+          103,
+          115
+        ],
+        "cycle_lengths_sorted": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          5,
+          6,
+          6,
+          6,
+          6,
+          7,
+          7,
+          11,
+          13
+        ]
+      },
+      "right": {
+        "order": 60060,
+        "fixed_points_count": 19,
+        "fixed_points": [
+          12,
+          24,
+          25,
+          26,
+          27,
+          32,
+          33,
+          34,
+          35,
+          36,
+          44,
+          48,
+          49,
+          50,
+          51,
+          52,
+          79,
+          95,
+          100
+        ],
+        "cycle_lengths_sorted": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          5,
+          6,
+          6,
+          6,
+          6,
+          7,
+          7,
+          11,
+          13
+        ]
+      }
+    }
+  },
+  "transport_interpretation": "Matrix and S-box are omitted. These orders describe only whole-state rotation plus routing and are not cipher periods.",
+  "perron_max_start_check": {
+    "contexts_checked": 256,
+    "schedule_contexts_checked": 1024,
+    "failures": [],
+    "all_maximizing_starts_reach_dominant_survival_mode": true,
+    "min_positive_coordinate_at_max_start": 0.013910165495901461
+  }
+}

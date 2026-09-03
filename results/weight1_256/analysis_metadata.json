@@ -1,0 +1,22 @@
+{
+  "keys": 256,
+  "transfer_keys": 256,
+  "variants": [
+    "static",
+    "position_only",
+    "rotor",
+    "round_only"
+  ],
+  "rounds": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "mean_field_probability": 0.03137254901960784,
+  "mean_field_decay_bits_per_round": 4.994353436858858,
+  "identity": "sum_{alpha!=0} sum_{wt(beta)=1} DDT(alpha,beta) = 8*256 = 2048; divide by 255*256",
+  "key_derivation": "SHA256(b\"HESPN-MATCHED-CONTROL-KEY\" || uint32_be(index))",
+  "model_assumption": "Exact within the Markov-cipher DDT transition model; not a proof for a fixed SHA-256-derived keyed permutation.",
+  "runtime_seconds": 23.9138445854187
+}

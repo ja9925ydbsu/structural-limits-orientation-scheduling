@@ -1,0 +1,6 @@
+variant,rounds,differential_log2_probability,differential_active_sboxes,linear_log2_abs_correlation,linear_active_sboxes,captured_mass_log2
+static,4,-216,36,-105,35,-207.355
+rotor,4,-210,35,-108,36,-206.996
+round_only,4,-210,35,-105,35,-209.034
+position_only,4,-210,35,-105,35,-206.978
+optimized,4,-210,35,-105,35,-206.334

@@ -1,0 +1,98 @@
+{
+  "four_round_routing_permutation": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15
+  ],
+  "expected_bit_rotation_permutation": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15
+  ],
+  "matches_b3b2b1b0_to_b2b1b0b3": true,
+  "cycles": [
+    [
+      0
+    ],
+    [
+      1,
+      2,
+      4,
+      8
+    ],
+    [
+      3,
+      6,
+      12,
+      9
+    ],
+    [
+      5,
+      10
+    ],
+    [
+      7,
+      14,
+      13,
+      11
+    ],
+    [
+      15
+    ]
+  ],
+  "order": 4,
+  "routing_only_16_round_composition_identity": true,
+  "rotation_schedule_bits": [
+    7,
+    3,
+    1,
+    5,
+    3,
+    1,
+    5,
+    7,
+    1,
+    3,
+    5,
+    7,
+    7,
+    3,
+    1,
+    5
+  ],
+  "four_round_rotation_sums_bits": [
+    16,
+    16,
+    16,
+    16
+  ],
+  "total_rotation_sum_bits": 64,
+  "within_byte_offset_realigns_each_four_round_block": true,
+  "interpretation_boundary": "Routing and whole-state rotation are interleaved; the combined state-motion map is not asserted to be a pure rotation or to have zero routing contribution."
+}

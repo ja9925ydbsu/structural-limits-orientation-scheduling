@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or results, please cite the associated manuscript."
+title: "Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers"
+type: software
+authors:
+  - family-names: "Coggins"
+    given-names: "Porter E."
+    name-suffix: "III"
+    orcid: "https://orcid.org/0000-0003-3734-5478"
+    affiliation: "Bemidji State University"
+version: "1.0.0"
+date-released: "2026-09-03"
+repository-code: "https://github.com/ja9925ydbsu/structural-limits-orientation-scheduling"
+preferred-citation:
+  type: article
+  title: "Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers"
+  authors:
+    - family-names: "Coggins"
+      given-names: "Porter E."
+      name-suffix: "III"
+      orcid: "https://orcid.org/0000-0003-3734-5478"
+  year: 2026

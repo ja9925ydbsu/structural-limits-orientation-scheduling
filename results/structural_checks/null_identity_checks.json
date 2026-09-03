@@ -1,0 +1,18 @@
+{
+  "differential": {
+    "weight_one_ddt_column_mass": 2048,
+    "expected_mass": 2048,
+    "mean_probability_over_255_nonzero_inputs": 0.03137254901960784,
+    "neglog2_mean_probability_bits": 4.994353436858858,
+    "zero_mass_nonzero_input_count": 1,
+    "mean_neglog2_probability_over_positive_inputs": 5.094774255350152,
+    "positive_input_count": 254
+  },
+  "linear_squared_correlation": {
+    "min_parseval_column_sum": 1.0,
+    "max_parseval_column_sum": 1.0,
+    "sum_over_eight_weight_one_output_masks": 8.0,
+    "mean_squared_correlation_retention_over_255_inputs": 0.03137254901960784,
+    "neglog2_mean_squared_correlation_bits": 4.994353436858858
+  }
+}

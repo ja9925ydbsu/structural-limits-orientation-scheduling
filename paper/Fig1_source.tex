@@ -1,0 +1,41 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\begin{document}
+\begin{tikzpicture}[font=\sffamily,>=Latex,
+ fixed/.style={draw,rounded corners=2pt,align=center,inner sep=5pt,minimum height=9mm},
+ arm/.style={draw,rounded corners=2pt,align=center,inner sep=5pt,minimum width=35mm,minimum height=16mm},
+ note/.style={draw,dashed,rounded corners=2pt,align=left,inner sep=6pt},
+ arr/.style={->,line width=.6pt}]
+
+\node[fixed,text width=153mm] (fixed) {\textbf{Held fixed across the four primary arms}\\
+256 deterministic master keys; accepted seed matrices $S_j$; round keys; 128-bit state-rotation schedule; AES S-box; byte-routing permutation; input panels};
+
+\node[arm,below=13mm of fixed,xshift=-60mm] (st) {\textbf{static}\\$e(r,j)=0$};
+\node[arm,right=5mm of st] (po) {\textbf{position-only}\\$e(r,j)=j\bmod4$};
+\node[arm,right=5mm of po] (ro) {\textbf{round-only}\\$e(r,j)=r\bmod4$};
+\node[arm,right=5mm of ro] (rot) {\textbf{rotor}\\$e(r,j)=(r+j)\bmod4$};
+
+\node[below=3mm of fixed,font=\sffamily\bfseries] (varlabel) {Only experimental variable: orientation exponent $e(r,j)$ in $R^{e(r,j)}(S_j)$};
+\coordinate (branch) at ($(varlabel.south)+(0,-3mm)$);
+\draw[arr] (fixed.south) -- (varlabel.north);
+\draw[arr] (varlabel.south) -- (branch);
+\draw (branch) -- ($(st.north)+(0,5mm)$) -- (st.north);
+\draw (branch) -- ($(po.north)+(0,5mm)$) -- (po.north);
+\draw (branch) -- ($(ro.north)+(0,5mm)$) -- (ro.north);
+\draw (branch) -- ($(rot.north)+(0,5mm)$) -- (rot.north);
+
+\node[fixed,text width=153mm,below=13mm of po.south east,anchor=north east,xshift=37.5mm] (eval) {\textbf{Primary structural evaluation}\\
+Byte-local support proposition $\rightarrow$ DDT mean-probability null $\rightarrow$ model-exact 128-state weight-one transfer system $\rightarrow$ 256-context finite and periodic rates\\
+with matched empirical diagnostics retained only as finite-resolution corroboration};
+\draw[arr] (st.south) -- ++(0,-5mm) -| (eval.north west);
+\draw[arr] (po.south) -- ++(0,-5mm) -| ($(eval.north)+(-25mm,0)$);
+\draw[arr] (ro.south) -- ++(0,-5mm) -| ($(eval.north)+(25mm,0)$);
+\draw[arr] (rot.south) -- ++(0,-5mm) -| (eval.north east);
+
+\node[note,text width=153mm,below=7mm of eval] (boundary) {\textbf{Separate cross-byte boundary setting (not a one-variable width ablation).}\\
+The byte-local $8\times8$ binary layer is replaced by a $4\times4$ Cauchy MDS layer over $\mathrm{GF}(2^8)$. Spatial width, field, and matrix family therefore change together. Detailed pruned-search outputs are reported in the supplement. They show only that schedule-dependent retained states can occur in this broader setting; no stable schedule ranking is claimed.};
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+{
+  "revision": "9",
+  "date": "2026-08-26",
+  "note": "Analysis JSON outputs are unchanged from Revision 8; Revision 9 changes interpretation and documentation only.",
+  "files": [
+    {
+      "path": "results/matched_standard/exact_weight1_best_paths.json",
+      "size_bytes": 12461,
+      "sha256": "eaba55181f52519ff4e4a052d7228401f887295515131a3e9f4f792b855f6efe"
+    },
+    {
+      "path": "results/matched_standard/experiment_metadata.json",
+      "size_bytes": 1201,
+      "sha256": "7a531590f3bb5ca18d8e75b61596690177b96201e7531623c052e22695f87f63"
+    },
+    {
+      "path": "results/structural_checks/cross_byte_structural_pair_counts.json",
+      "size_bytes": 479,
+      "sha256": "63cf394599f6200fa664b56aa5af21cae0658547855690c97170b46b27531801"
+    },
+    {
+      "path": "results/structural_checks/null_identity_checks.json",
+      "size_bytes": 668,
+      "sha256": "6e8d0b54bab3e3966cce425fde8aa171997b5947f06de492b162d1b501acd7d7"
+    },
+    {
+      "path": "results/structural_checks/revision8_additional_checks.json",
+      "size_bytes": 6344,
+      "sha256": "ad986c8a64211d71a47b0d16ba99ea831ceb9ff668a50f1d40ebc26d539ba986"
+    },
+    {
+      "path": "results/structural_checks/routing_geometry.json",
+      "size_bytes": 1175,
+      "sha256": "9b17cb2daa7db36521ccabefb97ada48fc52adf334c36bd2caa8db2abcf69186"
+    },
+    {
+      "path": "results/structural_checks/statistical_corrections_recomputed.json",
+      "size_bytes": 3478,
+      "sha256": "5fe742e25f2747435d8cb6cbc446ce0f5c5a84945dbadc8d0b7145a80caa276d"
+    },
+    {
+      "path": "results/weight1_256/analysis_metadata.json",
+      "size_bytes": 638,
+      "sha256": "537f3a9edf4c56d7fdce0657c034d35e2f68a1752c1ef59c7bdacddc11913d58"
+    }
+  ]
+}

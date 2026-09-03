@@ -1,0 +1,6 @@
+variant,rounds,differential_log2_probability,differential_active_sboxes,linear_log2_abs_correlation,linear_active_sboxes,captured_mass_log2,milp_min_active_sboxes,differential_active_excess,differential_exponent_gap_from_milp_bound_bits,linear_active_excess,linear_exponent_gap_from_milp_bound_bits
+static,4,-216,36,-105,35,-207.355,25,11,66.0,10,30.0
+rotor,4,-210,35,-108,36,-206.996,25,10,60.0,11,33.0
+round_only,4,-210,35,-105,35,-209.034,25,10,60.0,10,30.0
+position_only,4,-210,35,-105,35,-206.978,25,10,60.0,10,30.0
+optimized,4,-210,35,-105,35,-206.334,25,10,60.0,10,30.0

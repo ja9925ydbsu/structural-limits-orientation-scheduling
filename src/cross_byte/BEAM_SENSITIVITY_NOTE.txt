@@ -1,0 +1,4 @@
+The manuscript does not claim convergence or a stable ranking among schedules for the pruned cross-byte beam search.
+The included mds_beam_sensitivity.py script is provided so wider-beam reruns can be performed independently.
+No incomplete/partial wider-beam output is included in this submission package.
+The manuscript relies only on the weaker claim that schedule-dependent retained candidates occur under the stated validated standard profile.

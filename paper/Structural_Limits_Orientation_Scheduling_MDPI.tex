@@ -1,0 +1,451 @@
+% MDPI Cryptography submission format, prepared 2 September 2026.
+\documentclass[cryptography,article,submit,oneauthor]{Definitions/mdpi}
+
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+
+\newcommand{\T}{\mathsf{T}}
+\rightlinenumbers
+\Title{Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers}
+\newcommand{\orcidauthorA}{0000-0003-3734-5478}
+\Author{Porter E. Coggins, III $^{1,*}$\orcidA{}}
+\AuthorNames{Porter E. Coggins, III}
+\address{$^{1}$ \quad Department of Professional Education, Bemidji State University, Bemidji, MN 56601, USA; porter.coggins@bemidjistate.edu}
+\corres{Correspondence: porter.coggins@bemidjistate.edu}
+
+\abstract{Orientation scheduling varies linear coefficients across rounds while preserving byte locality, invertibility, the branch-number floor, and the surrounding substitution-permutation network. We prove that independently applied $8\times8$ invertible maps over $\mathrm{GF}(2)$ can change intra-byte difference patterns but cannot enlarge active-byte support. Weight-one recurrence therefore remains the adversarial minimum-support regime, with one active S-box per round boundary. Under the standard Markov-cipher model, a DDT column-sum identity for any bijective 8-bit S-box gives a mean recurrence probability of $8/255=2^{-4.99435}$ per round. A 128-state periodic transfer computation across 256 deterministic matrix contexts finds only a small round-dependent separation. The strongest mean 16-round weight-one class remains near $2^{-78.2}$, roughly $2^{43}$ times more probable than the corresponding random-permutation event. The one-step ordering reverses under the periodic operator, identifying temporal alignment, rather than support growth or uniformly better transitions, as the source of the residual schedule benefit. The aggregate class exceeds the best single trail by about $2^{28.3}$ on average. The differential and linear mean-field identities hold for any bijective 8-bit S-box, while measured rates remain S-box- and harness-dependent. Thus, coefficient diversity can alter propagation quality but cannot substitute for diffusion width.}
+\keyword{orientation scheduling; diffusion layers; differential cryptanalysis; linear cryptanalysis; Markov-cipher model; matched controls}
+\MSC{94A60; 94B05; 15B33; 11T71}
+
+\begin{document}
+\section{Introduction}\label{sec:1}
+Substitution-permutation networks (SPNs) obtain security from repeated interaction between nonlinear substitution and linear or permutation-based diffusion \cite{ref1}, \cite{ref2}, \cite{ref4}, and \cite{ref21}. The present study examines one narrowly defined diffusion-layer question arising from earlier Hill-matrix work: whether publicly changing the orientation of a binary matrix across rounds and byte positions contributes meaningful diffusion when that matrix is applied independently to each byte \cite{ref10} and \cite{ref11}.
+
+\subsection{Research Question and Structural Hypothesis}\label{sec:1-1}
+\noindent\textbf{Research question.} Holding the seed matrices, round keys, nonlinear layer, whole-state rotation, and routing permutation fixed, does changing only the public orientation schedule of byte-local invertible $8\times8$ matrices over $\mathrm{GF}(2)$ improve differential diffusion relative to a static orientation?
+
+Orientation scheduling is a plausible intervention rather than an arbitrary perturbation. By Proposition~\ref{prop:orientation-branch}, changing orientation preserves invertibility and the imposed branch-number floor while changing coefficient placement inside the byte. Across rounds, those coefficient changes can alter the difference patterns presented to subsequent S-boxes and can disrupt repeated favourable transitions, all without replacing the S-box, enlarging the state, or changing the surrounding SPN. This motivates the hypothesis that a public orientation schedule might improve differential diffusion while holding the rest of the construction fixed.
+
+We distinguish that hypothesis from the mechanism that can actually support it. Statistical detectability is not the same as cryptanalytic importance, and coefficient diversity is not the same as support growth. The schedule effect is therefore assessed against the low-support recurrence and the random-permutation benchmark, not merely by whether a paired interval excludes zero. Theorem~\ref{prop:w1closed} identifies the causal invariant: orientation can change coefficients and the bit pattern delivered to the S-box, but an independently applied byte-local map cannot itself create a second active byte. If support growth is the limiting mechanism, schedule variation has only transition-level leverage within a fixed spatial width.
+
+\subsection{Why the Structural Limitation Is of Independent Cryptanalytic Interest}\label{sec:1-significance}
+The distinction between \emph{coefficient diversity} and \emph{support growth} is useful beyond this harness. Differential and linear trail bounds depend critically on how many nonlinear components a linear layer forces to become active. A design can vary matrices, coefficients, or orientations from round to round and thereby generate substantial local diversity without increasing the number of active S-boxes. Theorem~\ref{prop:w1closed} supplies a screening result: for byte-local orientation schedules, any claimed diffusion benefit must come indirectly through changed local transition weights and their temporal ordering, not through direct enlargement of byte support.
+
+The wide-trail viewpoint makes the same distinction at a design level. Wide-trail arguments obtain multi-round resistance by using a linear layer whose branch number, at the relevant symbol width, forces many nonlinear components to become active \cite{ref21,ref5}. Changing coefficients inside one isolated byte may change differential probabilities, correlations, and successor bit positions, but it cannot raise the active-byte count at that linear step. In this setting, diffusion width has a first-order structural role, while coefficient variation acts on the quality and ordering of transitions within the support that already exists.
+
+\subsection{Main Findings}\label{sec:1-2}
+\noindent\textbf{Principal result.} Theorem~\ref{prop:w1closed} proves that no orientation of an independently applied byte-local matrix can enlarge active-byte support at the matrix layer. The 256-context transfer analysis then quantifies the remaining transition-level effect rather than asking a statistical screen to infer it.
+
+At 16 rounds the strongest mean weight-one class remains near $2^{-78.2}$. For an ideal random 128-bit permutation, a fixed nonzero input difference reaches some weight-one output difference with probability $128/(2^{128}-1)\approx2^{-121}$, so the modelled class is roughly $2^{43}$ times more probable. The per-context class-minus-single-trail gap averages about $28.3$ bits, showing that a best-trail bound alone substantially understates this low-support recurrence class.
+
+The rate can be explained mechanistically. For any bijective 8-bit S-box, the DDT column mass into the eight weight-one output differences gives a uniform-input mean retention of $8/255$, corresponding to $4.99435$ bits of decay per round under the paper's $-\log_2 E[p]$ convention. The actual scheduled one-step transitions average about $4.983$ bits/round. Temporally constant schedules then lose rate between their phase-averaged one-step statistic and the periodic operator, whereas round-dependent schedules remain essentially at the one-step rate. The resulting ordering reversal shows that the schedule effect is not caused by better one-step transitions; it is an ordering and phase-alignment effect.
+
+The magnitude is small in round-equivalent terms. Starting from the mean 16-round class and continuing at the asymptotic periodic rate, reaching the $2^{-121}$ random-permutation benchmark would require about $8.60$ additional rounds under static scheduling and $8.53$ under rotor scheduling. The full schedule advantage is therefore approximately $0.076$ of one round under this extrapolation.
+
+The routing result is separate and structural. The four routing modes compose over one four-round block to the byte-index rotation $b_3b_2b_1b_0\mapsto b_2b_1b_0b_3$, which has order four. The isolated routing layer therefore composes to the identity over 16 rounds. A state-motion-only audit that composes routing with the interleaved whole-state rotations, while omitting the matrix and S-box, has much larger order, $504$ over four rounds and $60{,}060$ over sixteen. Thus the order-four statement is a property of routing alone, not of total state motion.
+
+\subsection{Scope and Contributions}\label{sec:1-3}
+The Hill-Enigma-SPN (HESPN) construction is retained only as the historical source of a fully specified experimental harness whose round function, test vector, and software permit controlled ablation. In the remainder of the paper we refer to it simply as \emph{the harness}. It is not proposed as a replacement for the Advanced Encryption Standard (AES) or as a deployment-ready cipher. The public repository has likewise been renamed to emphasize the structural question rather than the historical construction name.
+
+The contributions are:
+\begin{enumerate}
+\item \textbf{A principal support-growth theorem.} Theorem~\ref{prop:w1closed} separates coefficient diversity from diffusion width by proving that orientation of an independently applied byte-local map cannot enlarge active-byte support at the matrix layer.
+\item \textbf{A model-exact low-support analysis with general differential and linear nulls.} We define the weight-one iterative class as the minimum-support propagation regime, state the Markov-cipher assumption under which DDT multiplication is exact, derive the S-box-independent $8/255$ mean-probability null for any bijective 8-bit S-box, and evaluate the complete 128-state class over 256 deterministic matrix contexts. A Parseval argument gives the same null for weight-one squared-correlation retention.
+\item \textbf{A phase-ordering explanation.} The one-step and periodic rate ordering reverses. Static and position-only scheduling, both temporally constant at each byte position, incur a periodic loss consistent with repeated phase locking, while rotor and round-only scheduling remain near their phase-averaged one-step rates. This identifies temporal ordering, not one-step transition quality or support growth, as the source of the small schedule separation.
+\item \textbf{A trail-class aggregation result.} The aggregate weight-one class exceeds the best single trail by about $2^{28}$ on average, demonstrating that single-trail analysis can substantially understate a recurrent low-support class.
+\item \textbf{Matched corroboration and a conservative boundary setting.} Finite empirical diagnostics are retained only as low-resolution corroboration. A separate cross-byte MDS study shows that the byte-local theorem no longer applies once coefficients connect byte positions, but its pruned candidates remain too far from the certified activity floor to support a schedule ranking.
+\end{enumerate}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.97\textwidth]{Fig1}
+\caption{Experimental design. The four primary arms share the same states, deterministic master-key panel, accepted seed matrices, round keys, state-rotation schedule, AES S-box, routing permutation, and input panels; only the public orientation exponent changes. The cross-byte MDS study is a separate boundary setting, documented primarily in the supplement, and is not a one-variable width ablation.}\label{fig:design}
+\end{figure}
+
+\subsection{Organization}\label{sec:1-5}
+Section~\ref{sec:2} places the question in the Hill-matrix and SPN diffusion literature. Section~\ref{sec:3} develops the byte-local support result, motivates the weight-one minimum-support class, and gives the differential and linear transfer analysis. Section~\ref{sec:4} specifies the experimental harness. Section~\ref{sec:primary} gives the matched orientation-schedule evaluation and the concise cross-byte boundary conclusion. Section~\ref{sec:secondary} retains only a short diagnostic summary, with detailed statistical and beam-search material moved to the supplement. Section~\ref{sec:6} discusses the design implications, limitations, and open questions.
+\section{Related Work and Structural Context}\label{sec:2}
+\subsection{Hill-Matrix Variation and Orientation}\label{sec:2-1}
+The classical Hill cipher uses invertible matrix multiplication as a linear transformation \cite{ref8} and \cite{ref9}. Its linearity motivated variants that change the key matrix between messages, combine Hill multiplication with additional transformations, or alter matrix structure; representative examples include Saeednia \cite{ref26}, Ismail et al. \cite{ref28}, and Toorani and Falahati \cite{ref20}. In our earlier work, matrix-element rotations were used explicitly to vary Hill-derived transformations \cite{ref10} and \cite{ref11}. Those two self-citations are the direct source of the orientation operation studied here. The present paper does not treat orientation as secret key material; it asks whether using the orientations as a public schedule changes diffusion when embedded in an otherwise fixed SPN.
+
+A closer architectural predecessor is the multidimensional Hill SPN of Coggins \cite{ref22}, which uses global MDS matrices over $\mathrm{GF}(2^8)$. That construction and the present harness differ in the property under investigation: the former uses fixed cross-byte mixing, whereas the present experiment deliberately uses byte-local $8\times8$ binary maps so that orientation scheduling can be isolated as an experimental variable.
+
+\subsection{SPN Diffusion and Branch Number}\label{sec:2-2}
+The wide-trail strategy relates linear-layer diffusion to lower bounds on active nonlinear components across rounds \cite{ref21}. Branch number is therefore useful only at the algebraic granularity at which the linear map operates. AES MixColumns, for example, is an MDS map across four bytes over $\mathrm{GF}(2^8)$ with branch number five \cite{ref5} and \cite{ref6}; SHARK similarly uses an MDS layer over byte symbols \cite{ref24}. By contrast, the byte-local test layer applies independent maps to individual bytes over $\mathrm{GF}(2)$. Its branch-number floor constrains bit spreading \emph{inside} a byte and is not a cross-byte wide-trail guarantee. Differential and linear branch numbers of binary matrices are treated in the terminology of Sarkar and Syed \cite{ref18}.
+
+The distinction is summarized in Table~\ref{tab:context}. It is central to the research question: if an orientation schedule is to affect spatial diffusion, the linear layer must expose positional structure that can actually be changed by orientation.
+
+\begin{table}[t]
+\caption{Structural context for the diffusion layers discussed in this study. The comparison is algebraic, not a security or performance ranking.}\label{tab:context}
+\centering\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+Layer & Domain & Mixing width & Role here \\
+\midrule
+Byte-local scheduled layer & $\mathrm{GF}(2)$ & 1 byte & mechanism under test \\
+AES MixColumns \cite{ref5} and \cite{ref6} & $\mathrm{GF}(2^8)$ & 4 bytes & cross-byte reference \\
+Cross-byte boundary setting & $\mathrm{GF}(2^8)$ & 4 bytes & boundary experiment \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Round-Varying Linear Layers}\label{sec:2-4}
+Round-varying linear layers already appear in modern symmetric designs. LowMC, for example, uses a different dense invertible binary matrix in each round, with the matrices sampled when an instance is generated rather than derived as additional secret entropy \cite{ref52}. Subsequent cryptanalysis of LowMC has treated those round-dependent global linear maps as part of the fixed public instance and has shown why the interaction between linear structure, nonlinear placement, and round count must be analyzed rather than inferred from variation alone \cite{ref53}. LowMC is not a matched control for the present construction because its linear maps span the full state and differ independently by round. It nevertheless provides the closest established design context for the question asked here. The present study isolates a narrower variable: with spatial width fixed to one byte and the seed matrices held constant, changing only their public orientation schedule alters temporal transition ordering without changing the support-growth capability of the linear step.
+
+\subsection{Gap Addressed}\label{sec:2-5}
+Existing work establishes that matrix variation, nonlinear substitution, and MDS diffusion can each be useful design ingredients, but it does not answer the narrower causal question posed here: whether changing only the orientation schedule of a byte-local binary matrix contributes measurable diffusion. The experimental design therefore compares schedule variants over identical components rather than comparing complete ciphers. The cross-byte MDS experiment then places the same orientation idea in a setting with cross-byte mixing. Because it also changes field and matrix family, it is used as a boundary setting rather than a one-variable causal width control.
+\section{Byte-Local Orientation Scheduling: Structural Analysis and Transfer Model}\label{sec:3}
+This section defines the scheduled binary layer and isolates the structural property relevant to the research question. The principal distinction is between \emph{intra-byte} bit spreading, which the $8\times8$ matrices can provide, and \emph{cross-byte} support growth, which they cannot provide on their own. A finite-state transition computation then quantifies the resulting weight-one differential class under an explicitly stated Markov-cipher model.\par
+\subsection{Bit-Ordering Conventions (MSB-First)}\label{sec:3-1}
+The reference implementation uses one MSB-first convention throughout. A byte $x$ is represented by $v(x)[i]=(x\gg(7-i))\mathbin{\&}1$; each matrix row is stored as a byte with the same bit order, and matrix-vector multiplication computes the parity of the row/input bitwise intersection. A 128-bit state is the big-endian sequence of 16 bytes, so \texttt{rotl128} rotates the corresponding big-endian integer and then repacks it as 16 bytes. Round indices in the key schedule are encoded as two-byte big-endian integers. These conventions are normative for reproducing the test vector; the supplementary implementation provides worked byte-level checks.\par
+\subsection[Linear Maps and 8 x 8 Binary Matrices]{Linear Maps and 8\ensuremath{\times}8 Binary Matrices}\label{sec:3-2}
+An 8\ensuremath{\times}8 matrix M \ensuremath{\in} GF(2)\textsuperscript{8}\textsuperscript{x}\textsuperscript{8} defines a linear map M: GF(2)\textsuperscript{8} \ensuremath{\rightarrow} GF(2)\textsuperscript{8}. Invertibility is equivalent to full rank over GF(2) and is verified by Gaussian elimination with MSB-first pivot selection.\par
+The admissible seeds form a branch-number-filtered subset of $\mathrm{GL}(8,2)$; approximately 29\% of all $8\times8$ binary matrices are invertible \cite{ref12}. The 16 seeds are deterministic functions of the master key and add no independent entropy. Their role in this study is to provide matched local linear maps whose orientations can be scheduled without changing the underlying seed family.\par
+\textbf{Granularity of the guarantee. }The branch-number condition used below is defined over eight bits within one byte. It must not be interpreted as the four-byte MDS branch-number guarantee of AES MixColumns.\par
+\subsection{Branch Number as a Diffusion Metric}\label{sec:3-3}
+\begin{Definition}[branch number]
+For a linear map M: GF(2)\textsuperscript{n} \ensuremath{\rightarrow} GF(2)\textsuperscript{n}, B(M) = min\_\{x\ensuremath{\neq}0\} ( wt(x) + wt(Mx) ) \cite{ref5}. Since this depends only on Hamming weights it is independent of MSB/LSB convention. A lower bound on B(M) forces nontrivial spreading of any input difference. In the terminology of Sarkar \& Syed \cite{ref18}, B(M) is the differential branch number; the linear branch number is B(M\textsuperscript{T}), and the two need not coincide.
+\end{Definition}
+
+\subsection[Clockwise 90-degree Rotation: Algebra and Consequences]{Clockwise 90\ensuremath{^\circ} Rotation: Algebra and Consequences}\label{sec:3-4}
+For M \ensuremath{\in} GF(2)\textasciicircum{}\{8\ensuremath{\times}8\}, define R(M) by R(M)\textsubscript{i}\textsubscript{j} = M\_\{(7-j), i\}. This permutes the 64 entries via the index map \ensuremath{\pi}: (i,j) \ensuremath{\mapsto} (j, 7-i) and satisfies R\textsuperscript{4}(M) = M.\par
+\begin{Proposition}[Invertibility preservation]
+With J the reversal (antidiagonal identity) permutation matrix, R(M) = M\textsuperscript{T}J. Hence R preserves invertibility over GL(8, 2): transpose preserves invertibility and right-multiplication by a permutation matrix preserves invertibility. Therefore M \ensuremath{\in} GL(8, 2) implies R(M) \ensuremath{\in} GL(8, 2) automatically. 
+\end{Proposition}
+
+\begin{Proposition}[Branch numbers of the four orientations]\label{prop:orientation-branch}
+Because $R(M)=M^{\T}J$ with $J$ weight-preserving, the four orientations realize only the two branch numbers $B(M)$ and $B(M^{\T})$. Thus $B(M)\geq4$ and $B(M^{\T})\geq4$ are sufficient to guarantee the same floor for all four orientations.
+\end{Proposition}
+\begin{Definition}[admissible seed]
+A seed $S$ is admissible when it is invertible and satisfies $B(S)\geq4$ and $B(S^{\T})\geq4$. By Proposition~\ref{prop:orientation-branch}, every orientation $R^k(S)$ is then invertible and has branch number at least four. The implementation checks all four orientations defensively, but this repeated check is not an additional mathematical condition.
+\end{Definition}
+
+\subsection{Rotor Scheduling}\label{sec:3-5}
+
+Let $S_0,\dots,S_{15}$ be the $16$ admissible seed matrices derived from master key
+$K$. In round $r \in \{0,\dots,15\}$ and byte position $j \in \{0,\dots,15\}$ the
+active matrix is
+\begin{equation}\label{eq:schedule}
+M_{r,j} = R^{(r+j) \bmod 4}(S_j).
+\end{equation}
+Across $16$ rounds this yields $256$ matrix applications in which the $64$ labelled
+(seed, orientation) pairs each appear exactly four times. The rule is public, adds no
+key entropy, and was selected as the minimum balanced schedule that cycles every seed
+through all four orientations while phase-offsetting adjacent byte positions.
+
+The motivation for that temporal variation is specific and testable. Cycling orientations changes which admissible linear coefficient pattern is presented in each round while preserving invertibility, the branch-number floor, the byte-local width, and the surrounding SPN. Such variation could plausibly disrupt repeatedly favourable differential transitions even if it cannot create cross-byte support directly. Section~\ref{sec:3-7} tests that hypothesis within the stated Markov-cipher model for the weight-one class.\par
+\subsection{Diffusion Properties of the Rotor Layer}\label{sec:3-6}
+\begin{Proposition}\label{prop:weight}
+If M is invertible with B(M) \ensuremath{\geq} 4, then for any nonzero x, Mx \ensuremath{\neq} 0 and wt(Mx) \ensuremath{\geq} 4 - wt(x). In particular, a single-bit input produces wt(Mx) \ensuremath{\geq} 3.
+\end{Proposition}
+
+\begin{proof}
+Invertibility implies trivial kernel, so Mx \ensuremath{\neq} 0 for all nonzero x. The bound wt(Mx) \ensuremath{\geq} 4 - wt(x) follows directly from B(M) = min\_\{x\ensuremath{\neq}0\}(wt(x) + wt(Mx)) \ensuremath{\geq} 4. Setting wt(x) = 1 gives wt(Mx) \ensuremath{\geq} 3.
+\end{proof}
+
+Intuitively, the proposition says that no nonzero input can collapse to a near-empty output: flipping a single input bit always activates at least three output bits within the affected byte, so a difference cannot vanish as it passes through the matrix layer.\par
+The condition $B(M_{r,j})\geq4$ ensures that any single active bit entering byte $j$ in round $r$ produces at least three active output bits locally. Together with whole-state rotation and routing, this was intended to promote multi-round diffusion, although Section~\ref{sec:3-6-trails} shows that the condition is not sufficient to preclude weight-one recurrence. Empirical saturation statements are deferred to the diagnostic experiments of Section~\ref{sec:secondary}.\par
+\subsubsection{Difference Distribution Table (DDT)}\label{sec:3-6-ddt}
+For an $n$-bit S-box $S$, the \emph{Difference Distribution Table} (DDT), also called the
+\emph{Differential Distribution Table}, records for each input difference $\Delta x$ and
+output difference $\Delta y$ the number of inputs producing that transition:
+\begin{equation}
+\operatorname{DDT}_{S}(\Delta x,\Delta y)
+= \#\{x\in\{0,1\}^{n}: S(x)\oplus S(x\oplus\Delta x)=\Delta y\}.
+\label{eq:ddt}
+\end{equation}
+Dividing an entry by $2^n$ gives the corresponding differential transition
+probability. This tabulation formalizes the input-pair/output-difference counting used
+in differential cryptanalysis of S-boxes and the difference-propagation probabilities
+used in differential and wide-trail analysis \cite{ref55,ref51,ref21}. We use the abbreviation DDT in the
+remainder of the manuscript.
+
+\subsubsection{Why Weight-One Recurrence Is the Critical Test Class}\label{sec:3-6-trails}
+A weight-one recurrence is not studied merely because its state space is finite and tractable. It represents the minimum-support propagation regime of the byte-local construction. If the round-boundary difference has Hamming weight one, then exactly one byte is active and only one S-box receives a nonzero input difference. Persistence in this class therefore means that the construction has repeatedly failed to force support growth, even if typical ciphertext statistics already appear close to random.
+
+The local branch-number floor does not preclude this regime. For a weight-one input to a byte-local matrix, Proposition~\ref{prop:weight} guarantees at least three active output bits within the byte, but the AES S-box does not preserve Hamming weight. Its DDT contains transitions from multi-bit input differences back to weight-one output differences. After such a transition, whole-state rotation and routing move the surviving bit without splitting it. One active S-box per round is therefore structurally possible.
+
+This is why the class is more informative for the present question than a finite-sample randomness battery. Randomness and avalanche tests characterize typical outputs at a resolution set by their sample size. The weight-one transfer model instead measures an adversarially relevant low-support propagation mode whose probability can be far below any feasible sampling resolution. Definition~\ref{def:w1class} formalizes the class, and Section~\ref{sec:3-7} evaluates it without transition sampling under the stated model assumption. The result is not a complete differential hull, but it directly tests whether orientation scheduling eliminates the minimum-support recurrence that the byte-local geometry permits.
+
+\subsubsection{Claim Boundary}\label{sec:3-6-limitations}
+The condition $B\geq4$ is per byte over $\mathrm{GF}(2)$ and supplies no nontrivial cross-byte active-S-box bound. The present study therefore does not derive a full-cipher upper bound on maximum differential probability or maximum linear correlation. Finite-sample avalanche, collision, linear-mask, and randomness tests cannot substitute for such bounds; they are retained later only as secondary diagnostics. The security of the complete experimental permutation is not claimed.
+
+This limitation is also the mechanism under test. Because the scheduled map is byte-local, matrix orientation can change the intra-byte difference delivered to the S-box but cannot directly increase active-byte support. Theorem~\ref{prop:w1closed} states this support limitation formally. The transfer enumeration and matched controls then test whether orientation-dependent coefficient changes nevertheless produce a meaningful multi-round advantage.\par
+\subsubsection{Routing Geometry and Four-Round Composition}\label{sec:3-6-routing}
+The routing modes are strongly restricted: mode $0$ is the identity, while modes $1$, $2$, and $3$ swap byte-index bit pairs $0\leftrightarrow1$, $0\leftrightarrow2$, and $0\leftrightarrow3$. Thus every nonidentity mode involves index bit $0$; bits $1$, $2$, and $3$ are never swapped directly with one another.
+
+\begin{Proposition}[Four-round routing composition]\label{prop:routing-composition}
+Let a byte index be written $j=b_3b_2b_1b_0$ with $b_0$ the least significant index bit, and let $\Pi=\pi_3\circ\pi_2\circ\pi_1\circ\pi_0$ be the isolated routing composition for rounds $0$ through $3$. Then
+\[
+\Pi(b_3b_2b_1b_0)=b_2b_1b_0b_3.
+\]
+Its cycle structure is
+\[
+\{0\}\;\{15\}\;\{5,10\}\;\{1,2,4,8\}\;\{3,6,12,9\}\;\{7,14,13,11\},
+\]
+so $\Pi$ has order four and the routing-only composition over 16 rounds is the identity.
+\end{Proposition}
+\begin{proof}
+Applying the three index-bit transpositions in source-to-destination order moves $b_3$ into the least significant position and shifts $b_2,b_1,b_0$ one position toward the most significant end. Direct iteration gives the stated cycles and $\Pi^4=\mathrm{id}$.
+\end{proof}
+
+The whole-state rotation schedule adds $16$ bits in each block of four rounds and $64$ bits over all 16 rounds. Because routing permutes whole bytes, the within-byte bit offset is therefore realigned at every four-round boundary. The routing and rotation operations are interleaved, so this fact does not imply that their combined state-motion map is a pure rotation or that routing makes no contribution to intermediate transport. It does establish a small-order, four-round periodic geometry. The structured-counter experiment in Section~\ref{sec:5-9} tests the prediction that a deficit tied to this geometry should have the same stride signature in all four matrix-schedule arms.
+
+\subsection{Weight-One Trail-Class Transition Analysis}\label{sec:3-7}
+At a round boundary there are only 128 possible one-bit state differences, so the recurrent class can be represented by a finite transition system.
+
+\begin{Definition}[weight-one iterative class]\label{def:w1class}
+For a fixed weight-one input difference, the $r$-round weight-one iterative class consists of all differential trails whose difference has Hamming weight one at every round boundary through round $r$. Its class probability is the sum of the probabilities assigned to those trails by the transition model. Because a trail may leave the class and later return to a weight-one output, this class probability is a lower bound on the modelled probability of the broader event ``the round-$r$ output difference has weight one.''
+\end{Definition}
+
+\begin{Remark}[Modelling assumption]\label{rem:markov}
+The transition computation is exact within the standard Markov-cipher model used for DDT trail multiplication \cite{ref54}. Round-key XOR is difference-transparent, so within a round only the scheduled matrix and the S-box affect the difference transition. The DDT probability for an S-box transition is the probability averaged over a uniformly distributed input value, equivalently over a uniform independent subkey before that S-box. In the specified harness, round keys and seed matrices are deterministic functions of the same master key and are not independent random variables. The computation therefore removes Monte Carlo sampling error in the transition model, but it does not remove modelling error for a fixed keyed permutation. All uses of ``exact'' for the transition analysis refer to exactness within this model.
+\end{Remark}
+
+For each boundary state, the scheduled matrix and AES DDT determine all one-bit successor states and their model probabilities. Repeated multiplication yields the complete probability mass of Definition~\ref{def:w1class} for each tested round count without Monte Carlo sampling of plaintext pairs.
+
+\subsubsection{Central Structural Limit: Byte-Local Orientation Does Not Grow Byte Support}\label{sec:3-7-1}
+\begin{Theorem}[Principal structural result: byte-local orientation cannot enlarge active-byte support]\label{prop:w1closed}
+Let a nonzero state difference entering the scheduled matrix layer be confined to byte $j$. For every seed matrix and every orientation exponent, the matrix-layer output remains confined to byte $j$. If the input has Hamming weight one, the output has Hamming weight at least three. Hence changing matrix orientation cannot directly enlarge the number of active bytes at that layer.
+\end{Theorem}
+
+\begin{proof}
+The scheduled map at position $j$ is an $8\times8$ linear transformation applied only to byte $j$; no coefficient connects that byte to any other state byte. Thus support outside byte $j$ remains zero for every orientation. For a weight-one input, the Hamming-weight lower bound follows from Proposition~\ref{prop:weight}.\end{proof}
+
+Theorem~\ref{prop:w1closed} is algebraically elementary: an independently applied byte-local map has no coefficients through which to activate a different byte. Its role in this paper is therefore not to claim a difficult new algebraic fact, but to identify the correct causal variable for interpreting the scheduling experiment. Orientation changes coefficient placement, intra-byte output patterns, S-box transition probabilities, successor bit positions, and the temporal ordering of those transitions. What it leaves invariant is the byte-support capacity of the matrix layer. Coefficient changes are therefore not equivalent to support-growth changes. The transfer enumeration retains all orientation-dependent transition weights rather than discarding them and measures the residual benefit obtainable from coefficient and phase variation after diffusion width has been held fixed.
+
+\subsubsection{Enumerated Values}\label{sec:3-7-2}
+
+Table~\ref{tab:4} reports the maximum weight-one class probability for four schedule variants over 256 deterministic matrix contexts. Enumeration is exact within Remark~\ref{rem:markov}; no Monte Carlo transition sampling is involved. The panel is generated as
+$K_i=\mathrm{SHA256}(\texttt{``HESPN-MATCHED-CONTROL-KEY''}\parallel\mathrm{uint32be}(i))$ for $i=0,\ldots,255$. These publicly reproducible contexts are a fixed sample generated by the same deterministic rule from nominal 256-bit key values; intervals below summarize variation across that panel rather than proving a distribution-free statement over all admissible seeds.
+
+\begin{table}[t]
+\caption{Maximum weight-one iterative-class probability ($\log_2$), mean over 256 deterministic matrix contexts. For each context and schedule, the class probability is evaluated for each of the 128 possible initial weight-one boundary differences; each value sums over all weight-one terminal states while requiring weight one at every intermediate round boundary. The reported value is the maximum over those 128 starting states. Parentheses give the across-context standard deviation at $r=16$. The final column is the mean per-context least-squares decay rate fitted at $r\in\{4,8,12,16\}$.}\label{tab:4}
+\centering
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Variant & $r=4$ & $r=8$ & $r=12$ & $r=16$ & bits/round \\
+\midrule
+static         & $-18.631$ & $-38.426$ & $-58.321$ & $-78.211\;(0.678)$ & $4.966$ \\
+position\_only & $-18.653$ & $-38.454$ & $-58.347$ & $-78.242\;(0.749)$ & $4.966$ \\
+rotor          & $-18.797$ & $-38.666$ & $-58.588$ & $-78.515\;(0.410)$ & $4.977$ \\
+round\_only    & $-18.798$ & $-38.673$ & $-58.604$ & $-78.531\;(0.417)$ & $4.978$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The finite four-point fits are slightly below the asymptotic periodic rates because rounds 4 through 16 retain a start-state transient, as discussed after Table~\ref{tab:rate-decomposition}. For the finite fit, the paired rotor-minus-static difference is $0.01098$ bits/round with a 95\% descriptive normal interval $[0.00602,0.01593]$; the corresponding round-only-minus-static difference is $0.01234$ with interval $[0.00712,0.01756]$. These two contrasts were specified before examining the panel and are presented descriptively without a multiplicity adjustment. At 16 rounds the strongest mean class is still about $2^{42.8}$ times more probable than the ideal random-permutation weight-one event. The smaller across-context standard deviations of the round-dependent schedules are also notable: static and position-only have standard deviations $0.678$ and $0.749$ bits, whereas rotor and round-only have $0.410$ and $0.417$, a $42\%$ reduction when the two schedule families are averaged. This variance result is consistent with round dependence reducing sensitivity to persistent phase alignment.
+
+\subsubsection{Why the Rate Is Approximately 4.99 Bits per Round}\label{sec:3-7-rate}
+The observed rate has a simple analytic null. Let $S$ be any bijective 8-bit S-box and let $\operatorname{DDT}(\alpha,\beta)$ be its difference distribution table. For every fixed nonzero output difference $\beta$,
+\begin{equation}
+\sum_{\alpha\ne0}\operatorname{DDT}(\alpha,\beta)=256.
+\label{eq:ddt-column-sum}
+\end{equation}
+To see this, fix $x$ and $\beta\ne0$. Bijectivity gives a unique $y=S^{-1}(S(x)\oplus\beta)$ and hence a unique nonzero $\alpha=x\oplus y$ contributing that $x$ to exactly one entry in column $\beta$. Summing over all 256 values of $x$ proves Eq.~\eqref{eq:ddt-column-sum}.
+
+There are eight weight-one output differences. Consequently,
+\begin{equation}
+\sum_{\alpha\ne0}\sum_{\mathrm{wt}(\beta)=1}\operatorname{DDT}(\alpha,\beta)
+=8\cdot256=2048.
+\end{equation}
+If the nonzero difference entering the S-box were uniform over its 255 possible values, the mean probability of returning to a weight-one difference in one round would be
+\begin{equation}
+p_{\mathrm{MF}}=\frac{2048}{255\cdot256}=\frac{8}{255},\qquad
+-\log_2p_{\mathrm{MF}}=\log_2(255/8)=4.994353\ldots .
+\label{eq:mean-field-rate}
+\end{equation}
+This is a null prediction, not an additional independence assumption imposed on the transition calculation. All quoted decay rates in this paper use $-\log_2$ of a mean probability, never the mean of $-\log_2$ probability. The distinction is material: for the AES S-box, $-\log_2 E_\alpha[p_\alpha]=4.994353$ bits, while $E_\alpha[-\log_2p_\alpha]=5.094774$ bits when the single nonzero input difference with zero weight-one output mass is excluded. The latter average is undefined if that zero-mass input is retained. We therefore use the mean-probability convention consistently in the null, the one-step column, and the transfer comparisons.
+
+The actual harness supplies a stronger check because the weight-one process is a periodic 128-state linear system. For each round $r$, define a substochastic matrix $T_r$ whose entry $T_r[u,v]$ is the DDT-model probability that boundary bit position $u$ returns to weight one at boundary position $v$ after that round. The 16-round period operator is
+\begin{equation}
+P=T_0T_1\cdots T_{15}.
+\end{equation}
+The matrix $P$ is nonnegative and substochastic. Perron-Frobenius theory ensures that $\rho(P)$ is a nonnegative eigenvalue, while Gelfand's formula gives the asymptotic growth of an induced matrix norm even if $P$ is reducible or imprimitive \cite{ref57}. Its spectral radius therefore gives the asymptotic periodic decay rate
+\begin{equation}
+\gamma=-\frac{1}{16}\log_2\rho(P).
+\label{eq:transfer-rate}
+\end{equation}
+Table~\ref{tab:rate-decomposition} compares the mean-field null, the average one-step retention actually sampled by the scheduled matrices, the model-exact periodic transfer rate, and the finite fit from rounds $4$ through $16$. All transfer quantities are averaged over the same 256-context panel.
+
+\begin{table}[t]
+\caption{Decomposition of the approximately five-bit-per-round weight-one decay. ``One-step'' is $-\log_2$ of the mean row-sum retention probability over all 128 boundary states and 16 phases; ``periodic transfer'' is Eq.~\eqref{eq:transfer-rate}; $\Delta_{\mathrm{phase}}$ is one-step minus periodic and therefore measures the loss associated with periodic phase ordering. The finite column is a least-squares fit to $r\in\{4,8,12,16\}$.}\label{tab:rate-decomposition}
+\centering\scriptsize
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Variant & mean-field null & one-step & periodic & $\Delta_{\mathrm{phase}}$ & finite fit \\
+\midrule
+static         & $4.99435$ & $4.98304$ & $4.97395$ & $+0.00909$ & $4.96591$ \\
+position\_only & $4.99435$ & $4.98331$ & $4.97546$ & $+0.00785$ & $4.96648$ \\
+rotor          & $4.99435$ & $4.98266$ & $4.98276$ & $-0.00010$ & $4.97689$ \\
+round\_only    & $4.99435$ & $4.98266$ & $4.98343$ & $-0.00077$ & $4.97825$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The four-point finite fit is systematically below the asymptotic transfer rate by about $0.005$ to $0.009$ bits/round in every arm. This is expected because the maximum class probability over starting states retains a start-state transient at rounds 4 through 16, whereas $\rho(P)$ governs repeated 16-round periods asymptotically. A repository checker confirms that the maximizing 16-round start state has positive coordinate in the converged Perron survival mode in all $4\times256=1024$ schedule-context combinations, so the reported maximum is not confined to a transient component that is disconnected from the dominant asymptotic mode. Across the panel, the paired periodic rotor-minus-static contrast is $0.00881$ bits/round with a 95\% descriptive normal interval $[0.00413,0.01348]$ and is positive in $154$ of $256$ contexts; the round-only-minus-static contrast is $0.00948$ with interval $[0.00477,0.01419]$ and is positive in $156$ contexts. The transfer analysis therefore has sufficient numerical sensitivity to resolve the small schedule separation under its stated model; the small magnitude is a property of the modeled construction rather than a resolution limit of this instrument.
+
+\begin{Proposition}[Rotor and round-only one-step multiset equality]\label{prop:multiset}
+For every byte position $j$, the 16-round orientation multiset under rotor scheduling is identical to that under round-only scheduling:
+\[
+\{R^{(r+j)\bmod4}(S_j):0\le r<16\}
+=\{R^{r\bmod4}(S_j):0\le r<16\},
+\]
+with each orientation appearing exactly four times. Consequently any one-step statistic that averages over all 16 phases and all boundary bit positions without regard to phase order is identical for the two schedules.
+\end{Proposition}
+\begin{proof}
+Adding the fixed offset $j$ modulo four only permutes the sequence $0,1,2,3$ within each four-round block. Averaging over all 128 boundary bit positions ensures that each input bit of each byte is represented at each phase, so phase order does not affect the one-step average.
+\end{proof}
+
+Proposition~\ref{prop:multiset} explains the identical $4.98266$ one-step entries for rotor and round-only. Table~\ref{tab:rate-decomposition} then shows an ordering reversal that rules out a simple transition-quality explanation: at one step, static decays slightly faster than rotor ($4.98304$ versus $4.98266$ bits/round), but under the periodic operator static decays more slowly ($4.97395$ versus $4.98276$). The schedule effect therefore arises from temporal ordering rather than from uniformly better one-step transitions.
+
+The natural spectral interpretation is a phase-locking effect. Static and position-only schedules are temporally constant at each byte position, so a recurrent low-support path can repeatedly encounter the same phase-conditioned orientation structure across periods. Both schedules accordingly lose rate between the phase-averaged one-step statistic and the periodic operator: $0.00909$ and $0.00785$ bits/round. Rotor and round-only schedules vary with $r$ and disrupt that persistent alignment; their one-step-to-periodic differences are only $-0.00010$ and $-0.00077$ bits/round. The static phase loss, $0.00909$, is nearly the same size as the rotor-minus-static periodic separation, $0.00881$. We use ``phase locking'' here as a mechanistic interpretation of the observed spectral decomposition, not as a claim that a single deterministic differential trail dominates the aggregate class. Position-only groups with static for exactly this reason: although its orientation varies across positions, it is constant in time at any fixed position.
+
+\subsubsection{Linear Squared-Correlation Analogue}\label{sec:3-7-linear}
+The mean-field identity has a linear analogue. Let
+\[
+C(\alpha,\beta)=2^{-8}\sum_x(-1)^{\langle\alpha,x\rangle\oplus\langle\beta,S(x)\rangle}
+\]
+be the normalized correlation of an 8-bit bijective S-box, in the standard linear-cryptanalysis convention of Matsui and correlation-matrix treatments \cite{ref56,ref5}. For every fixed nonzero output mask $\beta$, Parseval's identity gives
+\[
+\sum_{\alpha\ne0} C(\alpha,\beta)^2=1,
+\]
+because $C(0,\beta)=0$ for a bijection and nonzero $\beta$. Summing over the eight weight-one output masks therefore gives
+\[
+\sum_{\alpha\ne0}\sum_{\mathrm{wt}(\beta)=1} C(\alpha,\beta)^2=8.
+\]
+Thus a uniform nonzero input mask has mean squared-correlation retention $8/255$, exactly the same null value as the differential mean-probability calculation, and
+\[
+-\log_2 E[C^2]=\log_2(255/8)=4.994353\ldots\ \text{bits/round}.
+\]
+The supplementary checker verifies both identities directly for the AES S-box. This is a structural null for linear potential, not a complete linear-hull analysis of the harness; no model-exact multi-round linear transfer claim is made here.
+
+\subsubsection{Class Probability versus Best Single Trail}\label{sec:3-7-3}
+
+The 256-context enumeration also separates the maximum aggregate weight-one class probability from the maximum individual trail probability. At 16 rounds the mean best single-trail log probabilities are $-106.50$ (static), $-106.67$ (position-only), $-106.86$ (rotor), and $-106.70$ (round-only), whereas the corresponding mean class values are $-78.21$, $-78.24$, $-78.51$, and $-78.53$. The corresponding class-minus-single gap is computed separately for each context and then averaged over the panel, giving means of $28.29$, $28.43$, $28.34$, and $28.17$ bits, respectively.
+
+This has a methodological consequence beyond the present harness. Bounding the construction by its best individual differential trail would understate the attainable weight-one recurrence by a factor of approximately $2^{28}$ on average. The schedule can redistribute probability among many individual paths without removing the aggregate class. Analyses of this family should therefore aggregate over trail classes rather than infer recurrence probability from the single best trail alone.
+
+\section{Experimental SPN Harness and Round Function}\label{sec:4}
+The historical HESPN construction is used only as an instrumented 128-bit SPN harness for schedule ablation. Every matched arm uses the same accepted seed matrices, SHA-256-derived round keys, AES S-box, whole-state rotation schedule, routing permutation, and input panels; only the orientation exponent changes. Figure~\ref{fig:design} summarizes the control structure. The complete byte ordering, matrix packing, key setup, encryption and decryption procedures, and reference test vectors are moved to the supplementary material.
+
+\subsection{State Motion and Orientation Schedules}\label{sec:4-1}
+The state is 16 bytes in big-endian, MSB-first order. The fixed whole-state rotation schedule is
+\[
+[7,3,1,5,\;3,1,5,7,\;1,3,5,7,\;7,3,1,5]\ \text{bits}.
+\]
+Each four-round block sums to 16 bits and the full schedule to 64 bits, so the within-byte offset realigns at four-round boundaries. Routing mode $r\bmod4$ is identity for mode 0 and swaps byte-index bits $0\leftrightarrow1$, $0\leftrightarrow2$, or $0\leftrightarrow3$ in modes 1, 2, and 3. Theorem~\ref{prop:w1closed} concerns only the byte-local matrix step; Proposition~\ref{prop:routing-composition} and the state-motion audit quantify the separate routing geometry.
+
+For byte position $j$, the four schedule arms are static $R^0(S_j)$, position-only $R^{j\bmod4}(S_j)$, round-only $R^{r\bmod4}(S_j)$, and rotor $R^{(r+j)\bmod4}(S_j)$. All accepted seeds satisfy the common invertibility and branch-number conditions of Section~\ref{sec:3-4}. Thus the experiment changes temporal orientation only, not the seed family or any other round component.
+
+\subsection{Round Summary and Deterministic Context Panel}\label{sec:4-2}
+A round performs whole-state rotation, round-key XOR, the scheduled byte-local matrix on each byte, AES S-box substitution, and routing, in that order. Round-key XOR is difference-transparent for the transition analysis. The 256 matrix contexts are generated reproducibly as $K_i=\mathrm{SHA256}(\texttt{``HESPN-MATCHED-CONTROL-KEY''}\parallel\mathrm{uint32be}(i))$, $0\le i<256$, and all schedule arms reuse the accepted matrices from the same context. The panel is deterministic and publicly reproducible; descriptive intervals summarize variation over this panel rather than constituting a proof over every admissible matrix family.
+
+\subsection{Evaluation Scope}\label{sec:4-3}
+Round counts $4$, $8$, $12$, and $16$ span early structured propagation through later empirical saturation and are observation points, not a proposed security parameter. The harness is not proposed with a deployment mode or authenticated-encryption construction. Its only role is to make the orientation mechanism reproducible and experimentally separable. Full implementation detail is retained in the supplement and repository rather than repeated in the main article.
+\section{Matched Evaluation and Boundary Setting}\label{sec:primary}
+The structural analysis supplies the primary explanation. This section asks what much coarser finite empirical instruments can exclude and then states the boundary conclusion from a separate cross-byte experiment. Detailed statistical tables, beam-search candidates, and audit outputs are moved to the supplement so that they do not compete with the structural result.
+
+\subsection{Matched Orientation-Schedule Corroboration}\label{sec:5-9}
+Four variants are identical except for the orientation exponent: \emph{rotor} $R^{(r+j)\bmod4}(S_j)$, \emph{round-only} $R^{r\bmod4}(S_j)$, \emph{position-only} $R^{j\bmod4}(S_j)$, and \emph{static} $R^0(S_j)$. They share seed matrices, round keys, state rotation, routing, S-box, and input panels. The 256-context transfer analysis in Section~\ref{sec:3-7} is the quantitative basis for the schedule-rate claim. The higher-cost empirical instruments use the original four-context matched panel and serve only as finite-resolution corroboration.
+
+The finite empirical screens are too coarse to resolve an effect on the scale measured by the transfer operator. Their role is therefore only to exclude much larger practical differences in the tested observables. In the paired plaintext-avalanche screen, the rotor-minus-static mean at eight rounds is $+0.187$ bits with a 95\% interval $[-0.131,0.506]$, so an avalanche advantage larger than about half a bit is excluded at that resolution, while effects below roughly $0.3$ bits are poorly resolved. A $10{,}000$-sample differential-collision screen loses all discriminating power from round eight onward because every tested schedule returns unique output differences. At twelve rounds, the counter-distance means differ by only $0.034$ bits across schedules, with overlapping intervals. None of these instruments is used to estimate the transfer-scale schedule separation.
+
+The counter experiment does reveal a common geometric signature. At twelve rounds, stride $1$ is closest to ideal, strides $2$ through $16$ share a larger deficit, and stride $256$ partially recovers. The pattern is essentially identical in all four orientation arms. Proposition~\ref{prop:routing-composition} predicts the relevant four-round state-motion periodicity, while Theorem~\ref{prop:w1closed} excludes orientation as a mechanism for directly increasing active-byte support. Together, the structural and matched results localize the observed schedule effect to local transition ordering rather than to a change in diffusion width. Full intervals, collision dispersion, and counter tables are given in the supplement.
+
+\subsection{Cross-Byte MDS Boundary Setting}\label{sec:5-10}
+A separate boundary experiment replaces the byte-local binary layer with a $4\times4$ Cauchy MDS matrix over $\mathrm{GF}(2^8)$, so a single linear application can connect four byte positions. The intervention changes spatial width, field, and matrix family simultaneously and is therefore not a causal width ablation. Its purpose is only to test whether coefficient-sensitive schedule effects can appear once the support geometry is no longer byte-local.
+
+They can appear in the pruned search, but the search quality is insufficient for ranking schedules. At four rounds the certified MILP minimum is $25$ active S-boxes, whereas the retained differential candidates use $35$ or $36$, leaving a gap of $10$ to $11$ active boxes and $60$ to $66$ exponent bits from the activity bound. Linear candidates are comparably far from their bound. The main-paper conclusion is therefore deliberately weak: when coefficients connect several byte positions, different schedules can lead a fixed pruned search to different retained states, but these candidates do not establish a security ordering and do not identify spatial width alone as the cause. The full candidate table, captured-mass values, structural audit, and rerun instructions are provided in the supplement.
+
+\section{Ancillary Diagnostic Checks}\label{sec:secondary}
+These diagnostics are retained for reproducibility and comparison with earlier evaluations. They are not cryptanalytic evidence for security and are not used to support the principal structural conclusion. Their role is limited to identifying gross reduced-round structure that would contradict the matched interpretation if it depended strongly on orientation schedule.
+
+Across the broader harness diagnostics, the local branch floor is verified at four; plaintext avalanche approaches the 64-bit ideal by sixteen rounds; sampled differential screens have no repeated outputs from round eight onward at approximately $2\times10^{-5}$ resolution; random-mask and restricted-variable ANF screens reveal no additional schedule-specific structure at their tested resolution; and returned-difference calibration loses broad significance by rounds fourteen and sixteen. Selected NIST SP 800-22 tests are treated only as structured-output screens, consistent with the suite's intended statistical role rather than as a substitute for differential or linear cryptanalysis \cite{ref49}. The supplement gives the instrument definitions, uncertainty summaries, the exact two-sided binomial calculation for the 16-round aggregate check, and machine-readable outputs.
+
+\section{Discussion and Conclusions}\label{sec:6}
+\subsection{Answer to the Research Question and Design Implication}\label{sec:6-1}
+The answer is governed first by structure, not by a statistical effect size. Orientation scheduling was a reasonable candidate for improved diffusion because it changes admissible coefficient patterns and the sequence of differences delivered to later S-boxes while preserving invertibility, the branch-number floor, byte locality, and the surrounding SPN. Theorem~\ref{prop:w1closed}, the principal result of this paper, shows why that plausible intervention has limited leverage. The theorem is elementary as an algebraic support statement, but consequential as a causal discriminator: it proves that orientation cannot enlarge active-byte support at the matrix step. The weight-one class is the corresponding adversarial minimum-support regime because it keeps exactly one byte and one S-box active at each round boundary.
+
+The transition analysis then resolves the part of the original hypothesis that does survive the support constraint. Orientation-dependent coefficient changes are not inert. Round dependence alters temporal alignment and can disrupt favourable recurring transition structure, which explains the small separation between temporally constant and round-dependent schedules. What scheduling does not change is the support-growth capacity of the byte-local matrix layer. Under asymptotic continuation from round 16, the difference between static and rotor scheduling shortens the remaining distance to the random-permutation weight-one benchmark by only about $0.076$ of one round.
+
+This distinction supplies the general design lesson. Wide-trail reasoning rewards linear layers that force support to spread across the symbols feeding nonlinear components. A byte-local orientation schedule can rearrange coefficients and change which S-box transitions are favoured, but it cannot substitute for a map that actually connects byte supports. The portable result is therefore not that coefficient variation is useless, but that coefficient diversity and diffusion width are different design variables: the former changes transition quality and phase, while the latter changes the support-growth mechanism itself.
+
+The one-step/periodic ordering reversal further localizes the effect. Static has a slightly higher one-step decay rate than rotor, yet a lower periodic rate. Temporally constant schedules also show a clear one-step-to-periodic loss, while round-dependent schedules do not. This is consistent with phase locking to favourable recurrent structure, not with improved one-step diffusion. The transfer instrument resolves the separation with descriptive intervals excluding zero, so the small result cannot be dismissed as a sensitivity failure of the primary analysis.
+
+\subsection{Generality Beyond the AES S-box}\label{sec:6-generality}
+The principal theorem is independent of the S-box: it is a support statement about any independently applied byte-local linear map. The minimum-support interpretation likewise extends to SPNs with one bytewise S-box per active byte. The differential mean-field identity is also broader than AES. For every bijective 8-bit S-box, each nonzero DDT output column has total mass 256 across nonzero input differences, so the average probability of landing in one of eight weight-one outputs is exactly $8/255$. The Parseval argument gives the same $8/255$ mean squared-correlation null for any bijective 8-bit S-box.
+
+What is S-box-specific is the distribution around those means and therefore the actual finite and periodic rates induced by the scheduled matrix images. The magnitude of the phase-ordering effect reported here should not be transferred numerically to another S-box, matrix family, routing rule, or state-motion schedule without recomputation. The general claim is narrower and stronger: coefficient variation within fixed byte-local support cannot directly create diffusion width, while the average differential and linear nulls arise from bijectivity rather than from an AES-specific coincidence.
+
+\subsection{Why Trail-Class Aggregation Matters}\label{sec:6-trailclass}
+The aggregate weight-one class is about $2^{28}$ more probable than the best single trail on average across the deterministic panel. This is a portable methodological result. In designs that admit recurrent low-support behavior, bounding only the most probable trail can substantially understate the probability mass accumulated across many related trails. The present finite-state class is narrow and does not replace a full hull computation, but it demonstrates why class aggregation should accompany single-trail bounds when the geometry permits repeated return to a low-support state set.
+
+\subsection{Routing Localization}\label{sec:6-routing}
+The twelve-round counter-distance deficit provides an independent localization result. Proposition~\ref{prop:routing-composition} proves that the isolated routing sequence has an order-four four-round composition, while the rotation schedule realigns within-byte bit offsets after each four-round block. The counter experiment confirms the same stride signature in all four matrix-schedule arms. A separate state-motion-only checker shows that composing the actual whole-state rotations with routing has order $504$ over four rounds and $60{,}060$ over sixteen, under either rotation-direction convention. Thus the small order is a routing-layer property that rotation destroys; it should not be interpreted as a short period of the complete state motion. The common stride signature remains independent of matrix orientation.
+
+\subsection{Cross-Byte Boundary and Open Questions}\label{sec:6-2}
+The cross-byte MDS experiment marks the boundary of Theorem~\ref{prop:w1closed}: once the linear map connects several byte positions, the byte-local support proof no longer applies. The current beam searches are too far from the certified activity floor to establish a schedule ranking, and the intervention also confounds width, field, and matrix family. The useful conclusion is therefore prospective. A same-field binary map spanning two adjacent bytes is the natural next control because it changes support geometry while preserving more of the original algebraic setting.
+
+Other structural questions follow directly: examine routing families whose four-round composition does not have small order; extend the transfer analysis beyond the weight-one differential class and toward linear hulls; characterize how periodic schedule phases couple to S-box transition structure; and design schedule objectives aligned with cryptanalytic quantities rather than generic diffusion surrogates. These questions test mechanisms that can alter support growth rather than merely adding coefficient diversity.
+
+\subsection{Limitations}\label{sec:6-4}
+The transition enumeration is exact only within Remark~\ref{rem:markov}; it covers the weight-one iterative class, not the complete differential or linear hull of a fixed keyed permutation. The 256-context panel provides precise summaries under the deterministic matrix-generation rule but is not a proof over every admissible matrix family or fixed key. The empirical diagnostics have finite resolution and are intentionally secondary. The cross-byte trail searches are pruned and report achieved candidates rather than certified global optima. None of these results constitutes a security proof for the complete experimental permutation.
+
+\subsection{Reproducibility}\label{sec:6-3}
+The primary byte-local matched-control results are reproduced by
+{\footnotesize\path{matched_orientation_schedule_experiment.py}}. The runner verifies the rotor arm
+against the supplementary reference vector before running. The cross-byte boundary study is
+provided under \path{src/cross_byte/} in the public repository snapshot. Its unit
+tests verify all four MDS orientations, encryption/decryption round trips, schedule
+periods and structural audits. The validated standard-profile outputs include the
+MILP activity bounds, capped minimum-support counts, differential and linear
+candidate tables, captured low-active mass, schedule-optimizer record, and compact
+slide/reflection summary. Full pair lists remain available in the archival audit
+JSON.
+\supplementary{The following supporting information accompanies this article: Supplementary Technical Material; Supplementary Code and Results. The files contain the validated byte-local matched-control implementation, the 256-context transition and periodic-transfer analysis with machine-readable outputs, matched statistical diagnostics, cross-byte MDS candidate and audit tables, trail-search code, sensitivity analysis, reference implementation, test vectors, and a reproducibility manifest.}
+
+\authorcontributions{Conceptualization, P.E.C.; methodology, P.E.C.; software, P.E.C.; validation, P.E.C.; formal analysis, P.E.C.; investigation, P.E.C.; resources, P.E.C.; data curation, P.E.C.; writing---original draft preparation, P.E.C.; writing---review and editing, P.E.C.; visualization, P.E.C. The author has read and agreed to the published version of the manuscript.}
+
+\funding{This research received no external funding.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The source code and machine-readable outputs supporting the 256-context transition analysis, transfer-operator rates, matched empirical controls, and cross-byte boundary experiment are included in the supplementary submission package and maintained in the public GitHub repository at \url{https://github.com/ja9925ydbsu/structural-limits-orientation-scheduling}. The supplementary manifest maps manuscript tables to scripts and output files. No third-party datasets were used.}
+
+\acknowledgments{During the preparation of this manuscript, the author used Anthropic Claude and OpenAI ChatGPT to assist with Python refinement, copy editing, manuscript review, table and figure assembly, and reference formatting. The author independently verified the code and all reported measurements, reviewed and edited the outputs, and takes full responsibility for the content of this publication.}
+
+\conflictsofinterest{The author declares no conflicts of interest.}
+
+\abbreviations{Abbreviations}{%
+The following abbreviations are used in this manuscript:\\
+
+\noindent
+\begin{tabular}{@{}ll}
+AES & Advanced Encryption Standard\\
+DDT & Difference Distribution Table\\
+GF & Galois field\\
+MDS & Maximum distance separable\\
+SPN & Substitution-permutation network
+\end{tabular}}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\bibliography{references}
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}

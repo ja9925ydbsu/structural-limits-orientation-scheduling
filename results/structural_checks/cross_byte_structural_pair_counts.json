@@ -1,0 +1,23 @@
+{
+  "static": {
+    "period": 1,
+    "repeated_structural_pairs": 120
+  },
+  "rotor": {
+    "period": 4,
+    "repeated_structural_pairs": 24
+  },
+  "round_only": {
+    "period": 4,
+    "repeated_structural_pairs": 24
+  },
+  "position_only": {
+    "period": 1,
+    "repeated_structural_pairs": 120
+  },
+  "optimized": {
+    "period": 8,
+    "repeated_structural_pairs": 8
+  },
+  "formula": "For a pure period p dividing 16 with unique phase rows, repeated pairs = p*C(16/p,2)."
+}
