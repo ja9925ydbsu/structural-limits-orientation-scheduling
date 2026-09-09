@@ -77,8 +77,10 @@ The reference and exact diagnostic code establish:
 - the initial exact topology sweep gives branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), with the same values for static and all four rotor phases;
 - within the controlled partial-fourth-stage family, the first exact `B_byte = 7` designs occur at 30 cells / 90 shears, while exact `B_byte = 8` requires the complete 32-cell / 96-shear layer;
 - the selected 30-cell mask `0x6f` gives exact `B_byte = 7` for static and rotor phases 0 through 3, with exact one-active-byte output support 14;
-- the selected 30-cell control no longer has the full reference layer's all-to-all rank-8 byte dependency blocks, so it is retained as a cost control rather than replacing the four-stage reference.
+- the selected 30-cell control no longer has the full reference layer's all-to-all rank-8 byte dependency blocks, so it is retained as a cost control rather than replacing the four-stage reference;
+- exact AES S-box local maxima used for conservative trail screening are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
+- pairing the exact branch numbers with those local maxima gives conservative active-S-box and single-characteristic/single-trail bounds, explicitly not differential-hull, linear-hull, or end-to-end security claims.
 
-See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier.
+See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier. See `TRAIL_BOUNDS.md` and `aes_sbox_local_bounds.py` for the first conservative differential/linear trail-bound checkpoint.
 
 These are architectural facts and exact finite computations, not a cryptographic security proof.
