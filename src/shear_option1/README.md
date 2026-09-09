@@ -42,7 +42,7 @@ for the current coefficient family. The accompanying self-test exhaustively chec
 
 ## Minimal round function
 
-The initial research round is intentionally spare:
+The initial research round is intentionally minimal:
 
 1. XOR a 128-bit domain-separated round key.
 2. Apply the AES S-box independently to 16 bytes.
