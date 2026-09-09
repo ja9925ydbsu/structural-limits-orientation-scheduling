@@ -56,7 +56,9 @@ No historical HESPN whole-state rotation or routing permutation is inherited. Th
 
 The first matched comparison was `static` versus `rotor`, with identical S-box, round keys, topology, matrix seed, and round count. The second comparison held the lifting cell and coefficient family fixed while changing only the interaction topology among chain, ring, three-stage butterfly, and four-stage butterfly networks.
 
-A third comparison now varies only the number and placement of cells retained in the fourth butterfly stage. The first three butterfly stages remain complete, so cost reduction can be studied without changing the coefficient family or lifting cell.
+A third comparison varies only the number and placement of cells retained in the fourth butterfly stage. The first three butterfly stages remain complete, so cost reduction can be studied without changing the coefficient family or lifting cell.
+
+A fourth comparison now uses the actual AES DDT/LAT together with the exact 128-bit differential and linear-mask propagation maps. Exact two-round characteristic/trail optima are separated from a restricted three-round search so that heuristic evidence is not presented as proof.
 
 Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
@@ -78,9 +80,12 @@ The reference and exact diagnostic code establish:
 - within the controlled partial-fourth-stage family, the first exact `B_byte = 7` designs occur at 30 cells / 90 shears, while exact `B_byte = 8` requires the complete 32-cell / 96-shear layer;
 - the selected 30-cell mask `0x6f` gives exact `B_byte = 7` for static and rotor phases 0 through 3, with exact one-active-byte output support 14;
 - the selected 30-cell control no longer has the full reference layer's all-to-all rank-8 byte dependency blocks, so it is retained as a cost control rather than replacing the four-stage reference;
-- exact AES S-box local maxima used for conservative trail screening are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
-- pairing the exact branch numbers with those local maxima gives conservative active-S-box and single-characteristic/single-trail bounds, explicitly not differential-hull, linear-hull, or end-to-end security claims.
+- exact AES S-box local maxima used for trail analysis are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
+- the exact linear-mask propagation map `L^(-T)` has byte branch number 8 for the full layer and 7 for the selected `0x6f` control under static and rotor phases 0 through 3;
+- therefore the exact best individual two-round differential characteristics are `2^-48` (full) and `2^-42` (`0x6f`), while the exact largest-magnitude individual two-round linear trails are `2^-24` (full) and `2^-21` (`0x6f`);
+- a restricted three-round value-sensitive search finds a full-static linear trail with 12 active S-boxes and correlation magnitude `2^-36`; matched rotor phases require 20 or 21 active S-boxes within that same restricted search class, which is a found schedule-sensitive effect rather than a global optimum proof;
+- the corresponding restricted differential search finds 20 active S-boxes for full static versus 22 for all four rotor phases, and 19 for reduced static versus 21 for all four reduced rotor phases.
 
-See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier. See `TRAIL_BOUNDS.md` and `aes_sbox_local_bounds.py` for the first conservative differential/linear trail-bound checkpoint.
+See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier. See `TRAIL_BOUNDS.md` and `aes_sbox_local_bounds.py` for the conservative activity-derived trail bounds. See `VALUE_SENSITIVE_TRAILS.md`, `exact_two_round_value_trails.cpp`, and `restricted_three_round_trail_search.cpp` for the first value-sensitive DDT/LAT checkpoint.
 
-These are architectural facts and exact finite computations, not a cryptographic security proof.
+These are architectural facts, exact finite computations, and clearly labeled restricted-search observations, not a cryptographic security proof.
