@@ -2,6 +2,8 @@
 
 This directory is a fresh architectural-development track. It does not modify the historical byte-local HESPN construction or the cross-byte GF(2^8) MDS boundary experiment.
 
+**Scope boundary:** this Option 1 work is separate from the structural-limits-of-orientation-scheduling paper currently under review. Results developed here should not be folded into that paper or used to expand its claims.
+
 ## Primitive
 
 The elementary operation is
@@ -56,13 +58,19 @@ The first matched comparison is `static` versus `rotor`, with identical S-box, r
 
 ## Current structural status
 
-The reference code establishes:
+The reference and exact diagnostic code establish:
 
 - four distinct rank-8 matrix orientations;
 - exact shear inversion;
 - exact inverse composition;
 - full encryption/decryption round trips;
 - rank-8 two-byte dependency blocks;
-- exhaustive one-active-byte support propagation for the linear layer.
+- full 128-bit rank for the complete shear layer;
+- exhaustive one-active-byte support propagation `1 -> 16` for the linear layer;
+- exact byte-level branch number `B_byte = 8` for the static layer and all four rotor phase classes;
+- branch-number witnesses are necessarily of the `4 active input bytes -> 4 active output bytes` form at the optimum;
+- rotor scheduling changes coefficient-level structure but does not improve the exact byte branch number in this butterfly baseline.
 
-These are architectural facts, not a security proof.
+See `STRUCTURAL_DIAGNOSTICS.md` for the matched results and `exact_branch_number.cpp` for the exhaustive GF(2) branch-number checker.
+
+These are architectural facts and exact finite computations, not a cryptographic security proof.
