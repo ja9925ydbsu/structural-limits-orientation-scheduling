@@ -56,6 +56,8 @@ No historical HESPN whole-state rotation or routing permutation is inherited. Th
 
 The first matched comparison was `static` versus `rotor`, with identical S-box, round keys, topology, matrix seed, and round count. The second comparison held the lifting cell and coefficient family fixed while changing only the interaction topology among chain, ring, three-stage butterfly, and four-stage butterfly networks.
 
+A third comparison now varies only the number and placement of cells retained in the fourth butterfly stage. The first three butterfly stages remain complete, so cost reduction can be studied without changing the coefficient family or lifting cell.
+
 Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
 ## Current structural status
@@ -72,8 +74,11 @@ The reference and exact diagnostic code establish:
 - exact four-stage-butterfly byte branch number `B_byte = 8` for the static layer and all four rotor phase classes;
 - branch-number witnesses for the four-stage butterfly are necessarily of the `4 active input bytes -> 4 active output bytes` form at the optimum;
 - rotor scheduling changes coefficient-level structure but does not improve the exact byte branch number in the butterfly baseline;
-- the initial exact topology sweep gives branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), with the same values for static and all four rotor phases.
+- the initial exact topology sweep gives branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), with the same values for static and all four rotor phases;
+- within the controlled partial-fourth-stage family, the first exact `B_byte = 7` designs occur at 30 cells / 90 shears, while exact `B_byte = 8` requires the complete 32-cell / 96-shear layer;
+- the selected 30-cell mask `0x6f` gives exact `B_byte = 7` for static and rotor phases 0 through 3, with exact one-active-byte output support 14;
+- the selected 30-cell control no longer has the full reference layer's all-to-all rank-8 byte dependency blocks, so it is retained as a cost control rather than replacing the four-stage reference.
 
-See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep.
+See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier.
 
 These are architectural facts and exact finite computations, not a cryptographic security proof.
