@@ -28,7 +28,7 @@ For the fixed development matrix family in `option1_shear_core.py`, all four 8x8
 
 ## Sixteen-byte topology
 
-The baseline cross-byte layer is a four-stage butterfly over byte indices `0,...,15`, using pair masks `1, 2, 4, 8`. Each stage contains eight disjoint two-byte lifting cells.
+The reference cross-byte layer is a four-stage butterfly over byte indices `0,...,15`, using pair masks `1, 2, 4, 8`. Each stage contains eight disjoint two-byte lifting cells.
 
 The rotor schedule is deliberately simple:
 
@@ -52,9 +52,11 @@ The initial research round is intentionally minimal:
 
 No historical HESPN whole-state rotation or routing permutation is inherited. The point is to measure what the shear architecture itself contributes.
 
-## Immediate controls
+## Matched controls completed so far
 
-The first matched comparison is `static` versus `rotor`, with identical S-box, round keys, topology, matrix seed, and round count. Later work should add alternative topologies before any manuscript claim is drafted.
+The first matched comparison was `static` versus `rotor`, with identical S-box, round keys, topology, matrix seed, and round count. The second comparison held the lifting cell and coefficient family fixed while changing only the interaction topology among chain, ring, three-stage butterfly, and four-stage butterfly networks.
+
+Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
 ## Current structural status
 
@@ -66,11 +68,12 @@ The reference and exact diagnostic code establish:
 - full encryption/decryption round trips;
 - rank-8 two-byte dependency blocks;
 - full 128-bit rank for the complete shear layer;
-- exhaustive one-active-byte support propagation `1 -> 16` for the linear layer;
-- exact byte-level branch number `B_byte = 8` for the static layer and all four rotor phase classes;
-- branch-number witnesses are necessarily of the `4 active input bytes -> 4 active output bytes` form at the optimum;
-- rotor scheduling changes coefficient-level structure but does not improve the exact byte branch number in this butterfly baseline.
+- exhaustive one-active-byte support propagation `1 -> 16` for the four-stage butterfly;
+- exact four-stage-butterfly byte branch number `B_byte = 8` for the static layer and all four rotor phase classes;
+- branch-number witnesses for the four-stage butterfly are necessarily of the `4 active input bytes -> 4 active output bytes` form at the optimum;
+- rotor scheduling changes coefficient-level structure but does not improve the exact byte branch number in the butterfly baseline;
+- the initial exact topology sweep gives branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), with the same values for static and all four rotor phases.
 
-See `STRUCTURAL_DIAGNOSTICS.md` for the matched results and `exact_branch_number.cpp` for the exhaustive GF(2) branch-number checker.
+See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep.
 
 These are architectural facts and exact finite computations, not a cryptographic security proof.
