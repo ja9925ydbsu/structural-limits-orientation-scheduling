@@ -54,11 +54,14 @@ No historical HESPN whole-state rotation or routing permutation is inherited. Th
 
 ## Matched controls completed so far
 
-The first matched comparison was `static` versus `rotor`, with identical S-box, round keys, topology, matrix seed, and round count. The second comparison held the lifting cell and coefficient family fixed while changing only the interaction topology among chain, ring, three-stage butterfly, and four-stage butterfly networks.
+The development sequence is deliberately staged:
 
-A third comparison varies only the number and placement of cells retained in the fourth butterfly stage. The first three butterfly stages remain complete, so cost reduction can be studied without changing the coefficient family or lifting cell.
-
-A fourth comparison now uses the actual AES DDT/LAT together with the exact 128-bit differential and linear-mask propagation maps. Exact two-round characteristic/trail optima are separated from a restricted three-round search so that heuristic evidence is not presented as proof.
+1. matched `static` versus `rotor` scheduling with identical S-box, round keys, topology, matrix seed, and round count;
+2. chain, ring, three-stage butterfly, and four-stage butterfly topology controls;
+3. partial-fourth-stage reduced-cost controls, retaining the same coefficient family and lifting cell;
+4. exact two-round DDT/LAT characteristic/trail analysis;
+5. restricted three-round trail searching as an initial value-sensitive screen; and
+6. broadened three-round searching that permits every nonzero middle-layer AES transition and selected non-branch-minimal support paths.
 
 Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
@@ -67,25 +70,51 @@ Operation count is reported with topology results so that a larger network is no
 The reference and exact diagnostic code establish:
 
 - four distinct rank-8 matrix orientations;
-- exact shear inversion;
-- exact inverse composition;
+- exact shear inversion and inverse composition;
 - full encryption/decryption round trips;
 - rank-8 two-byte dependency blocks;
 - full 128-bit rank for the complete shear layer;
 - exhaustive one-active-byte support propagation `1 -> 16` for the four-stage butterfly;
-- exact four-stage-butterfly byte branch number `B_byte = 8` for the static layer and all four rotor phase classes;
-- branch-number witnesses for the four-stage butterfly are necessarily of the `4 active input bytes -> 4 active output bytes` form at the optimum;
-- rotor scheduling changes coefficient-level structure but does not improve the exact byte branch number in the butterfly baseline;
-- the initial exact topology sweep gives branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), with the same values for static and all four rotor phases;
-- within the controlled partial-fourth-stage family, the first exact `B_byte = 7` designs occur at 30 cells / 90 shears, while exact `B_byte = 8` requires the complete 32-cell / 96-shear layer;
-- the selected 30-cell mask `0x6f` gives exact `B_byte = 7` for static and rotor phases 0 through 3, with exact one-active-byte output support 14;
-- the selected 30-cell control no longer has the full reference layer's all-to-all rank-8 byte dependency blocks, so it is retained as a cost control rather than replacing the four-stage reference;
-- exact AES S-box local maxima used for trail analysis are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
-- the exact linear-mask propagation map `L^(-T)` has byte branch number 8 for the full layer and 7 for the selected `0x6f` control under static and rotor phases 0 through 3;
-- therefore the exact best individual two-round differential characteristics are `2^-48` (full) and `2^-42` (`0x6f`), while the exact largest-magnitude individual two-round linear trails are `2^-24` (full) and `2^-21` (`0x6f`);
-- a restricted three-round value-sensitive search finds a full-static linear trail with 12 active S-boxes and correlation magnitude `2^-36`; matched rotor phases require 20 or 21 active S-boxes within that same restricted search class, which is a found schedule-sensitive effect rather than a global optimum proof;
-- the corresponding restricted differential search finds 20 active S-boxes for full static versus 22 for all four rotor phases, and 19 for reduced static versus 21 for all four reduced rotor phases.
+- exact four-stage-butterfly byte branch number `B_byte = 8` for static and rotor phases 0 through 3;
+- exact topology branch numbers `3` (chain), `4` (ring), `6` (three-stage butterfly), and `8` (four-stage butterfly), unchanged by the tested static/rotor phase classes;
+- within the controlled partial-fourth-stage family, the first exact `B_byte = 7` designs occur at 30 cells / 90 shears, while `B_byte = 8` requires the complete 32-cell / 96-shear layer;
+- the selected 30-cell mask `0x6f` gives exact `B_byte = 7` and one-active-byte output support 14 for static and rotor phases 0 through 3, but loses the full reference layer's all-to-all rank-8 byte dependency property;
+- exact AES S-box local maxima are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
+- the exact linear-mask propagation map `L^(-T)` has byte branch number 8 for the full layer and 7 for the selected `0x6f` control;
+- exact best individual two-round differential characteristics are `2^-48` (full) and `2^-42` (`0x6f`), while exact largest-magnitude individual two-round linear trails are `2^-24` (full) and `2^-21` (`0x6f`).
 
-See `STRUCTURAL_DIAGNOSTICS.md` and `exact_branch_number.cpp` for the matched static-versus-rotor analysis. See `TOPOLOGY_COMPARISON.md` and `exact_topology_comparison.cpp` for the initial topology sweep. See `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, and `scan_reduced_cost_masks.py` for the reduced-cost frontier. See `TRAIL_BOUNDS.md` and `aes_sbox_local_bounds.py` for the conservative activity-derived trail bounds. See `VALUE_SENSITIVE_TRAILS.md`, `exact_two_round_value_trails.cpp`, and `restricted_three_round_trail_search.cpp` for the first value-sensitive DDT/LAT checkpoint.
+## Current three-round value-sensitive status
 
-These are architectural facts, exact finite computations, and clearly labeled restricted-search observations, not a cryptographic security proof.
+The broadened search supersedes the earlier restricted three-round tables for architectural comparison.
+
+For the **full 32-cell static layer**, the all-transition branch-minimal-first search gives:
+
+- linear: explicit `4 -> 4 -> 4` trail with correlation magnitude `2^-36`;
+- differential: explicit `4 -> 4 -> 4` characteristic with probability `2^-73`.
+
+For the **full rotor layer**, no two consecutive branch-minimal `4 -> 4` relations have compatible middle support in any rotor phase. This obstruction exists at the linear-map level before AES DDT/LAT values are considered.
+
+Allowing every nonzero middle-layer AES transition gives exact branch-minimal-first rotor values of approximately:
+
+- linear: `2^-47.66` to `2^-48.29`, with `4 -> 4 -> 7` activity;
+- differential: `2^-99` to `2^-100`, with `4 -> 4 -> 8` activity.
+
+Allowing selected **non-branch-minimal first transitions** improves the rotor trails further. Explicit full-rotor trails found include:
+
+- linear `3 -> 8 -> 2` trails with 13 active S-boxes and correlation magnitudes from `2^-44.168297` to `2^-47.208939` across the four phases;
+- differential `3 -> 8 -> 3` trails with 14 active S-boxes and probabilities `2^-91` or `2^-92`.
+
+These are found trails, not global three-round optima. They show that broadening the search narrows the initial static-versus-rotor gap, while the unusually efficient static `4 -> 4 -> 4` recurrence remains unmatched by the rotor trails found so far.
+
+The 30-cell `0x6f` control remains a cost/topology control rather than a replacement design. Its broadened branch-minimal-first values are recorded in `BROADENED_VALUE_TRAILS.md`.
+
+## Files
+
+- `STRUCTURAL_DIAGNOSTICS.md`, `exact_branch_number.cpp`: exact static-versus-rotor structural diagnostics.
+- `TOPOLOGY_COMPARISON.md`, `exact_topology_comparison.cpp`: initial topology sweep.
+- `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, `scan_reduced_cost_masks.py`: reduced-cost frontier.
+- `TRAIL_BOUNDS.md`, `aes_sbox_local_bounds.py`: conservative activity-derived trail bounds.
+- `VALUE_SENSITIVE_TRAILS.md`, `exact_two_round_value_trails.cpp`, `restricted_three_round_trail_search.cpp`: exact two-round results and preserved historical restricted three-round checkpoint.
+- `BROADENED_VALUE_TRAILS.md`, `broadened_three_round_trail_search.cpp`, `fixed_middle_value_probe.cpp`: current broadened three-round value-sensitive analysis.
+
+These are architectural facts, exact finite computations within explicitly stated classes, and clearly labeled found-trail observations. They are not a cryptographic security proof.
