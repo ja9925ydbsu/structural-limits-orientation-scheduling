@@ -9,6 +9,28 @@ from option1_shear_core import (
     rotate_matrix_k, shear_layer,
 )
 
+def gf2_rank(vectors: list[int], width: int) -> int:
+    rows = list(vectors)
+    rank = 0
+    for bit in range(width - 1, -1, -1):
+        pivot = next((i for i in range(rank, len(rows)) if (rows[i] >> bit) & 1), None)
+        if pivot is None:
+            continue
+        rows[rank], rows[pivot] = rows[pivot], rows[rank]
+        for i in range(len(rows)):
+            if i != rank and ((rows[i] >> bit) & 1):
+                rows[i] ^= rows[rank]
+        rank += 1
+    return rank
+
+def shear_layer_rank(round_index: int, rotor: bool) -> int:
+    images = []
+    for bit in range(128):
+        x = bytearray(16)
+        x[bit // 8] = 1 << (7 - (bit % 8))
+        images.append(int.from_bytes(shear_layer(bytes(x), round_index, rotor), "big"))
+    return gf2_rank(images, 128)
+
 def main() -> None:
     assert len(set(MATRIX_FAMILY)) == 4
     assert MATRIX_FAMILY == tuple(rotate_matrix_k(BASE_MATRIX, k) for k in range(4))
@@ -37,6 +59,8 @@ def main() -> None:
 
     for rotor in (False, True):
         for r in range(4):
+            rank = shear_layer_rank(r, rotor)
+            assert rank == 128
             counts = []
             for pos in range(16):
                 for value in range(1, 256):
@@ -44,12 +68,12 @@ def main() -> None:
                     x[pos] = value
                     counts.append(active_bytes(shear_layer(bytes(x), r, rotor)))
             print(
-                f"rotor={rotor} round={r}: one-active-byte output support "
+                f"rotor={rotor} round={r}: rank={rank}; one-active-byte output support "
                 f"min={min(counts)} max={max(counts)}"
             )
             assert min(counts) == 16 and max(counts) == 16
 
-    print("PASS: matrix, lifting-cell, shear inversion, cipher round-trip, and support checks")
+    print("PASS: matrix, lifting-cell, shear inversion, rank, cipher round-trip, and support checks")
 
 if __name__ == "__main__":
     main()
