@@ -16,16 +16,9 @@ These categories concern individual differential characteristics and individual 
 
 The exact global three-round differential activity minimum for the full 32-cell static layer is 12 active S-boxes. The best theoretical 12-active probability is `2^-72`, because the maximum nonzero AES DDT entry is 4, or probability `2^-6` per active S-box.
 
-`exact_static_diff_allmax_check.cpp` exhausts the required activity-12 support shapes, up to reversal, and excludes an all-DDT=4 characteristic for each:
+`exact_static_diff_allmax_check.cpp` exhausts the required activity-12 support shapes, up to reversal, and excludes an all-DDT=4 characteristic for each. An explicit `4 -> 4 -> 4` characteristic has total cost 73 bits, with middle DDT entries `4,4,4,2`. Any 13-active characteristic costs at least `13 * 6 = 78` bits.
 
-- `2 -> 6 -> 4`
-- `2 -> 7 -> 3`
-- `2 -> 8 -> 2`
-- `3 -> 5 -> 4`
-- `3 -> 6 -> 3`
-- `4 -> 4 -> 4`
-
-An explicit `4 -> 4 -> 4` characteristic has total cost 73 bits, with middle DDT entries `4,4,4,2`. Therefore the exact global best individual three-round differential-characteristic probability for the full static layer is **`2^-73`**. Any 13-active characteristic costs at least `13 * 6 = 78` bits and cannot beat it.
+Therefore the exact global best individual three-round differential-characteristic probability for the full static layer is **`2^-73`**.
 
 ## 2. Full static linear: exact global optimum `2^-36`
 
@@ -33,121 +26,94 @@ The exact global three-round linear-mask activity minimum is 12, and the known s
 
 Thus the exact global best individual three-round linear-trail correlation magnitude for the full static layer is **`2^-36`**.
 
-## 3. Full rotor linear: exact 13-active class
+## 3. Full rotor minimum-activity class
 
 For every rotor phase, the exact global three-round linear-mask activity minimum is 13 active S-boxes. Exact branch-equality and one-active endpoint checks reduce the 13-active search to 11 possible positive weight triples. `exact_rotor_linear_13_active.cpp` joins exact GF(2) relations on the common middle support and evaluates every compatible nonzero AES LAT transition.
 
-Ten of the 11 classes have no compatible value trail; only `3 -> 8 -> 2` survives. The exact optima inside the globally minimum-activity 13-active class are:
+Ten of the 11 classes have no compatible value trail; only `3 -> 8 -> 2` survives. The exact optima inside the 13-active class are:
 
-| rotor phase | exact 13-active split | exact correlation-cost bits | magnitude |
-|---:|---:|---:|---:|
-| 0 | `3 -> 8 -> 2` | `47.208939` | `2^-47.208939` |
-| 1 | `3 -> 8 -> 2` | `44.1682969008` | `2^-44.1682969008` |
-| 2 | `3 -> 8 -> 2` | `45.437758` | `2^-45.437758` |
-| 3 | `3 -> 8 -> 2` | `45.460478` | `2^-45.460478` |
+| rotor phase | exact 13-active split | exact correlation-cost bits |
+|---:|---:|---:|
+| 0 | `3 -> 8 -> 2` | `47.208939` |
+| 1 | `3 -> 8 -> 2` | `44.1682969008` |
+| 2 | `3 -> 8 -> 2` | `45.437758` |
+| 3 | `3 -> 8 -> 2` | `45.460478` |
 
-Phase 1 is globally closed by excluding all 14-active competitors below its 13-active value. Phases 2 and 3 are globally closed differently: each has a **better 14-active trail** than its 13-active minimum-activity trail. Phase 0 remains open.
+The higher-activity searches below show that phase 1 remains optimal in the 13-active class, while phases 0, 2, and 3 obtain better global trails with 14 active S-boxes.
 
-## 4. Rotor phase 1: exact global three-round linear optimum
+## 4. Exact global full-rotor linear results
 
-For rotor phase 1, the exact 13-active optimum is `44.168296900785705` correlation-cost bits, realized by `3 -> 8 -> 2`.
+### Rotor phase 1
 
-`exact_rotor_phase1_14_active.cpp` exhausts all 18 structurally admissible 14-active triples and finds no trail below that value. Every 15-active trail costs at least `15 * 3 = 45` bits, already larger than the candidate.
+The exact 13-active optimum is `44.168296900785705` bits, realized by `3 -> 8 -> 2`. `exact_rotor_phase1_14_active.cpp` exhausts all 18 structurally admissible 14-active triples and finds no trail below that value. Every 15-active trail costs at least 45 bits.
 
-Therefore:
+**Exact global phase-1 magnitude: `2^-44.168296900785705`.**
 
-**The exact global best individual three-round linear-trail correlation magnitude for full rotor phase 1 is `2^-44.168296900785705`.**
+### Rotor phase 2
 
-Relative to the full static exact optimum `2^-36`, this is approximately `8.1682969008` additional correlation-cost bits. This is an individual-trail statement, not an 8.17-bit security gain.
+The exact 13-active value is `45.437758` bits. Exhaustive 14-active optimization finds a better `3 -> 8 -> 3` trail at `44.6828700736155` bits. All other 14-active classes are excluded below that value, and the 15-active floor is 45 bits.
 
-## 5. Rotor phase 2: exact global three-round linear optimum
+**Exact global phase-2 magnitude: `2^-44.6828700736155`.**
 
-The exact minimum-activity 13-active phase-2 trail has cost `45.437758` bits. The 14-active search finds three classes below it:
+### Rotor phase 3
 
-| split | best cost in class |
-|---|---:|
-| `2 -> 8 -> 4` | `44.9052624949519` |
-| `3 -> 8 -> 3` | **`44.6828700736155`** |
-| `4 -> 8 -> 2` | `44.9638263874465` |
+The exact 13-active value is `45.460478` bits. Exhaustive 14-active optimization gives `44.6937647147188` bits, attained in at least the `2 -> 8 -> 4` and `3 -> 8 -> 3` classes. All remaining 14-active classes are excluded below that value, and the 15-active floor is 45 bits.
 
-All other 14-active classes are exhaustively excluded below `44.6828700736155`. Since every 15-active trail costs at least 45 bits, no 15-active or higher trail can beat the 14-active optimum.
+**Exact global phase-3 magnitude: `2^-44.6937647147188`.**
 
-Therefore:
+### Rotor phase 0
 
-**The exact global best individual three-round linear-trail correlation magnitude for full rotor phase 2 is `2^-44.6828700736155`.**
+The exact 13-active value is `47.208939` bits. The complete 14-active search finds a better `3 -> 8 -> 3` trail with cost `45.0156928096061` bits. A `2 -> 8 -> 4` trail also improves on the 13-active value, at `45.308474558834` bits, but is not globally best.
 
-This result is especially important methodologically: the global optimum uses 14 active S-boxes even though the exact activity minimum is 13. Stronger local LAT transitions more than compensate for the extra active S-box.
+All 18 admissible 14-active classes are exhausted, and no other class beats `45.0156928096061` bits.
 
-## 6. Rotor phase 3: exact global three-round linear optimum
+The 15-active class required a separate exact check because its theoretical floor is 45 bits. The exact branch/end-point restrictions leave 27 admissible triples. All 27 were exhaustively excluded below `45.0156928096061`. Several of the largest classes contain roughly one million or more exact relation pairs. Sixteen-active and larger trails cannot compete because their absolute AES floor is at least `16 * 3 = 48` bits.
 
-The exact minimum-activity 13-active phase-3 trail has cost `45.460478` bits. The 14-active search finds:
+**Exact global phase-0 magnitude: `2^-45.0156928096061`.**
 
-| split | best cost in class |
-|---|---:|
-| `2 -> 8 -> 4` | **`44.6937647147188`** |
-| `3 -> 8 -> 3` | **`44.6937647147188`** |
-| `4 -> 8 -> 2` | `45.2153651544425` |
+## 5. Final matched full-layer three-round linear table
 
-All remaining 14-active classes are exhaustively excluded below `44.6937647147188`. Again, the 15-active floor is 45 bits, so no higher-activity trail can improve the result.
+| schedule / phase | exact global cost bits | exact global magnitude | realizing activity |
+|---|---:|---:|---:|
+| static | `36` | `2^-36` | `4 -> 4 -> 4` (12 active) |
+| rotor phase 1 | `44.168296900785705` | `2^-44.168296900785705` | `3 -> 8 -> 2` (13 active) |
+| rotor phase 2 | `44.6828700736155` | `2^-44.6828700736155` | `3 -> 8 -> 3` (14 active) |
+| rotor phase 3 | `44.6937647147188` | `2^-44.6937647147188` | `2 -> 8 -> 4` or `3 -> 8 -> 3` (14 active) |
+| rotor phase 0 | `45.0156928096061` | `2^-45.0156928096061` | `3 -> 8 -> 3` (14 active) |
 
-Therefore:
+Two architectural observations are now exact for this construction:
 
-**The exact global best individual three-round linear-trail correlation magnitude for full rotor phase 3 is `2^-44.6937647147188`.**
+1. all four rotor phases have a more expensive best individual three-round linear trail than the static control; and
+2. minimum activity does not necessarily identify the minimum-cost trail: phases 0, 2, and 3 are globally optimized by 14-active trails even though their exact activity minimum is 13.
 
-At least two 14-active activity classes attain that best cost: `2 -> 8 -> 4` and `3 -> 8 -> 3`.
+Relative to the static `2^-36` trail, the additional individual-trail correlation costs are approximately `8.1683`, `8.6829`, `8.6938`, and `9.0157` bits for rotor phases 1, 2, 3, and 0 respectively. These differences must not be described as security gains.
 
-## 7. Current matched full-layer linear status
+## 6. Remaining full-layer value question
 
-| schedule / phase | exact global best three-round individual linear trail | realizing activity |
-|---|---:|---:|
-| static | `2^-36` | `4 -> 4 -> 4` (12 active) |
-| rotor phase 1 | `2^-44.168296900785705` | `3 -> 8 -> 2` (13 active) |
-| rotor phase 2 | `2^-44.6828700736155` | `3 -> 8 -> 3` (14 active) |
-| rotor phase 3 | `2^-44.6937647147188` | `2 -> 8 -> 4` or `3 -> 8 -> 3` (14 active) |
-| rotor phase 0 | not yet globally closed | exact 13-active value `2^-47.208939`; 14- and 15-active competition remains |
+The full-layer **three-round linear individual-trail problem is now globally closed for static and all four rotor phases**.
 
-Phases 2 and 3 demonstrate why minimum active-S-box count and minimum trail cost must be treated separately. Their globally best individual trails use one more active S-box than the support minimum because the actual AES LAT values are more favorable.
+The principal unresolved full-layer three-round value question is differential propagation. The exact rotor support minimum is 13, but DDT compatibility has not yet been globally optimized. The best explicit DDT-compatible rotor characteristics currently known use 14 active S-boxes with `3 -> 8 -> 3` and probability `2^-91` or `2^-92`.
 
-## 8. Remaining full-rotor value questions
+## 7. Reproduction
 
-Rotor phase 0 is now the only full-layer linear phase not globally closed. Its exact 13-active cost is `47.208939` bits, so both 14- and 15-active competitors can beat it in principle; 16 active S-boxes already cost at least 48 bits and cannot.
+Key exact checkers and drivers are:
 
-The full-rotor differential value-level optimization also remains open. The exact differential support minimum is 13, but the previously tested `3 -> 8 -> 2` support path is not DDT-compatible. The best explicit DDT-compatible rotor characteristics currently known use 14 active S-boxes with `3 -> 8 -> 3` and probability `2^-91` or `2^-92`.
+- `exact_static_diff_allmax_check.cpp`: closes the static differential result at `2^-73`;
+- `exact_rotor_linear_13_active.cpp`: optimizes every rotor phase inside the globally minimal 13-active class;
+- `exact_rotor_phase1_14_active.cpp` and `verify_phase1_global_linear.py`: close phase 1 globally;
+- `exact_rotor_phase23_higher_active.cpp` and `verify_phase23_global_linear.py`: close phases 2 and 3 globally;
+- `verify_phase0_global_linear.py`: reuses the parameterized higher-active checker to exhaust all 18 phase-0 14-active classes and all 27 phase-0 15-active classes.
 
-## 9. Reproduction
-
-Compile the phase-2/3 higher-activity checker:
+For phase 0:
 
 ```bash
-g++ -O3 -std=c++17 -fopenmp exact_rotor_phase23_higher_active.cpp -o exact_rotor_phase23_higher_active
+python verify_phase0_global_linear.py
 ```
 
-Representative phase-2 checks:
+The verification is intentionally split by activity/support class because a monolithic all-splits run can exceed a short execution window even though the individual searches are independent.
 
-```bash
-./exact_rotor_phase23_higher_active 2 14 45.437759 2 8 4
-./exact_rotor_phase23_higher_active 2 14 45.437759 3 8 3
-./exact_rotor_phase23_higher_active 2 14 45.437759 4 8 2
-```
+## 8. Next exact target
 
-Representative phase-3 checks:
-
-```bash
-./exact_rotor_phase23_higher_active 3 14 45.460479 2 8 4
-./exact_rotor_phase23_higher_active 3 14 45.460479 3 8 3
-./exact_rotor_phase23_higher_active 3 14 45.460479 4 8 2
-```
-
-For an automated phase-2/3 workflow:
-
-```bash
-python verify_phase23_global_linear.py
-```
-
-Because an all-splits run may exceed a short execution window, the verifier intentionally executes the 18 independent 14-active splits separately.
-
-## 10. Next exact target
-
-The next full-layer linear target is rotor phase 0. It has the widest remaining higher-activity window: 14- and 15-active trails must both be searched below `47.208939` bits.
+With the full three-round linear individual-trail analysis closed, the next exact target is the **full-rotor three-round differential problem**. The first question is whether any of the exact 13-active support paths are DDT-compatible. If not, the 14-active class should be globally optimized before moving to four rounds.
 
 These are architecture-development results only, not differential-hull, linear-hull, or end-to-end security claims.
