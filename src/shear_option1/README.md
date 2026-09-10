@@ -60,8 +60,9 @@ The development sequence is deliberately staged:
 2. chain, ring, three-stage butterfly, and four-stage butterfly topology controls;
 3. partial-fourth-stage reduced-cost controls, retaining the same coefficient family and lifting cell;
 4. exact two-round DDT/LAT characteristic/trail analysis;
-5. restricted three-round trail searching as an initial value-sensitive screen; and
-6. broadened three-round searching that permits every nonzero middle-layer AES transition and selected non-branch-minimal support paths.
+5. restricted three-round trail searching as an initial value-sensitive screen;
+6. broadened three-round searching that permits every nonzero middle-layer AES transition and selected non-branch-minimal support paths; and
+7. global three-round support optimization, with exact support-level results kept separate from value-level trail-cost optima.
 
 Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
@@ -81,32 +82,26 @@ The reference and exact diagnostic code establish:
 - the selected 30-cell mask `0x6f` gives exact `B_byte = 7` and one-active-byte output support 14 for static and rotor phases 0 through 3, but loses the full reference layer's all-to-all rank-8 byte dependency property;
 - exact AES S-box local maxima are DDT `4/256 = 2^-6` and Walsh magnitude `32/256 = 2^-3`;
 - the exact linear-mask propagation map `L^(-T)` has byte branch number 8 for the full layer and 7 for the selected `0x6f` control;
-- exact best individual two-round differential characteristics are `2^-48` (full) and `2^-42` (`0x6f`), while exact largest-magnitude individual two-round linear trails are `2^-24` (full) and `2^-21` (`0x6f`).
+- exact best individual two-round differential characteristics are `2^-48` (full) and `2^-42` (`0x6f`), while exact largest-magnitude individual two-round linear trails are `2^-24` (full) and `2^-21` (`0x6f`);
+- for the full 32-cell reference, the exact global three-round activity minimum is 12 active S-boxes under static scheduling and 13 under rotor phases 0 through 3, for both differential propagation and linear-mask propagation;
+- the static minimum is realized by `4 -> 4 -> 4`, while rotor minima are realized at support level by `3 -> 8 -> 2`;
+- the known full-static linear trail with correlation magnitude `2^-36` is therefore globally activity-minimal and, because all 12 active S-boxes attain maximum AES correlation magnitude, is an exact global optimum among individual three-round linear trails with free endpoint masks;
+- the explicit full-rotor `3 -> 8 -> 2` linear trails are globally activity-minimal found trails, but their LAT costs are not yet certified globally optimal over every 13-active path.
 
 ## Current three-round value-sensitive status
 
-The broadened search supersedes the earlier restricted three-round tables for architectural comparison.
+For the **full 32-cell static layer**:
 
-For the **full 32-cell static layer**, the all-transition branch-minimal-first search gives:
+- linear: exact global individual-trail optimum `2^-36`, realized by `4 -> 4 -> 4`;
+- differential: explicit globally activity-minimal `4 -> 4 -> 4` characteristic with probability `2^-73`; value-level global optimality remains open because one middle transition uses DDT entry 2.
 
-- linear: explicit `4 -> 4 -> 4` trail with correlation magnitude `2^-36`;
-- differential: explicit `4 -> 4 -> 4` characteristic with probability `2^-73`.
+For the **full rotor layer**:
 
-For the **full rotor layer**, no two consecutive branch-minimal `4 -> 4` relations have compatible middle support in any rotor phase. This obstruction exists at the linear-map level before AES DDT/LAT values are considered.
+- every rotor phase has exact global three-round activity minimum 13;
+- explicit LAT-compatible `3 -> 8 -> 2` trails attain that activity minimum, with correlation magnitudes from `2^-44.168297` to `2^-47.208939` across the four phases;
+- at the differential support level, `3 -> 8 -> 2` also realizes the 13-active minimum, but the tested support path is not DDT-compatible; the best explicit DDT-compatible characteristics found so far use `3 -> 8 -> 3` and probability `2^-91` or `2^-92`.
 
-Allowing every nonzero middle-layer AES transition gives exact branch-minimal-first rotor values of approximately:
-
-- linear: `2^-47.66` to `2^-48.29`, with `4 -> 4 -> 7` activity;
-- differential: `2^-99` to `2^-100`, with `4 -> 4 -> 8` activity.
-
-Allowing selected **non-branch-minimal first transitions** improves the rotor trails further. Explicit full-rotor trails found include:
-
-- linear `3 -> 8 -> 2` trails with 13 active S-boxes and correlation magnitudes from `2^-44.168297` to `2^-47.208939` across the four phases;
-- differential `3 -> 8 -> 3` trails with 14 active S-boxes and probabilities `2^-91` or `2^-92`.
-
-These are found trails, not global three-round optima. They show that broadening the search narrows the initial static-versus-rotor gap, while the unusually efficient static `4 -> 4 -> 4` recurrence remains unmatched by the rotor trails found so far.
-
-The 30-cell `0x6f` control remains a cost/topology control rather than a replacement design. Its broadened branch-minimal-first values are recorded in `BROADENED_VALUE_TRAILS.md`.
+The 30-cell `0x6f` control remains a cost/topology control rather than a replacement design. Its completed exact global-support results and still-open reduced-rotor cases are recorded in `GLOBAL_THREE_ROUND_ACTIVITY.md`.
 
 ## Files
 
@@ -115,6 +110,7 @@ The 30-cell `0x6f` control remains a cost/topology control rather than a replace
 - `REDUCED_COST_COMPARISON.md`, `exact_reduced_cost_comparison.cpp`, `scan_reduced_cost_masks.py`: reduced-cost frontier.
 - `TRAIL_BOUNDS.md`, `aes_sbox_local_bounds.py`: conservative activity-derived trail bounds.
 - `VALUE_SENSITIVE_TRAILS.md`, `exact_two_round_value_trails.cpp`, `restricted_three_round_trail_search.cpp`: exact two-round results and preserved historical restricted three-round checkpoint.
-- `BROADENED_VALUE_TRAILS.md`, `broadened_three_round_trail_search.cpp`, `fixed_middle_value_probe.cpp`: current broadened three-round value-sensitive analysis.
+- `BROADENED_VALUE_TRAILS.md`, `broadened_three_round_trail_search.cpp`, `fixed_middle_value_probe.cpp`: broadened three-round value-sensitive analysis.
+- `GLOBAL_THREE_ROUND_ACTIVITY.md`: exact global three-round activity checkpoint and evidence classification.
 
-These are architectural facts, exact finite computations within explicitly stated classes, and clearly labeled found-trail observations. They are not a cryptographic security proof.
+These are architectural facts, exact finite computations within explicitly stated classes, globally settled support-level results where noted, and clearly labeled found-trail observations. They are not a cryptographic security proof.
