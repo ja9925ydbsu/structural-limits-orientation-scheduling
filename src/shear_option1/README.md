@@ -63,7 +63,7 @@ The development sequence is deliberately staged:
 5. restricted three-round trail searching as an initial value-sensitive screen;
 6. broadened three-round searching that permits every nonzero middle-layer AES transition and selected non-branch-minimal support paths;
 7. global three-round support optimization, with exact support-level results kept separate from value-level trail-cost optima; and
-8. exact value-level closure for the full-static differential case plus exact LAT optimization inside the globally minimal 13-active full-rotor class.
+8. exact value-level closure for the full-static differential and linear cases, exact 13-active LAT optimization for all full-rotor phases, and exact global linear closure for rotor phase 1.
 
 Operation count is reported with topology results so that a larger network is not treated as superior merely because it performs more shears.
 
@@ -87,9 +87,10 @@ The reference and exact diagnostic code establish:
 - for the full 32-cell reference, the exact global three-round activity minimum is 12 active S-boxes under static scheduling and 13 under rotor phases 0 through 3, for both differential propagation and linear-mask propagation;
 - the static minimum is realized by `4 -> 4 -> 4`, while rotor minima are realized at support level by `3 -> 8 -> 2`;
 - the full-static linear trail `2^-36` is an exact global optimum among individual three-round linear trails with free endpoint masks;
-- the full-static differential characteristic `2^-73` is now an exact global optimum among individual three-round differential characteristics with free endpoint differences;
-- for each full-rotor phase, exhaustive LAT optimization over every globally minimum-activity 13-active class leaves only `3 -> 8 -> 2`, with exact in-class costs `47.208939`, `44.168297`, `45.437758`, and `45.460478` bits for phases 0, 1, 2, and 3 respectively;
-- those rotor values are exact inside the globally minimal 13-active class, but are not yet labeled exact global value-level optima because 14-active competitors, and for phases 0, 2, and 3 also 15-active competitors, could in principle have stronger local LAT transitions.
+- the full-static differential characteristic `2^-73` is an exact global optimum among individual three-round differential characteristics with free endpoint differences;
+- for each full-rotor phase, exhaustive LAT optimization over every globally minimum-activity 13-active class leaves only `3 -> 8 -> 2`, with exact in-class costs `47.208939`, `44.1682969008`, `45.437758`, and `45.460478` bits for phases 0, 1, 2, and 3 respectively;
+- for rotor phase 1, all 18 structurally admissible 14-active classes have been exhaustively excluded below `44.168296900785705` bits, and every 15-active trail costs at least 45 bits; therefore phase 1 now has exact global best individual three-round linear-trail magnitude `2^-44.168296900785705`;
+- rotor phases 0, 2, and 3 remain exact only inside the globally minimal 13-active class because higher-activity competition is still open.
 
 ## Current three-round value-sensitive status
 
@@ -102,8 +103,8 @@ For the **full rotor layer**:
 
 - every rotor phase has exact global three-round activity minimum 13;
 - exhaustive value optimization within that minimum-activity class leaves only `3 -> 8 -> 2`;
-- exact 13-active correlation costs are `47.208939`, `44.168297`, `45.437758`, and `45.460478` bits for phases 0 through 3;
-- higher-activity competition remains open: phase 1 needs only the 14-active class checked, while phases 0, 2, and 3 require 14- and 15-active competitors checked before a global value-level optimum can be claimed;
+- phase 1 is now globally closed at `2^-44.168296900785705` for the best individual three-round linear trail;
+- phases 0, 2, and 3 have exact 13-active costs `47.208939`, `45.437758`, and `45.460478` bits respectively, but 14- and 15-active competitors must still be checked before global value-level optimality is claimed;
 - at the differential support level, `3 -> 8 -> 2` realizes the 13-active minimum, but the tested support path is not DDT-compatible; the best explicit DDT-compatible characteristics found so far use `3 -> 8 -> 3` and probability `2^-91` or `2^-92`.
 
 The 30-cell `0x6f` control remains a cost/topology control rather than a replacement design. Its completed exact global-support results and still-open reduced-rotor cases are recorded in `GLOBAL_THREE_ROUND_ACTIVITY.md`.
@@ -119,7 +120,8 @@ The 30-cell `0x6f` control remains a cost/topology control rather than a replace
 - `GLOBAL_THREE_ROUND_ACTIVITY.md`: exact global three-round activity checkpoint and evidence classification.
 - `exact_static_diff_allmax_check.cpp`: all-DDT=4 exclusion used to close the full-static differential optimum at `2^-73`.
 - `rotor_linear_13_active_boundary_check.cpp`, `exact_rotor_linear_13_active.cpp`: boundary accounting and exact LAT optimization over the globally minimal 13-active rotor class.
-- `verify_three_round_value_checkpoint.py`: compile/run verification driver for the current exact checkpoint.
-- `EXACT_THREE_ROUND_VALUE_CHECKPOINT.md`: consolidated evidence classification, results, reproduction commands, and remaining higher-activity rotor competition.
+- `exact_rotor_phase1_14_active.cpp`, `verify_phase1_global_linear.py`: exhaustive higher-activity closure that promotes rotor phase 1 to an exact global three-round linear-trail optimum.
+- `verify_three_round_value_checkpoint.py`: compile/run verification driver for the broader three-round checkpoint.
+- `EXACT_THREE_ROUND_VALUE_CHECKPOINT.md`: consolidated evidence classification, exact results, reproduction commands, and remaining higher-activity rotor competition.
 
 These are architectural facts, exact finite computations within explicitly stated classes, globally settled support-level results where noted, and clearly labeled found-trail observations. They are not a cryptographic security proof.
