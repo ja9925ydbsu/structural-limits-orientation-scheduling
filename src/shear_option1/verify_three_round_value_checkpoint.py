@@ -7,9 +7,11 @@ files and is not part of the structural-limits paper under review.
 
 Evidence classification in this driver:
 - full-static differential 2^-73: exact global individual-characteristic optimum;
-- full-rotor linear values: exact within the globally minimal 13-active class;
-  14- and 15-active competitors remain to be excluded before calling them
-  exact global value-level optima.
+- full-rotor linear values: exact inside the globally minimal 13-active class;
+- rotor phase 1 is additionally closed globally by
+  verify_phase1_global_linear.py, which exhausts all relevant 14-active
+  competitors and uses the 45-bit floor for 15-active trails;
+- rotor phases 0, 2, and 3 still have higher-activity competition open.
 
 Usage:
     python verify_three_round_value_checkpoint.py --compile-only
@@ -76,9 +78,6 @@ def compile_all() -> dict[str, Path]:
 
 
 def verify_static(bins: dict[str, Path]) -> None:
-    # The exact global activity minimum is 12. By branch-number and one-active
-    # endpoint exclusions, these are the only activity-12 shapes that need an
-    # all-DDT=4 feasibility check up to reversal.
     for a, b, c in STATIC_ALLMAX_SPLITS:
         p = run([str(bins["static_allmax"]), str(a), str(b), str(c)], check=False)
         if p.returncode != 0 or "EXCLUDED all-DDT4" not in p.stdout:
@@ -87,8 +86,6 @@ def verify_static(bins: dict[str, Path]) -> None:
             )
         print(p.stdout.strip())
 
-    # Existence/cost witness: the all-transition exact branch-minimal search
-    # reproduces the 4->4->4 characteristic with total cost 73 bits.
     p = run([
         str(bins["broadened"]), "diff", "static", "0", "0xff", "8", "10"
     ])
@@ -132,8 +129,9 @@ def verify_rotor_minact(bins: dict[str, Path]) -> None:
             raise AssertionError(
                 f"phase {phase}: expected {EXPECTED_ROTOR_13_ACTIVE_BITS[phase]:.6f}, got {bits:.6f}"
             )
+        suffix = "; globally closed separately" if phase == 1 else "; higher-activity competition open"
         print(
-            f"phase {phase}: exact optimum within globally minimal 13-active class = 2^-{bits:.6f}"
+            f"phase {phase}: exact optimum within globally minimal 13-active class = 2^-{bits:.6f}{suffix}"
         )
 
 
