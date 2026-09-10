@@ -2,7 +2,7 @@
 
 **Scope boundary.** This file belongs only to the `option1-cross-byte-shear` architectural-development branch. It is separate from the structural-limits-of-orientation-scheduling paper currently under review and should not be used to revise, enlarge, or reinterpret that paper.
 
-This checkpoint separates exact support-level results from value-level AES DDT/LAT trail costs.
+This checkpoint separates exact support-level results from value-level AES DDT/LAT trail costs. The later value-level closure is consolidated in `EXACT_THREE_ROUND_VALUE_CHECKPOINT.md`.
 
 ## Full 32-cell reference: exact global activity result
 
@@ -35,26 +35,22 @@ This is a property of the present architecture, not a theorem about rotor schedu
 
 ## Relation to the value-sensitive search
 
-The global activity result sharpens the earlier value-sensitive trail checkpoint.
+For the full static layer, the reported linear `4 -> 4 -> 4` trail with correlation magnitude `2^-36` uses the exact global activity minimum of 12 and attains the AES maximum correlation magnitude on every active S-box. Any trail with 13 or more active S-boxes has correlation cost at least 39 bits. Therefore `2^-36` is the **exact global optimum among individual three-round linear trails with free endpoint masks**.
 
-For the full static layer, the previously reported linear `4 -> 4 -> 4` trail with correlation magnitude `2^-36` uses exactly 12 active S-boxes. Because 12 is now the exact global activity minimum, that trail is globally activity-minimal. It is also locally maximum-correlation on every active AES S-box, so no other 12-active trail can have larger magnitude than `2^-36`.
+The full-static differential `4 -> 4 -> 4` characteristic with probability `2^-73` is now also globally exact at the individual-characteristic level. `exact_static_diff_allmax_check.cpp` exhausts every activity-12 support shape that could realize an all-DDT=4 path and excludes them all. Since a 73-bit characteristic exists and every 13-active characteristic costs at least 78 bits, `2^-73` is the **exact global best individual three-round differential-characteristic probability**.
 
-Therefore the full-static three-round linear trail magnitude `2^-36` is an **exact global optimum among individual three-round linear trails with free endpoint masks**.
+For the full rotor layer, exhaustive LAT optimization has now been completed over every globally minimum-activity 13-active support/value class. The exact optima **inside that 13-active class** are:
 
-For the full rotor layer, explicit LAT-compatible `3 -> 8 -> 2` trails were already found for all four phases. They therefore attain the exact global activity minimum of 13. Their reported magnitudes are:
+| rotor phase | exact 13-active split | exact best magnitude in the 13-active class |
+|---:|---:|---:|
+| 0 | `3 -> 8 -> 2` | `2^-47.208939` |
+| 1 | `3 -> 8 -> 2` | `2^-44.168297` |
+| 2 | `3 -> 8 -> 2` | `2^-45.437758` |
+| 3 | `3 -> 8 -> 2` | `2^-45.460478` |
 
-| rotor phase | found 13-active linear trail magnitude |
-|---:|---:|
-| 0 | `2^-47.208939` |
-| 1 | `2^-44.168297` |
-| 2 | `2^-45.437758` |
-| 3 | `2^-45.460478` |
+These values are no longer merely best-found 13-active trails. They are exact within the globally minimum-activity class. They are **not yet labeled exact global value-level optima**, because higher-activity trails can in principle compensate for an extra active S-box by using stronger LAT transitions. Phase 1 needs only its 14-active class checked; phases 0, 2, and 3 require 14- and 15-active competitors checked before a global value-level claim is justified.
 
-These rotor trails are globally activity-minimal but are **not yet proved globally correlation-optimal**, because other 13-active support/value assignments may have better LAT cost.
-
-For differential propagation, the static `4 -> 4 -> 4` characteristic at `2^-73` is globally activity-minimal, but its probability is not automatically a global optimum because one middle AES transition has DDT entry 2. A different 12-active characteristic could in principle have a better product probability unless all 12-active value assignments are exhausted.
-
-For full rotor differential propagation, the support-level minimum is 13, but the previously tested `3 -> 8 -> 2` path was not DDT-compatible; the best explicit DDT-compatible rotor characteristics found so far use 14 active S-boxes with `3 -> 8 -> 3` and probability `2^-91` or `2^-92`. Thus the exact support minimum and the best currently found differential characteristic remain distinct facts.
+For full rotor differential propagation, the support-level minimum remains 13. The previously tested `3 -> 8 -> 2` path was not DDT-compatible; the best explicit DDT-compatible rotor characteristics currently known use 14 active S-boxes with `3 -> 8 -> 3` and probability `2^-91` or `2^-92`. Thus exact support minimum and best known differential characteristic remain separate facts.
 
 ## Reduced 30-cell `0x6f` control: completed exact results so far
 
@@ -77,18 +73,18 @@ An important implementation lesson from the reduced control is that relaxed supp
 ## Evidence classification
 
 - **Exact global activity minimum:** all smaller support totals are excluded and an exact-support GF(2) witness exists at the stated minimum.
-- **Globally activity-minimal found trail:** the trail uses the exact minimum number of active S-boxes, but its DDT/LAT product has not necessarily been globally optimized over every value assignment.
-- **Exact value-level optimum:** both the activity minimum and the local transition-cost optimum are established.
+- **Exact optimum inside the globally minimum-activity class:** every support/value assignment at that exact activity total is exhausted, but higher-activity competitors with stronger local transitions may remain.
+- **Exact global individual-characteristic/trail optimum:** every lower-cost competitor is excluded, including relevant higher-activity classes.
 - **Found characteristic/trail:** an explicit valid path, with no claim that a better one is absent.
 
-The full-static linear `2^-36` result now qualifies as an exact value-level optimum for an individual three-round linear trail. The full-rotor 13-active linear trails qualify as globally activity-minimal found trails pending exhaustive LAT-cost optimization over all 13-active paths.
+The full-static linear `2^-36` and differential `2^-73` results now qualify as exact global individual-trail/characteristic optima. The full-rotor linear values above qualify as exact optima inside the globally minimal 13-active class pending higher-activity competition.
 
 ## Next step
 
-1. Complete reduced rotor phase-3 linear exclusion and reduced rotor differential global support sweep.
-2. Enumerate all globally minimal full-rotor 13-active support paths and optimize actual AES LAT cost over them.
-3. Exhaust all 12-active full-static differential assignments to determine whether `2^-73` is the exact global three-round differential-characteristic optimum.
-4. Search the full-rotor 13-active differential support class for DDT-compatible assignments before concluding that 14 active S-boxes are necessary at the value level.
-5. Only after these three-round value-level optima are settled should the analysis extend to four rounds.
+1. Check full-rotor linear phase 1 over all 14-active competitors below 44.168297 bits. This is the smallest remaining global-certification problem.
+2. Check full-rotor phases 0, 2, and 3 over 14- and 15-active competitors below their current 13-active costs.
+3. Search the full-rotor 13-active differential support class for all DDT-compatible assignments before concluding that 14 active S-boxes are necessary at the value level.
+4. Complete reduced rotor phase-3 linear exclusion and the reduced-rotor differential global support sweep.
+5. Only after these three-round value-level questions are settled should the analysis extend to four rounds.
 
 These are architecture-development results only, not differential-hull, linear-hull, or end-to-end security claims.
