@@ -1,8 +1,8 @@
 # Option 1 global three-round activity checkpoint
 
-**Scope boundary.** This file belongs only to the `option1-cross-byte-shear` architectural-development branch. It is separate from the structural-limits-of-orientation-scheduling paper currently under review and should not be used to revise, enlarge, or reinterpret that paper.
+**Scope boundary.** This file belongs only to the `option1-cross-byte-shear` architectural-development branch. It is separate from the structural-limits-of-orientation-scheduling manuscript and should not be used to revise, enlarge, or reinterpret that paper.
 
-This checkpoint records exact support-level results. The later value-level closure is consolidated in `EXACT_THREE_ROUND_VALUE_CHECKPOINT.md`; `PHASE23_GLOBAL_LINEAR.md` and `PHASE0_GLOBAL_LINEAR.md` record the higher-activity full-rotor linear closures.
+This checkpoint records exact support-level results and points to the later exact value-level closures in `EXACT_THREE_ROUND_VALUE_CHECKPOINT.md`, `PHASE0_GLOBAL_LINEAR.md`, `PHASE23_GLOBAL_LINEAR.md`, and `ROTOR_GLOBAL_DIFFERENTIAL.md`.
 
 ## Full 32-cell reference: exact global activity result
 
@@ -29,23 +29,16 @@ This is an architecture-specific fact, not a theorem about rotor scheduling in g
 
 ## Relation to exact value-level results
 
-Support minimum and trail-cost optimum are different questions.
+Support minimum and trail/characteristic cost are different questions.
 
 For the full static layer:
 
 - linear: exact global individual three-round trail optimum `2^-36`;
 - differential: exact global individual three-round characteristic optimum `2^-73`.
 
-For the full rotor linear layer, the exact 13-active values are:
+### Full rotor linear
 
-| rotor phase | exact 13-active split | exact best magnitude in that class |
-|---:|---:|---:|
-| 0 | `3 -> 8 -> 2` | `2^-47.208939` |
-| 1 | `3 -> 8 -> 2` | `2^-44.1682969008` |
-| 2 | `3 -> 8 -> 2` | `2^-45.437758` |
-| 3 | `3 -> 8 -> 2` | `2^-45.460478` |
-
-Higher-activity optimization changes three of the four global optima. The exact global full-rotor linear results are now:
+The exact global full-rotor linear results are:
 
 | rotor phase | exact global magnitude | realizing activity |
 |---:|---:|---:|
@@ -54,13 +47,31 @@ Higher-activity optimization changes three of the four global optima. The exact 
 | 2 | `2^-44.6828700736155` | `3 -> 8 -> 3` (14 active) |
 | 3 | `2^-44.6937647147188` | `2 -> 8 -> 4` or `3 -> 8 -> 3` (14 active) |
 
-For phase 0, all 18 admissible 14-active classes and all 27 relevant 15-active classes were checked. For phases 2 and 3, the best 14-active costs fall below the 45-bit floor for 15-active trails, so higher activity cannot compete. Phase 1 has no better 14-active competitor, and the 15-active floor likewise closes it.
-
 Thus the **full-layer three-round individual linear-trail problem is globally closed for static and all four rotor phases**.
 
-Phases 0, 2, and 3 provide concrete examples in which the globally best individual trail does not use the globally minimum number of active S-boxes: stronger local AES LAT transitions compensate for the extra active S-box.
+Phases 0, 2, and 3 provide concrete examples in which the globally best individual trail does not use the globally minimum number of active S-boxes.
 
-For full rotor differential propagation, the exact support minimum remains 13, but DDT compatibility has not yet been globally optimized. The best explicit DDT-compatible rotor characteristics currently known use 14 active S-boxes with `3 -> 8 -> 3` and probability `2^-91` or `2^-92`. Exact differential value-level optimization remains open.
+### Full rotor differential
+
+The exact support floor is 13, but value compatibility changes the effective optimum:
+
+- all 11 structurally admissible 13-active triples are exhausted in every phase;
+- `3 -> 8 -> 2` is the only support-feasible 13-active class, but it has zero DDT-compatible assignments in every phase;
+- at 14 active S-boxes, only `2 -> 8 -> 4`, `3 -> 8 -> 3`, and `4 -> 8 -> 2` have exact support paths;
+- exact DDT optimization gives a best 14-active cost of **91 bits in every phase**;
+- all 27 admissible 15-active all-DDT-4 classes are excluded in every phase, so no 90-bit competitor exists;
+- 16 or more active S-boxes cost at least 96 bits.
+
+Therefore the **full-layer three-round individual differential-characteristic problem is also globally closed**:
+
+| rotor phase | exact global differential probability | realizing activity |
+|---:|---:|---:|
+| 0 | `2^-91` | `2 -> 8 -> 4` (14 active) |
+| 1 | `2^-91` | `3 -> 8 -> 3` (14 active) |
+| 2 | `2^-91` | `3 -> 8 -> 3` (14 active) |
+| 3 | `2^-91` | `2 -> 8 -> 4` and `3 -> 8 -> 3` both attain 91 bits |
+
+The differential result is a second example of why support activity and value-level feasibility must be separated: the exact rotor support floor is 13, but the entire 13-active class is DDT-incompatible, so the globally optimal differential-characteristic activity is 14.
 
 ## Reduced 30-cell `0x6f` control: completed exact support results so far
 
@@ -87,12 +98,12 @@ Relaxed support-envelope feasibility can produce false positives for this reduce
 - **Exact global individual-characteristic/trail optimum:** every lower-cost competitor is excluded, including relevant higher-activity classes.
 - **Found characteristic/trail:** an explicit valid path with no claim that a better one is absent.
 
-The full-static linear `2^-36`, full-static differential `2^-73`, and all four full-rotor linear values listed above qualify as exact global individual-trail/characteristic optima.
+The full-static linear `2^-36`, full-static differential `2^-73`, all four full-rotor linear values, and all four full-rotor differential values `2^-91` qualify as exact global individual-path optima.
 
 ## Next step
 
-1. Globally optimize the full-rotor three-round differential problem, beginning with DDT compatibility of the 13-active support class and then the 14-active class if needed.
-2. Complete reduced rotor phase-3 linear exclusion and the reduced-rotor differential global support sweep.
-3. Only after these three-round value-level questions are settled should the analysis extend to four rounds.
+1. Complete reduced rotor phase-3 linear exclusion and the reduced-rotor differential global support sweep.
+2. Decide whether the reduced control warrants full value-level optimization.
+3. Only after the reduced three-round controls are settled should the analysis extend to four rounds.
 
-These are architecture-development results only, not differential-hull, linear-hull, or end-to-end security claims.
+These are architecture-development results only, not linear-hull, differential-hull, or end-to-end security claims.
