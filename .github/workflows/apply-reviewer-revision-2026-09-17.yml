@@ -1,0 +1,72 @@
+name: Apply reviewer clarification revision
+
+on:
+  push:
+    branches:
+      - reviewer-clarification-2026-09-17
+    paths:
+      - '.github/workflows/apply-reviewer-revision-2026-09-17.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: reviewer-clarification-2026-09-17
+
+      - name: Apply staged revision
+        run: python .github/apply_revision_20260917.py
+
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-science texlive-pictures texlive-bibtex-extra
+
+      - name: Build manuscript and supplement
+        run: |
+          set -e
+          cd paper
+          pdflatex -interaction=nonstopmode -halt-on-error Fig1_source.tex
+          mv -f Fig1_source.pdf Fig1.pdf
+          pdflatex -interaction=nonstopmode -halt-on-error Fig2_source.tex
+          mv -f Fig2_source.pdf Fig2_phase_ordering.pdf
+          pdflatex -interaction=nonstopmode -halt-on-error Structural_Limits_Orientation_Scheduling_MDPI.tex
+          bibtex Structural_Limits_Orientation_Scheduling_MDPI
+          pdflatex -interaction=nonstopmode -halt-on-error Structural_Limits_Orientation_Scheduling_MDPI.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Structural_Limits_Orientation_Scheduling_MDPI.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Supplementary_Technical_Material_MDPI.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Supplementary_Technical_Material_MDPI.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Supplementary_Technical_Material_MDPI.tex
+          rm -f *.aux *.log *.out *.toc *.bbl *.blg *.fls *.fdb_latexmk Fig1_source.pdf Fig2_source.pdf
+
+      - name: Remove staging payload
+        run: |
+          rm -rf .github/revision_chunks_20260917
+          rm -f .github/apply_revision_20260917.py
+
+      - name: Refresh checksums
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          root = Path('.')
+          lines = []
+          for p in sorted(root.rglob('*')):
+              if not p.is_file() or '.git' in p.parts or p.name == 'SHA256SUMS.txt':
+                  continue
+              h = hashlib.sha256(p.read_bytes()).hexdigest()
+              lines.append(f"{h}  {p.as_posix()}")
+          Path('SHA256SUMS.txt').write_text('\n'.join(lines) + '\n')
+          PY
+
+      - name: Commit synchronized revision
+        run: |
+          git config user.name "ChatGPT reviewer revision"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Synchronize reviewer clarification revision"
+          git push origin HEAD:reviewer-clarification-2026-09-17
