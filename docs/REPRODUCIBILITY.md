@@ -29,6 +29,12 @@ python revision8_structural_audit.py --results-root ../../results --out ../../re
 
 This audit reports one-step minus periodic losses, paired sign consistency, the round-16 variance reduction, round-equivalent distance to the random-permutation benchmark, combined rotation-plus-routing transport orders, and the Perron-accessibility check for the maximum starting state.
 
+## Reviewer clarification analyses
+
+The reviewer-requested calibration, acceptance, replication, and period-reducibility analyses are implemented by `reviewer_revision_analysis.py`, with machine-readable outputs under `results/reviewer_revision/`. The independent fixed-key zero-cell confirmation is implemented by `confirm_fixed_key_zero_cells.py`.
+
+The historical known-answer compatibility values are withheld from the public snapshot. This does not affect the fixed-label experiment inputs, transition calculations, structural audits, calibration analyses, or matched comparisons reported in the manuscript.
+
 ## Matched empirical diagnostics
 
 ```bash
@@ -51,4 +57,3 @@ latexmk -pdf Supplementary_Technical_Material_MDPI.tex
 ```
 
 The repository also contains the compiled PDFs for review convenience. A full TeX Live installation supplies the standard packages required by the MDPI class.
-

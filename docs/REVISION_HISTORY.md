@@ -1,5 +1,14 @@
 # Revision History
 
+## Reviewer clarification revision, 17-18 September 2026
+
+- Synchronized the public manuscript source and PDF with the 17 September 2026 submitted revision.
+- Added the corrected 18 September supplementary source and regenerated public PDF.
+- Added reviewer-requested robustness, calibration, period-reducibility, acceptance, replication, and fixed-key confirmation code and machine-readable outputs.
+- Added the second figure and its source, updated the bibliography, and documented the reviewer clarification changes.
+- Removed the historical password, salt, derived-key, intermediate-state, and ciphertext values from public code, metadata, supplementary source, and PDF while retaining all experiment inputs and calculations needed for the article.
+- Re-ran the public smoke checks and refreshed repository checksums.
+
 ## MDPI Cryptography submission format, 3 September 2026
 
 - Recast the article and supplementary technical material in the official MDPI Cryptography LaTeX format.

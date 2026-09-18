@@ -11,7 +11,8 @@
 | Phase loss, sign consistency, variance, round-equivalent gap | `src/byte_local/revision8_structural_audit.py` | `results/structural_checks/revision8_additional_checks.json` |
 | Combined rotation-plus-routing state-motion order | `src/byte_local/revision8_structural_audit.py` | `results/structural_checks/revision8_additional_checks.json` |
 | Perron accessibility of maximizing start states | `src/byte_local/revision8_structural_audit.py` | `results/structural_checks/revision8_additional_checks.json` |
+| Reviewer-requested calibration, acceptance, replication, and period-reducibility analyses | `src/byte_local/reviewer_revision_analysis.py` | `results/reviewer_revision/` |
+| Fixed-key zero-cell confirmation | `src/byte_local/confirm_fixed_key_zero_cells.py` | `results/reviewer_revision/fixed_key_r2_zero_cell_confirmation.json` |
 | Matched finite-resolution diagnostics | `src/byte_local/matched_orientation_schedule_experiment.py` | `results/matched_standard/` |
 | Cross-byte boundary table | `src/cross_byte/run_mds_rotor_study.py` and modules | `results/mds_standard_profile_reported.csv` |
 | Wider-beam follow-up | `src/cross_byte/mds_beam_sensitivity.py` | no convergence claim in current manuscript |
-

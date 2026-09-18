@@ -1,0 +1,5148 @@
+{
+  "summary": {
+    "schedule_contexts": 1024,
+    "reducible_count": 720,
+    "irreducible_count": 304,
+    "max_components": 8,
+    "by_variant": {
+      "static": {
+        "reducible": 182,
+        "max_components": 5
+      },
+      "position_only": {
+        "reducible": 182,
+        "max_components": 8
+      },
+      "rotor": {
+        "reducible": 179,
+        "max_components": 5
+      },
+      "round_only": {
+        "reducible": 177,
+        "max_components": 6
+      }
+    }
+  },
+  "records": [
+    {
+      "context": 0,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 0,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 0,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 0,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 1,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 1,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 1,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 1,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 2,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 2,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 2,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 2,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 3,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 3,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 3,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 3,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 4,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 4,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 4,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 4,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 5,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 5,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 5,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 5,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 6,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 6,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 6,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 6,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 7,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 7,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 7,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 7,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 8,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 8,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 8,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 8,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 9,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 9,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 9,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 9,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 10,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 10,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 10,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 10,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 11,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 11,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 11,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 11,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 12,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 12,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 12,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 12,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 13,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 13,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 13,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 13,
+      "variant": "round_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 14,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 14,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 14,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 14,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 15,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 15,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 15,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 15,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 16,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 16,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 16,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 16,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 17,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 17,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 17,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 17,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 18,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 18,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 18,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 18,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 19,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 19,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 19,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 19,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 20,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 20,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 20,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 20,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 21,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 21,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 21,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 21,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 22,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 22,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 22,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 22,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 23,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 23,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 23,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 23,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 24,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 24,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 24,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 24,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 25,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 25,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 25,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 25,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 26,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 26,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 26,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 26,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 27,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 27,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 27,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 27,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 28,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 28,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 28,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 28,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 29,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 29,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 29,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 29,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 30,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 30,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 30,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 30,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 31,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 31,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 31,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 31,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 32,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 32,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 32,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 32,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 33,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 33,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 33,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 33,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 34,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 34,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 34,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 34,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 35,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 35,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 35,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 35,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 36,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 36,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 36,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 36,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 37,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 37,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 37,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 37,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 38,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 38,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 38,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 38,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 39,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 39,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 39,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 39,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 40,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 40,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 40,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 40,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 41,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 41,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 41,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 41,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 42,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 42,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 42,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 42,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 43,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 43,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 43,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 43,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 44,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 44,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 44,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 44,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 45,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 45,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 45,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 45,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 46,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 46,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 46,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 46,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 47,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 47,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 47,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 47,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 48,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 48,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 48,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 48,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 49,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 49,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 49,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 49,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 50,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 50,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 50,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 50,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 51,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 51,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 51,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 51,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 52,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 52,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 52,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 52,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 53,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 53,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 53,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 53,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 54,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 54,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 54,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 54,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 55,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 55,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 55,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 55,
+      "variant": "round_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 56,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 56,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 56,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 56,
+      "variant": "round_only",
+      "strong_components_period_map": 6
+    },
+    {
+      "context": 57,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 57,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 57,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 57,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 58,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 58,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 58,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 58,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 59,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 59,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 59,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 59,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 60,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 60,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 60,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 60,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 61,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 61,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 61,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 61,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 62,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 62,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 62,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 62,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 63,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 63,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 63,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 63,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 64,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 64,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 64,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 64,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 65,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 65,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 65,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 65,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 66,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 66,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 66,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 66,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 67,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 67,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 67,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 67,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 68,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 68,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 68,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 68,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 69,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 69,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 69,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 69,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 70,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 70,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 70,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 70,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 71,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 71,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 71,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 71,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 72,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 72,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 72,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 72,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 73,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 73,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 73,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 73,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 74,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 74,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 74,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 74,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 75,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 75,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 75,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 75,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 76,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 76,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 76,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 76,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 77,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 77,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 77,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 77,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 78,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 78,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 78,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 78,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 79,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 79,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 79,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 79,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 80,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 80,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 80,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 80,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 81,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 81,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 81,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 81,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 82,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 82,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 82,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 82,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 83,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 83,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 83,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 83,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 84,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 84,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 84,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 84,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 85,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 85,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 85,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 85,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 86,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 86,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 86,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 86,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 87,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 87,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 87,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 87,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 88,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 88,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 88,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 88,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 89,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 89,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 89,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 89,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 90,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 90,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 90,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 90,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 91,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 91,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 91,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 91,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 92,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 92,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 92,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 92,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 93,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 93,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 93,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 93,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 94,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 94,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 94,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 94,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 95,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 95,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 95,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 95,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 96,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 96,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 96,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 96,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 97,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 97,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 97,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 97,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 98,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 98,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 98,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 98,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 99,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 99,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 99,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 99,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 100,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 100,
+      "variant": "position_only",
+      "strong_components_period_map": 6
+    },
+    {
+      "context": 100,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 100,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 101,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 101,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 101,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 101,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 102,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 102,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 102,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 102,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 103,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 103,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 103,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 103,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 104,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 104,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 104,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 104,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 105,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 105,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 105,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 105,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 106,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 106,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 106,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 106,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 107,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 107,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 107,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 107,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 108,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 108,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 108,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 108,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 109,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 109,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 109,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 109,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 110,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 110,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 110,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 110,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 111,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 111,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 111,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 111,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 112,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 112,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 112,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 112,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 113,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 113,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 113,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 113,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 114,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 114,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 114,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 114,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 115,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 115,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 115,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 115,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 116,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 116,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 116,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 116,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 117,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 117,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 117,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 117,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 118,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 118,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 118,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 118,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 119,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 119,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 119,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 119,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 120,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 120,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 120,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 120,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 121,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 121,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 121,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 121,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 122,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 122,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 122,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 122,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 123,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 123,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 123,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 123,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 124,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 124,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 124,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 124,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 125,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 125,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 125,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 125,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 126,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 126,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 126,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 126,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 127,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 127,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 127,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 127,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 128,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 128,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 128,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 128,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 129,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 129,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 129,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 129,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 130,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 130,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 130,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 130,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 131,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 131,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 131,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 131,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 132,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 132,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 132,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 132,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 133,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 133,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 133,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 133,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 134,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 134,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 134,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 134,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 135,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 135,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 135,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 135,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 136,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 136,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 136,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 136,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 137,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 137,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 137,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 137,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 138,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 138,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 138,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 138,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 139,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 139,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 139,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 139,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 140,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 140,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 140,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 140,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 141,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 141,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 141,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 141,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 142,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 142,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 142,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 142,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 143,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 143,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 143,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 143,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 144,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 144,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 144,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 144,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 145,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 145,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 145,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 145,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 146,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 146,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 146,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 146,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 147,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 147,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 147,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 147,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 148,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 148,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 148,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 148,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 149,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 149,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 149,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 149,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 150,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 150,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 150,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 150,
+      "variant": "round_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 151,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 151,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 151,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 151,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 152,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 152,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 152,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 152,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 153,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 153,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 153,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 153,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 154,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 154,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 154,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 154,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 155,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 155,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 155,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 155,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 156,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 156,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 156,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 156,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 157,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 157,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 157,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 157,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 158,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 158,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 158,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 158,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 159,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 159,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 159,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 159,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 160,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 160,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 160,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 160,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 161,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 161,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 161,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 161,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 162,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 162,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 162,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 162,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 163,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 163,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 163,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 163,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 164,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 164,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 164,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 164,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 165,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 165,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 165,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 165,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 166,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 166,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 166,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 166,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 167,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 167,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 167,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 167,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 168,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 168,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 168,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 168,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 169,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 169,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 169,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 169,
+      "variant": "round_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 170,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 170,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 170,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 170,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 171,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 171,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 171,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 171,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 172,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 172,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 172,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 172,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 173,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 173,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 173,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 173,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 174,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 174,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 174,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 174,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 175,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 175,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 175,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 175,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 176,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 176,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 176,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 176,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 177,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 177,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 177,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 177,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 178,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 178,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 178,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 178,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 179,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 179,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 179,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 179,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 180,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 180,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 180,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 180,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 181,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 181,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 181,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 181,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 182,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 182,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 182,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 182,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 183,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 183,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 183,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 183,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 184,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 184,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 184,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 184,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 185,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 185,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 185,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 185,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 186,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 186,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 186,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 186,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 187,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 187,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 187,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 187,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 188,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 188,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 188,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 188,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 189,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 189,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 189,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 189,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 190,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 190,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 190,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 190,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 191,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 191,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 191,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 191,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 192,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 192,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 192,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 192,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 193,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 193,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 193,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 193,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 194,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 194,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 194,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 194,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 195,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 195,
+      "variant": "position_only",
+      "strong_components_period_map": 8
+    },
+    {
+      "context": 195,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 195,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 196,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 196,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 196,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 196,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 197,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 197,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 197,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 197,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 198,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 198,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 198,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 198,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 199,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 199,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 199,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 199,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 200,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 200,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 200,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 200,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 201,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 201,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 201,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 201,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 202,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 202,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 202,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 202,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 203,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 203,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 203,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 203,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 204,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 204,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 204,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 204,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 205,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 205,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 205,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 205,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 206,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 206,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 206,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 206,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 207,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 207,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 207,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 207,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 208,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 208,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 208,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 208,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 209,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 209,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 209,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 209,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 210,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 210,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 210,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 210,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 211,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 211,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 211,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 211,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 212,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 212,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 212,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 212,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 213,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 213,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 213,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 213,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 214,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 214,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 214,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 214,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 215,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 215,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 215,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 215,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 216,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 216,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 216,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 216,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 217,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 217,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 217,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 217,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 218,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 218,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 218,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 218,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 219,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 219,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 219,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 219,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 220,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 220,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 220,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 220,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 221,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 221,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 221,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 221,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 222,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 222,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 222,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 222,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 223,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 223,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 223,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 223,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 224,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 224,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 224,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 224,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 225,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 225,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 225,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 225,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 226,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 226,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 226,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 226,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 227,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 227,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 227,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 227,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 228,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 228,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 228,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 228,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 229,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 229,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 229,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 229,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 230,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 230,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 230,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 230,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 231,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 231,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 231,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 231,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 232,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 232,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 232,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 232,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 233,
+      "variant": "static",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 233,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 233,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 233,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 234,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 234,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 234,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 234,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 235,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 235,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 235,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 235,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 236,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 236,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 236,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 236,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 237,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 237,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 237,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 237,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 238,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 238,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 238,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 238,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 239,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 239,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 239,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 239,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 240,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 240,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 240,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 240,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 241,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 241,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 241,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 241,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 242,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 242,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 242,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 242,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 243,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 243,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 243,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 243,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 244,
+      "variant": "static",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 244,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 244,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 244,
+      "variant": "round_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 245,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 245,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 245,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 245,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 246,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 246,
+      "variant": "position_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 246,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 246,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 247,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 247,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 247,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 247,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 248,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 248,
+      "variant": "position_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 248,
+      "variant": "rotor",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 248,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 249,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 249,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 249,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 249,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 250,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 250,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 250,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 250,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 251,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 251,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 251,
+      "variant": "rotor",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 251,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 252,
+      "variant": "static",
+      "strong_components_period_map": 3
+    },
+    {
+      "context": 252,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 252,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 252,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 253,
+      "variant": "static",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 253,
+      "variant": "position_only",
+      "strong_components_period_map": 5
+    },
+    {
+      "context": 253,
+      "variant": "rotor",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 253,
+      "variant": "round_only",
+      "strong_components_period_map": 4
+    },
+    {
+      "context": 254,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 254,
+      "variant": "position_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 254,
+      "variant": "rotor",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 254,
+      "variant": "round_only",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 255,
+      "variant": "static",
+      "strong_components_period_map": 2
+    },
+    {
+      "context": 255,
+      "variant": "position_only",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 255,
+      "variant": "rotor",
+      "strong_components_period_map": 1
+    },
+    {
+      "context": 255,
+      "variant": "round_only",
+      "strong_components_period_map": 3
+    }
+  ]
+}

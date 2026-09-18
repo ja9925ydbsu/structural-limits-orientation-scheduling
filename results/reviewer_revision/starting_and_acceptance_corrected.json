@@ -1,0 +1,123 @@
+{
+  "starting_state": {
+    "static": {
+      "all_start_cells": 32768,
+      "zero_start_cells": 197,
+      "zero_start_fraction": 0.006011962890625,
+      "positive_log2_quantiles": {
+        "0": -87.22268327331544,
+        "0.05": -81.67365637042629,
+        "0.25": -80.42128598808941,
+        "0.5": -79.69034005138593,
+        "0.75": -79.0419537665822,
+        "0.95": -78.185145782719,
+        "1": -75.97439978293497
+      },
+      "modal_argmax_bit": 9,
+      "modal_argmax_count": 8,
+      "distinct_argmax_bits": 106,
+      "oracle_mean_log2": -78.21132158985952,
+      "oracle_log2_arithmetic_mean_p": -78.04747765010598,
+      "fixed0_zero_contexts": 3,
+      "fixed0_log2_arithmetic_mean_p": -79.36461753480064,
+      "fixed0_conditional_mean_log2_positive": -79.69515585115985
+    },
+    "position_only": {
+      "all_start_cells": 32768,
+      "zero_start_cells": 195,
+      "zero_start_fraction": 0.005950927734375,
+      "positive_log2_quantiles": {
+        "0": -87.17275402879086,
+        "0.05": -81.6928680719621,
+        "0.25": -80.46999712432888,
+        "0.5": -79.74005256133941,
+        "0.75": -79.06225297135705,
+        "0.95": -78.09903653889913,
+        "1": -75.79843575017001
+      },
+      "modal_argmax_bit": 9,
+      "modal_argmax_count": 9,
+      "distinct_argmax_bits": 105,
+      "oracle_mean_log2": -78.24222003899132,
+      "oracle_log2_arithmetic_mean_p": -78.0436816262502,
+      "fixed0_zero_contexts": 2,
+      "fixed0_log2_arithmetic_mean_p": -79.32112950099,
+      "fixed0_conditional_mean_log2_positive": -79.79104625847972
+    },
+    "rotor": {
+      "all_start_cells": 32768,
+      "zero_start_cells": 194,
+      "zero_start_fraction": 0.00592041015625,
+      "positive_log2_quantiles": {
+        "0": -87.71600622137757,
+        "0.05": -81.39243304127244,
+        "0.25": -80.35518441663783,
+        "0.5": -79.79552835540332,
+        "0.75": -79.30598888049241,
+        "0.95": -78.65710730063539,
+        "1": -77.19943461281883
+      },
+      "modal_argmax_bit": 93,
+      "modal_argmax_count": 6,
+      "distinct_argmax_bits": 112,
+      "oracle_mean_log2": -78.51484016589126,
+      "oracle_log2_arithmetic_mean_p": -78.45545206226625,
+      "fixed0_zero_contexts": 2,
+      "fixed0_log2_arithmetic_mean_p": -79.63764294396603,
+      "fixed0_conditional_mean_log2_positive": -79.82903643410987
+    },
+    "round_only": {
+      "all_start_cells": 32768,
+      "zero_start_cells": 199,
+      "zero_start_fraction": 0.006072998046875,
+      "positive_log2_quantiles": {
+        "0": -85.3695939517982,
+        "0.05": -81.39710560103936,
+        "0.25": -80.36830312767798,
+        "0.5": -79.80755704837165,
+        "0.75": -79.31945016136312,
+        "0.95": -78.68221134386462,
+        "1": -77.1028560391679
+      },
+      "modal_argmax_bit": 111,
+      "modal_argmax_count": 7,
+      "distinct_argmax_bits": 115,
+      "oracle_mean_log2": -78.53098091604882,
+      "oracle_log2_arithmetic_mean_p": -78.46983979845255,
+      "fixed0_zero_contexts": 3,
+      "fixed0_log2_arithmetic_mean_p": -79.6691516398633,
+      "fixed0_conditional_mean_log2_positive": -79.8495219854636
+    },
+    "fixed0_rotor_vs_static": {
+      "static_mean_p": 1.2849005873077937e-24,
+      "rotor_mean_p": 1.0633609066459296e-24,
+      "static_neglog2_mean_p": 79.36461753480064,
+      "rotor_neglog2_mean_p": 79.63764294396603,
+      "rotor_minus_static_decay_bits": 0.27302540916538476
+    },
+    "oracle_rotor_vs_static": {
+      "static_mean_p": 3.201607888827234e-24,
+      "rotor_mean_p": 2.4129904655280793e-24,
+      "static_neglog2_mean_p": 78.04747765010598,
+      "rotor_neglog2_mean_p": 78.45545206226625,
+      "rotor_minus_static_decay_bits": 0.4079744121602715
+    }
+  },
+  "acceptance": {
+    "contexts": 256,
+    "accepted_seeds": 4096,
+    "total_candidates_all_contexts": 465673,
+    "overall_acceptance_fraction": 0.008795871781271407,
+    "candidates_per_context_mean": 1819.03515625,
+    "candidates_per_context_median": 1798.5,
+    "candidates_per_context_min": 667,
+    "candidates_per_context_max": 3225,
+    "candidates_per_context_q05": 1094.5,
+    "candidates_per_context_q95": 2565.0,
+    "attempts_per_seed_mean": 113.689697265625,
+    "attempts_per_seed_median": 80.0,
+    "attempts_per_seed_max": 843,
+    "attempts_per_seed_q05": 7.0,
+    "attempts_per_seed_q95": 335.25
+  }
+}

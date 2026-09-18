@@ -1,4 +1,6 @@
-% MDPI Cryptography supplementary-file format, prepared 2 September 2026.
+% MDPI Cryptography supplementary-file format, verified 18 September 2026.
+% Pin the visible submission-version date to the authoritative revision date.
+\year=2026 \month=9 \day=17
 \documentclass[cryptography,supfile,submit,oneauthor]{Definitions/mdpi}
 
 \firstpage{1}
@@ -20,19 +22,19 @@
 \setlength{\emergencystretch}{3em}
 \newcommand{\GF}{\mathrm{GF}}
 
-\Title{Supplementary Technical Material for ``Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers''}
+\Title{Structural Limits of Orientation Scheduling in Byte-Local GF(2) Diffusion Layers}
 \newcommand{\orcidauthorA}{0000-0003-3734-5478}
 \Author{Porter E. Coggins, III $^{1,*}$\orcidA{}}
 \AuthorNames{Porter E. Coggins, III}
 \address{$^{1}$ \quad Department of Professional Education, Bemidji State University, Bemidji, MN 56601, USA; porter.coggins@bemidjistate.edu}
 \corres{Correspondence: porter.coggins@bemidjistate.edu}
-\abstract{This supplementary file provides the complete experimental harness specification, structural checks, transfer-analysis details, matched empirical diagnostics, cross-byte boundary results, reference test vector, and reproducibility manifest for the associated article.}
+\abstract{This supplementary file provides the experimental harness specification, structural checks, transfer-analysis details, reviewer-requested robustness and calibration analyses, matched empirical diagnostics, exploratory cross-byte boundary results, a public compatibility-check note, and the reproducibility manifest for the associated article.}
 \keyword{orientation scheduling; diffusion layers; reproducibility; supplementary material}
 
 \begin{document}
 
 \section{Purpose and package organization}
-This supplement preserves implementation, verification, and secondary diagnostic material that would distract from the main structural argument. The archive contains the MDPI manuscript, this supplement, the experimental-design figure source, byte-local matched-control code, the 256-context transition and transfer analysis, independently executable identity and routing checks, detailed empirical diagnostics, and the complete cross-byte boundary-study candidate and audit tables moved out of the main article. The public project repository is \url{https://github.com/ja9925ydbsu/structural-limits-orientation-scheduling}. The historical HESPN name is retained only where required by a deterministic key label, test vector, or historical compatibility filename.
+This supplement preserves implementation, verification, and secondary diagnostic material that would distract from the main structural argument. The archive contains the MDPI manuscript, this supplement, the experimental-design figure source, byte-local matched-control code, the 256-context transition and transfer analysis, independently executable identity and routing checks, detailed empirical diagnostics, and the complete cross-byte boundary-study candidate and audit tables moved out of the main article. The public project repository is \url{https://github.com/ja9925ydbsu/structural-limits-orientation-scheduling}. The historical HESPN name is retained only where required by a deterministic key label or historical compatibility filename.
 
 \section{Complete experimental harness specification}
 The main article deliberately compresses the harness because the structural result, not the cipher-like implementation detail, is the contribution. Orientation scheduling was nevertheless a reasonable experimental intervention: it changes admissible coefficient placement and the sequence of intra-byte differences presented to later S-boxes while preserving invertibility, the imposed branch-number floor, byte locality, and the surrounding SPN. The central support theorem in the main article is algebraically immediate from byte locality; its significance is causal because it identifies active-byte support as the structural variable that orientation cannot change. This section preserves the normative implementation conventions needed for independent reproduction of the residual coefficient and phase effects measured after that support constraint is held fixed.
@@ -134,12 +136,13 @@ Its order is four, so the isolated routing sequence composes to the identity aft
 \]
 sums to 16 bits in each consecutive four-round block and to 64 bits over 16 rounds. Thus within-byte bit offsets realign at every four-round boundary. Routing and rotation are interleaved, so the combined state-motion map is not asserted to be a pure rotation and routing is not claimed to make zero contribution to intermediate transport. The retained Revision 8 structural-audit script additionally composes only whole-state rotation and routing over the 128 bit positions, omitting the matrix and S-box. That state-motion-only permutation has order $504$ over the first four rounds and $60{,}060$ over all 16 rounds under either rotation-direction convention. The isolated routing order of four is therefore not the period of the combined state motion. The audit also records fixed positions as raw diagnostics but the manuscript assigns them no cryptanalytic interpretation.
 
-\section{256-context transition and transfer results}
-The script \path{weight1_transfer_256.py} builds the round-specific 128-state transition system from the AES DDT and accepted scheduled matrices. It reports finite-round class probabilities, best single trails, one-step retention, and the spectral decay of the 16-round periodic product.
+\section{Transfer results, panel sensitivity, and selection diagnostics}
+The script \path{weight1_transfer_256.py} builds the round-specific 128-state transition system from the AES DDT and accepted scheduled matrices. Reviewer-driven analyses are reproduced by \path{reviewer_revision_analysis.py}; all new JSON outputs are stored under \path{results/reviewer_revision/}.
 
+\subsection{Primary 256-context transfer summary}
 \begin{table}[h]
 \centering\small
-\caption{Summary of the 256-context model-exact transition analysis. $\Delta_{\rm phase}$ is one-step minus periodic.}
+\caption{Primary-panel model-exact summary. The $\log_2 P_{16}$ column is the mean across contexts of the per-context oracle-maximized log probability. ``Periodic'' is the mean per-context spectral decay rate; ``one-step'' applies $-\log_2$ to each context's phase/state mean retention probability before context averaging.}
 \begin{tabular}{lrrrrr}
 \toprule
 Schedule & $\log_2 P_{16}$ & finite & periodic & one-step & $\Delta_{\rm phase}$\\
@@ -152,15 +155,102 @@ round-only & $-78.531$ & $4.9782$ & $4.9834$ & $4.9827$ & $-0.00077$\\
 \end{tabular}
 \end{table}
 
-For a fixed byte position, rotor and round-only schedules use the same 16-round orientation multiset, with each orientation appearing exactly four times. This identity explains their identical one-step mean. The one-step ordering then flips under the periodic operator: static is slightly faster than rotor at one step but slower over the period. Static and position-only, both constant in round index at a fixed byte position, lose $0.00909$ and $0.00785$ bits/round relative to their phase-averaged one-step rates. Rotor and round-only remain essentially at the one-step rate. This supports the phase-locking interpretation in the main article: temporal constancy permits repeated alignment with favourable periodic transition structure, whereas round dependence disrupts that alignment.
+The one-step/periodic reversal establishes sensitivity to ordered composition but does not uniquely identify a mechanism. The main manuscript therefore treats ``phase locking'' only as a temporal-alignment interpretation. State-dependent row sums, localization, occupancy, and other noncommutative effects can also contribute.
 
-At $r=16$, across-context standard deviations are $0.678$ and $0.749$ bits for static and position-only, compared with $0.410$ and $0.417$ for rotor and round-only. Averaging within the two schedule families gives a $42.1\%$ reduction under round dependence. Paired periodic differences are positive for rotor minus static in 154 of 256 contexts and for round-only minus static in 156 of 256. A separate Perron-accessibility check verifies that the maximizing 16-round start state has positive coordinate in the converged dominant survival mode for all 1024 schedule-context combinations.
+\subsection{Panel-size and independent-label sensitivity}
+The original panel size of 256 was chosen for reproducibility and computational cost rather than from a prospective stabilization criterion. To expose panel sensitivity, the same deterministic sequence was extended to 512 contexts and prefix summaries were computed. A second 256-context panel was generated with an independent domain-separation label.
 
-Using the exact random-permutation benchmark of $2^{-121}$, the static mean class at round 16 is $42.789$ bits above the benchmark and would require about $8.603$ additional rounds if continued at its asymptotic periodic rate. Rotor is $42.485$ bits above and requires about $8.526$ additional rounds. The schedule difference therefore corresponds to approximately $0.076$ of a round under this extrapolation.
+\begin{table}[h]
+\centering\small
+\caption{Rotor-minus-static periodic decay-rate contrast in bits/round. Quantiles describe paired context-level differences. The independent panel uses a different domain-separation label.}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Panel & $n$ & mean & SD & 5\% & median & 95\% & positive\\
+\midrule
+primary prefix & 64  & 0.01731 & 0.03515 & -0.02871 & 0.01320 & 0.08377 & 44/64\\
+primary prefix & 128 & 0.01231 & 0.04116 & -0.05633 & 0.01463 & 0.07443 & 83/128\\
+primary & 256 & 0.00881 & 0.03814 & -0.05762 & 0.00966 & 0.07296 & 154/256\\
+primary extended & 512 & 0.01037 & 0.03828 & -0.05412 & 0.01159 & 0.07362 & 310/512\\
+independent label & 256 & 0.00939 & 0.03931 & -0.05285 & 0.00511 & 0.07395 & 144/256\\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The per-context class-minus-best-single-trail gap is computed first and then averaged over the panel. At 16 rounds its mean is approximately $28.3$ bits. Thus best-single-trail analysis understates the retained recurrent class by a factor near $2^{28.3}$ in this model.
+The mean contrast remains of order $10^{-2}$ bits/round, while individual paired effects span both signs. The sign count is therefore reported descriptively rather than used to convert the deterministic panel into a distribution-free inferential statement. The context-generation interpretation assumes SHA-256 outputs are adequate pseudorandom inputs to the documented matrix-acceptance procedure; this is an assumption, not a theorem.
+
+\subsection{Oracle selection, fixed starts, and probability-domain means}
+The main table maximizes over 128 starting weight-one differences within each context. That selection is useful as a conservative structural diagnostic but assumes context knowledge. The complete start-state analysis contains $256\times128=32768$ cells per schedule at $r=16$.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Starting-state and aggregation diagnostics at 16 rounds. ``Oracle log'' is the mean per-context $\log_2$ oracle maximum. ``Oracle arith.'' is $\log_2$ of the arithmetic mean oracle probability. ``Fixed-0 arith.'' is $\log_2$ of the arithmetic mean for preselected boundary bit 0. Zero counts refer to bit 0 across 256 contexts.}
+\begin{tabular}{lrrrrrr}
+\toprule
+Schedule & oracle log & oracle arith. & fixed-0 arith. & fixed-0 zeros & modal argmax count & distinct argmax\\
+\midrule
+static & -78.2113 & -78.0475 & -79.3646 & 3 & 8 & 106\\
+position-only & -78.2422 & -78.0437 & -79.3211 & 2 & 9 & 105\\
+rotor & -78.5148 & -78.4555 & -79.6376 & 2 & 6 & 112\\
+round-only & -78.5310 & -78.4698 & -79.6692 & 3 & 7 & 115\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Zero-probability cells occur for fixed starts even though the oracle maximum is nonzero in every context. Probability-domain means retain those zeros. For log-domain fixed-start distributions the zero count is reported separately and quantiles are computed over positive cells. For example, among positive static cells over all 128 starts, the 5th, median, and 95th percentile log probabilities are $-81.674$, $-79.690$, and $-78.185$; the corresponding rotor values are $-81.392$, $-79.796$, and $-78.657$.
+
+\subsection{Admissible-matrix rejection distribution}
+Across the 256 primary contexts, 4096 accepted byte seeds required 465,673 candidate draws. The empirical acceptance fraction is $0.008796$. Candidate draws per context have mean 1819.0, median 1798.5, minimum 667, maximum 3225, and 5th/95th percentiles 1094.5 and 2565. Per accepted seed, the number of draws has mean 113.69, median 80, 5th percentile 7, 95th percentile 335.25, and maximum 843. These values describe the effective ensemble induced by the rejection filter; they do not imply a uniform distribution over all matrices satisfying the constraints.
+
+\subsection{Numerical validation of the periodic rate}
+The production transfer calculation uses IEEE-754 binary64 arithmetic. The periodic-rate routine applies power iteration to the ordered 16-round product, with convergence declared when successive log Perron factors differ by less than $10^{-13}$ and with a 250-iteration cap. Reducibility is common: among 1024 primary schedule-context products, 720 are reducible and 304 irreducible; the maximum number of strongly connected components observed is eight.
+
+An independent validation on eight contexts and all four schedules compares three calculations: the production power iteration, direct dense eigenvalue computation of the explicit $128\times128$ period product, and a 100-period dynamic-propagation estimate. The maximum absolute difference in decay rate among these methods is $8.88\times10^{-16}$ bits/round, and the production iteration converges within at most 14 iterations on this subset. These checks establish that floating-point/eigensolver error is negligible relative to the $0.00881$-bit/round primary-panel mean contrast; they do not reduce the context-panel or Markov-model uncertainty.
+
+\subsection{Reduced-round fixed-key calibration of the Markov surrogate}
+To bridge the model to the actual fixed-key harness without an infeasible 16-round rare-event experiment, a two-round calibration was run over four fixed key contexts and eight preselected starting boundary bits. Each context/start cell uses $2^{18}=262{,}144$ matched plaintext pairs under every schedule, for 8,388,608 pairs per schedule. The same plaintext panels are reused across schedules.
+
+\begin{table}[h]
+\centering\small
+\caption{Aggregate two-round fixed-key calibration. ``Predicted'' is the mean Markov class probability over the tested cells; ``observed'' is the pooled fixed-key event frequency. The signed bit discrepancy is $-\log_2(p_{\rm obs})+\log_2(p_{\rm pred})$.}
+\begin{tabular}{lrrr}
+\toprule
+Schedule & predicted & observed & signed bit discrepancy\\
+\midrule
+static & 0.00105095 & 0.00107849 & -0.0373\\
+position-only & 0.00108147 & 0.00124788 & -0.2065\\
+rotor & 0.00109673 & 0.00122201 & -0.1561\\
+round-only & 0.000995636 & 0.00100076 & -0.0074\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Aggregate agreement does not imply cellwise stochastic equivalence. The four $2^{20}$ confirmation cells were selected \emph{after inspection of the initial $2^{18}$ calibration}: they were zero-hit cells chosen for a higher-resolution discrepancy check, with one cell from each schedule arm. They were therefore neither prospectively specified nor randomly sampled from the calibration grid, and the reruns are not used to estimate the prevalence of cellwise discrepancies. Table~\ref{tab:zero-hit-reruns} identifies the complete selection and outcome record.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Post hoc higher-resolution checks of four zero-hit calibration cells. ``Initial hits'' refers to the original $2^{18}=262{,}144$-pair calibration. ``Rerun hits'' refers to the $2^{20}=1{,}048{,}576$-pair follow-up. Expected rerun hits are $2^{20}p_{\rm Markov}$. The cells were selected after the initial experiment, one per schedule arm, to test persistence of conspicuous zero-hit discrepancies; they are not a representative or prospectively specified sample.}\label{tab:zero-hit-reruns}
+\begin{tabular}{lrrrrrr}
+\toprule
+Context & Schedule & Start bit & $p_{\rm Markov}$ & Initial hits & Rerun hits & Exp. rerun hits\\
+\midrule
+0 & round-only    & 34  & $1.15966797\times10^{-3}$ & 0 & 0 & 1216\\
+0 & position-only & 119 & $1.58691406\times10^{-3}$ & 0 & 0 & 1664\\
+1 & static        & 17  & $7.93457031\times10^{-4}$ & 0 & 0 & 832\\
+2 & rotor         & 0   & $1.15966797\times10^{-3}$ & 0 & 0 & 1216\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four selected cells again produced zero fixed-key weight-one outcomes. For zero successes in $2^{20}$ trials, the one-sided 95\% binomial upper bound is $2.86\times10^{-6}$ per cell. These reruns demonstrate that large cellwise surrogate-to-harness discrepancies can persist at higher sampling resolution, but because selection was post hoc they do not estimate how frequently such discrepancies occur across the complete context/start grid. Fixed-key model error can therefore be much larger than the approximately $0.009$-bit/round schedule separation reported by the transfer model. The calibration supports the revised claim boundary: the numerical schedule separation is a property of the surrogate transition process, whereas the byte-local support invariant is exact independently of that process.
+
+\subsection{Random-permutation references and round-equivalent extrapolation}
+The endpoint reference $128/(2^{128}-1)\approx2^{-121}$ is the expected weight-one output event for one fixed nonzero input difference under an ideal random permutation. It is not a trajectory-matched null for the event ``weight one at every boundary'', nor does it reproduce per-context oracle maximization. It is retained only as a conservative endpoint reference. If instead one idealizes each round as an independent random permutation and requires the same weight-one event at all 16 boundaries, the trajectory probability is approximately $(2^{-121})^{16}=2^{-1936}$; this is a different idealization and is not used as the headline comparison.
+
+Under the model-only extrapolation used in the manuscript, the remaining endpoint exponent gap corresponds to 8.6026 additional static rounds and 8.5264 rotor rounds, a difference of 0.07622 rounds. Holding the rotor rate fixed attributes about 0.06101 rounds to the level gap already present at round 16; holding the static level fixed attributes about 0.01521 rounds to the asymptotic rate difference. This decomposition is descriptive and does not convert the surrogate result into a security metric.
 
 \section{Matched empirical corrections and uncertainty}
+The deterministic transfer-panel summaries above are descriptive robustness checks, not population-inferential estimates. The confidence intervals and binomial calculations in this section refer only to the separately sampled finite empirical screens under their stated experimental designs; they are not confidence intervals for the deterministic 256-context transfer panel.
+
 The standard four-context matched experiment was rerun from the bundled implementation. The following values support the revised manuscript wording.
 
 \subsection{Plaintext avalanche}
@@ -245,10 +335,14 @@ The wider-beam sensitivity runner is included so the search can be extended with
 
 \section{Reference implementation test vector}
 The historical known-answer compatibility values are intentionally omitted from
-the public repository because they are reserved for related work. This omission
-does not affect the structural results, the 256-context transfer computation, or
-the reported empirical diagnostics. All analyses supporting the present article
-can be reproduced from the scripts and machine-readable outputs listed below.
+the public supplement and repository because they are reserved for separate
+related work. The public experiment retains the byte ordering, matrix packing,
+round-function calculations, fixed-label experiment inputs, and independent
+structural checks needed to reproduce every result reported in this article.
+The two matched experiment runners therefore record the compatibility check as
+\texttt{withheld} rather than embedding the historical password, salt, derived
+keys, intermediate states, or ciphertext. This omission does not change the
+matched-control design or any reported calculation.
 
 \section{Reproducibility manifest}
 \begin{longtable}{p{0.21\textwidth}p{0.35\textwidth}p{0.33\textwidth}}
@@ -267,6 +361,8 @@ Historical Revision 8 phase, transport, and Perron audit & \path{revision8_struc
 256-context transition analysis & \path{weight1_transfer_256.py} & \path{weight1_256/model_weight1_256_by_context.csv}; summary, transfer, and paired-rate CSV files\\
 Paired rate differences & \path{weight1_transfer_256.py} plus summary helper & \path{weight1_256/paired_rate_differences.csv}\\
 Matched four-arm diagnostics & \path{matched_orientation_schedule_experiment.py}; \path{empirical_summary.py} & \path{matched_standard/} and \path{structural_checks/statistical_corrections_recomputed.json}\\
+Reviewer revision robustness analyses & \path{reviewer_revision_analysis.py}; \path{confirm_fixed_key_zero_cells.py} & \path{reviewer_revision/panel_start_acceptance_summary.json}; \path{reviewer_revision/starting_and_acceptance_corrected.json}; \path{reviewer_revision/period_reducibility_all_1024.json}; \path{reviewer_revision/numerical_validation_8.json}\\
+Fixed-key two-round calibration & \path{reviewer_revision_analysis.py}; \path{confirm_fixed_key_zero_cells.py} & \path{reviewer_revision/fixed_key_r2_calibration_4x8x262144.json}; \path{reviewer_revision/fixed_key_r2_zero_cell_confirmation.json}\\
 Historical runner name & \path{matched_static_vs_rotor_experiment.py} & compatibility copy retained only so older commands continue to run\\
 Cross-byte boundary study & \path{run_mds_rotor_study.py} and modules & \path{mds_standard_profile_reported.csv}\\
 Beam-width follow-up & \path{mds_beam_sensitivity.py} & script included; no convergence claim\\
@@ -286,6 +382,8 @@ python weight1_transfer_256.py --keys 256 --transfer-keys 256 \
   --out ../../results/weight1_256
 python matched_orientation_schedule_experiment.py --profile standard \
   --out ../../results/matched_standard
+python reviewer_revision_analysis.py
+python confirm_fixed_key_zero_cells.py
 \end{verbatim}
 The cross-byte code uses NumPy and SciPy in addition to the standard library. A standard profile can be rerun with:
 \begin{verbatim}

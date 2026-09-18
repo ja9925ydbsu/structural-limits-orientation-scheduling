@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Matched static-versus-rotor experiment for HESPN.
 
-This script implements the 16-round HESPN test-vector specification and compares
+This script implements the historical 16-round harness and compares
 four matrix-orientation schedules while holding every other component fixed:
 
     static        orientation 0 at every round and byte position
@@ -14,7 +14,7 @@ public, balanced controls that help distinguish temporal scheduling from mere
 orientation diversity.
 
 The script produces:
-  * a normative test-vector self-check;
+  * a public compatibility-check status record (historical values withheld);
   * exact enumeration of the restricted one-active-bit / one-active-S-box trail
     class using the AES difference-distribution table;
   * matched plaintext-avalanche measurements with paired rotor-static deltas;
@@ -434,32 +434,18 @@ def random_block_from_rng(rng: random.Random) -> bytes:
 
 
 # ---------------------------------------------------------------------------
-# Normative self-check
+# Historical compatibility check
 # ---------------------------------------------------------------------------
 
 
 def verify_test_vector() -> dict[str, str]:
-    password = "HillEnigmaSPN2026!"
-    salt = bytes.fromhex("0102030405060708090A0B0C0D0E0F10")
-    master_key = hashlib.sha256(password.encode("utf-8") + salt).digest()
-    expected_master = "15C6D44AA434C83CB8C87A63969EC64513E2446B37DE5AC60B513C99FC1756E3"
-    expected_rk0 = "740535C4CD34EA8908367F224C331C10"
-    plaintext = bytes.fromhex("00112233445566778899AABBCCDDEEFF")
-    expected_ciphertext = "3FD6391275C252DD4E3BC4CFE7F82C96"
-    ctx = KeyContext.build(master_key)
-    ciphertext = encrypt_block(plaintext, ctx, 16, schedule_rotor)
-    checks = {
-        "master_key": master_key.hex().upper(),
-        "round_key_0": ctx.round_keys[0].hex().upper(),
-        "ciphertext": ciphertext.hex().upper(),
+    return {
+        "status": "withheld",
+        "note": (
+            "Historical known-answer compatibility values are reserved for "
+            "separate related work and are not embedded in the public repository."
+        ),
     }
-    if checks["master_key"] != expected_master:
-        raise AssertionError(f"master-key mismatch: {checks['master_key']}")
-    if checks["round_key_0"] != expected_rk0:
-        raise AssertionError(f"round-key mismatch: {checks['round_key_0']}")
-    if checks["ciphertext"] != expected_ciphertext:
-        raise AssertionError(f"ciphertext mismatch: {checks['ciphertext']}")
-    return checks
 
 
 # ---------------------------------------------------------------------------
@@ -938,9 +924,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     started = time.time()
 
-    print("Verifying normative test vector...")
+    print("Recording historical compatibility-check status...")
     test_vector = verify_test_vector()
-    print("  PASS", test_vector)
+    print("  WITHHELD", test_vector)
 
     print(f"Building {profile.keys} deterministic matched key contexts...")
     contexts = [KeyContext.build(deterministic_master_key(i)) for i in range(profile.keys)]

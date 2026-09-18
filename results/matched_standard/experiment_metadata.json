@@ -57,9 +57,8 @@
   ],
   "key_derivation": "SHA-256 of fixed public labels; fixed-key comparison only",
   "test_vector": {
-    "master_key": "15C6D44AA434C83CB8C87A63969EC64513E2446B37DE5AC60B513C99FC1756E3",
-    "round_key_0": "740535C4CD34EA8908367F224C331C10",
-    "ciphertext": "3FD6391275C252DD4E3BC4CFE7F82C96"
+    "status": "withheld",
+    "note": "Historical known-answer compatibility values are reserved for separate related work and are not embedded in the public repository."
   },
   "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
   "elapsed_seconds": 21.93611764907837

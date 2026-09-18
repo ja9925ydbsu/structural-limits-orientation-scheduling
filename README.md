@@ -6,7 +6,7 @@ Repository: https://github.com/ja9925ydbsu/structural-limits-orientation-schedul
 
 ## Manuscript status
 
-The manuscript and supplementary technical material under `paper/` are formatted for submission to **Cryptography (MDPI)** using the official MDPI LaTeX class. The repository is the corresponding reproducibility companion and preserves the code, machine-readable results, and structural checks discussed in the paper.
+The manuscript and supplementary technical material under `paper/` are formatted for submission to **Cryptography (MDPI)** using the official MDPI LaTeX class. The repository is the corresponding reproducibility companion and preserves the code, machine-readable results, and structural checks discussed in the paper. The public snapshot was synchronized with the 17 September 2026 reviewer revision and its corrected 18 September 2026 supplementary source.
 
 ## Why orientation scheduling was tested
 
@@ -22,12 +22,13 @@ The structural theorem and the 8/255 nulls are not AES-specific. Measured finite
 
 ## Repository layout
 
-- `paper/` contains the MDPI Cryptography manuscript and supplementary sources and PDFs, bibliography, the required MDPI class and style files under `paper/Definitions/`, and Figure 1 source.
-- `src/byte_local/` contains the matched four-arm experiment, 256-context transfer analysis, DDT/LAT identity checks, routing checker, and the retained Revision 8 structural-audit script used by Revision 9.
+- `paper/` contains the MDPI Cryptography manuscript and supplementary sources and PDFs, bibliography, the required MDPI class and style files under `paper/Definitions/`, and both figure sources.
+- `src/byte_local/` contains the matched four-arm experiment, 256-context transfer analysis, DDT/LAT identity checks, routing checker, fixed-key confirmation, reviewer-revision analysis, and the retained Revision 8 structural-audit script used by later revisions.
 - `src/cross_byte/` contains the cross-byte Cauchy MDS boundary-study code and wider-beam follow-up runner.
 - `results/weight1_256/` contains machine-readable transition and periodic-transfer results.
 - `results/matched_standard/` contains secondary matched empirical diagnostics.
 - `results/structural_checks/` contains independently recomputed null identities, routing geometry, phase decomposition, state-motion order, Perron-accessibility checks, statistical corrections, and MDS-gap checks.
+- `results/reviewer_revision/` contains the reviewer-requested calibration, acceptance, period-reducibility, replication, and fixed-key confirmation outputs.
 - `docs/` contains scope, reproducibility, manuscript-to-code mapping, revision history, interpretation guidance, and repository upload guidance.
 
 ## Reproducing the primary checks
@@ -66,9 +67,8 @@ The retained structural-audit script composes only whole-state rotation and rout
 
 ## Historical naming
 
-The earlier experimental construction was called HESPN. That name remains only in a deterministic context label, a historical test vector, and compatibility filenames where changing the identifier would impair reproducibility. The public project name and manuscript framing describe the structural question rather than a cipher proposal.
+The earlier experimental construction was called HESPN. That name remains only where required by deterministic context labels and historical compatibility filenames. The public project name and manuscript framing describe the structural question rather than a cipher proposal. Historical known-answer values are not embedded in this public snapshot.
 
 ## License scope
 
 The MIT License in `LICENSE` applies only to software under `src/` and to `requirements.txt`. Manuscript text, figures, compiled papers, result data, and submission documents are not covered by that software license unless a separate license is stated later.
-

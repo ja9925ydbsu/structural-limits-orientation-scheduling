@@ -1,0 +1,48 @@
+{
+  "records": [
+    {
+      "context": 0,
+      "start_bit": 34,
+      "variant": "round_only",
+      "pairs": 1048576,
+      "hits": 0,
+      "observed_probability": 0.0,
+      "markov_predicted_probability": 0.00115966796875,
+      "markov_expected_hits": 1216.0,
+      "zero_hit_one_sided_95_upper": 2.85694884705201e-06
+    },
+    {
+      "context": 0,
+      "start_bit": 119,
+      "variant": "position_only",
+      "pairs": 1048576,
+      "hits": 0,
+      "observed_probability": 0.0,
+      "markov_predicted_probability": 0.0015869140625,
+      "markov_expected_hits": 1664.0,
+      "zero_hit_one_sided_95_upper": 2.85694884705201e-06
+    },
+    {
+      "context": 1,
+      "start_bit": 17,
+      "variant": "static",
+      "pairs": 1048576,
+      "hits": 0,
+      "observed_probability": 0.0,
+      "markov_predicted_probability": 0.00079345703125,
+      "markov_expected_hits": 832.0,
+      "zero_hit_one_sided_95_upper": 2.85694884705201e-06
+    },
+    {
+      "context": 2,
+      "start_bit": 0,
+      "variant": "rotor",
+      "pairs": 1048576,
+      "hits": 0,
+      "observed_probability": 0.0,
+      "markov_predicted_probability": 0.00115966796875,
+      "markov_expected_hits": 1216.0,
+      "zero_hit_one_sided_95_upper": 2.85694884705201e-06
+    }
+  ]
+}
